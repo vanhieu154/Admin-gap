@@ -1,1 +1,104 @@
-<p>add-admin works!</p>
+<div class="container">
+  <h1>THÊM QUẢN TRỊ VIÊN</h1>
+  <div class="frame">
+    <div class="row">
+      <img src="" alt="">
+      <!-- thêm hình dô chỗ này -->
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">ID:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="Name" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Họ tên:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="Name" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Tên đăng nhập:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="userName" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Ngày sinh:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="DOB" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Giới tính:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="gender" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Email:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="email" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Số điện thoại:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <input type="text" name="number" id="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3">Quyền hạn:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="col-sm-10">
+          <mat-form-field appearance="fill">
+            <mat-label>Quyền hạn</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <button class="stroked-button-1" routerLink="/">Back</button>
+      </div>
+      <div class="col-sm-1">
+        <button class="stroked-button-2" routerLink="/">Save</button>
+      </div>
+      <div class="col-sm-5"></div>
+    </div>
+  </div>
+</div>

@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./add-admin.component.css']
 })
 export class AddAdminComponent {
-
+  qh: string[] = [
+    'Nhân viên trực chat',
+    'Nhân viên',
+    'Cửa hàng trưởng',]
 }
