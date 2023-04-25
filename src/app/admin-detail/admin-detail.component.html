@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>THÔNG TIN KHÁCH HÀNG</h1>
+  <h1>THÔNG TIN QUẢN TRỊ VIÊN</h1>
   <div class="frame">
     <div class="row">
       <img src="" alt="">
@@ -47,7 +47,36 @@
       <div class="col-sm-6">0859078555</div>
     </div>
     <div class="row">
-    <button class="mat-stroked-button" routerLink="/">Back</button>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-2">Quyền hạn:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <!-- <form action="">
+          <select class="form-select" name="Quyền hạn">
+              <option value=""></option>
+              <option value="">Nhân viên</option>
+              <option value="">Quản lý trưởng</option>
+              <option value="">Nhân viên trực chat</option>
+          </select>
+        </form> -->
+        <mat-form-field appearance="fill">
+          <mat-label>Quyền hạn</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <button class="stroked-button-1" routerLink="/">Back</button>
+      </div>
+      <div class="col-sm-1">
+        <button class="stroked-button-2" routerLink="/">Save</button>
+      </div>
+      <div class="col-sm-5"></div>
     </div>
   </div>
 </div>

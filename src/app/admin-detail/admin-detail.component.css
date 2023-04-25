@@ -15,9 +15,12 @@ h1{
   border:  #D2BEB4;
   border-style:solid;
   border-radius: 20px;
+
 }
 .row{
   padding: 20px;
+  align-content: space-between;
+
 }
 .col-sm-6{
   color: #686361
@@ -29,6 +32,25 @@ button {
   width: 100px;
   height: 40px;
   border-radius: 5px;
-  color: #686361;
+  /* color: #686361; */
+  border: thin ;
   /* transform: translateX(-50%); */
+}
+.stroked-button-1{
+  border-color:#686361;
+
+}
+.stroked-button-2{
+  background-color: #D2BEB4;
+  color: #ffffff;
+}
+select{
+  width: 200px;
+  height: 30px;
+  border-radius: 5px;
+  color: #686361;
+}
+mat-label, mat-option {
+  font-family: Quicksand;
+  border: #686361;
 }
