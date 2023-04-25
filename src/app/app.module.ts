@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomerDetailComponent,
     AdminDetailComponent,
     AddAdminComponent
+
   ],
   imports: [
     MatFormFieldModule,
