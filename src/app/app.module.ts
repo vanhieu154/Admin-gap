@@ -11,14 +11,25 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     CustomerDetailComponent,
     AdminDetailComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    AdminOrderComponent,
+    AdminOrderDetailComponent
 
   ],
   imports: [
@@ -29,11 +40,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatTabsModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   exports:[
     // MatButtonModule,
-    MatFormFieldModule,
+    // MatFormFieldModule,
     // MatInputModule,
     // MatRippleModule,
   ],

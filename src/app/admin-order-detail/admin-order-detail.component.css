@@ -186,40 +186,73 @@ a:hover{
 .example-spacer {
   flex: 1 1 auto;
 }
-.body__2 button {
-  background-color: #d2beb4;
-  border-color: none;
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  margin-top: 10px;
+}
+/* body--2 */
+.body__2{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
   border-radius: 5px;
-  border:none;
-  font-size: 24px;
-  margin: 5px;
-  height:75%;
-  font-family: quicksand;
-  font-weight: bold;
+  z-index: 1;
+  padding-left: 0;
+  border-color: #cfa897;
+}
+.example-icon{
+  background-color:#D2BEB4;
+  border: 2px solid #D2BEB4;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 50%;
+}
+.bu_hover hover{
+  border-color: #ac9a92;
+  background-color: #cfa897;
+}
+.order_status{
+  font-size: 1.3rem;
   color: white;
-
-}
-.body__2 button:hover{
-  background-color: #b8a898;
-}
-.attach{
-  text-align: justify;
-  vertical-align: middle;
-}
-.mat-mdc-tab.mdc-tab{
-  font-size: 24px;
   font-family: quicksand;
+}
+.mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic .mdc-evolution-chip__action--primary{
+  background-color: #D2BEB4;
 
 }
-.mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label{
-  color: #d2beb4  ;
+
+.body__21{
+  display: flex;
+}
+hr {
+  border: none; /* loại bỏ đường viền */
+  border-top: 3px solid #D2BEB4; /* thêm đường viền trên */
+  margin: 20px 0; /* tạo khoảng cách giữa các phần tử */
+}
+table th{
+  color: #6B4932;
+  font-size: 1.1rem;
+  font-family: quicksand;
+}
+table td{
+  border: none;
+  font-size: 1rem;
+  font-family: quicksand;
   font-weight: bold;
-  overflow-y: hidden;
 }
 .body__3{
-  margin-top: 2%;
-  margin-right: 10%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  border-radius: 5px;
+  z-index: 1;
+  padding-left: 0;
+  border-color: #cfa897;
+  margin-top: 20px;
+  overflow-y: hidden;
+}
+.customer{
+  text-align: left;
   margin-left: 10%;
+  font-family: quicksand;
+  margin-top:1% ;
 }
 table{
   color: #6B4932;
@@ -235,6 +268,3 @@ table{
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
   background-color: #d2beb4;
 }
-
-
-

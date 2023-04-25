@@ -1,17 +1,118 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-*********" crossorigin="anonymous">
+
+<div id="header">
+  <div class="header-top">
+     <div class="btn-search" >
       <div class="d-flex">
-        <i class="fas fa-square-chevron-left" style="line-height: 1; color: rgb(30, 48, 80);"></i>
+        <button class="btn btn-outline-success button__search" onclick="re_search()"><i class="fa-solid fa-angles-left" style="color: #ffffff;" width="30px" height="30px"></i></button>
         <input class="form-control me-2 search" id="search" placeholder="Search for admin" aria-label="Search">
         <button class="btn btn-outline-success button__search" onclick="re_search()"><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" color="white"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"></path></svg></button>
       <!-- </form> -->
       </div>
+     </div>
+      <div class="right-header-top">
+          <div class="account">
+              <a href="#" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 32 32" color="#D2BEB4"><path fill="currentColor" d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5Z"></path><path fill="currentColor" d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2Zm7.992 22.926A5.002 5.002 0 0 0 19 20h-6a5.002 5.002 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0Z"></path></svg>
+                 <span>English</span>
+              </a>
+
+          </div>
+          <div class="cart">
+              <a href="#">
+                <i style="font-size: 30px;color: #D2BEB4;" class="fa-solid fa-bell"></i>
+                  </a>
+          </div>
+          <div class="phone">
+              <a href="#">
+                <i style="font-size: 30px;color: #D2BEB4;" class="fa-solid fa-envelope-open-text"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+
+</div>
+<div class="body container text-center">
+    <div class="row body__1">
+      <div class="col orders" >Orders</div>
+
+      <div class=" col date--range">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date">
+            <input matEndDate formControlName="end" placeholder="End date">
+          </mat-date-range-input>
+        <mat-hint></mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+
+        <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+        <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+      </mat-form-field>
+
     </div>
 
   </div>
+  <div class="row body__2">
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" style="width: 5%;" [matMenuTriggerFor]="belowMenu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Open</button>
+        <button mat-menu-item>Closed</button>
+        <button mat-menu-item>All Orders</button>
+      </mat-menu>
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="Open"><a href="#"></a></mat-tab>
+  <mat-tab label="Closed"><a href="#"></a></mat-tab>
+    <mat-tab label="All Orders"><a href="#"></a></mat-tab>
+      </mat-tab-group>
+
+      <span class="example-spacer"></span>
+
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon style="margin-top: 2px;">filter</mat-icon>
+        <span style="font-size: 13px;">Filter</span>
+      </button>
+      <button mat-icon-button class="example-icon favorite-icon attach" aria-label="Example icon-button with heart icon">
+        <mat-icon style="margin-top: 2px;">link</mat-icon>
+        <span style="font-size: 13px;">Attach</span>
+      </button>
+    </mat-toolbar>
+  </div>
 </div>
-
-
-
-
+<div class="row body__3">
+    <table class="table table-hover table-danger table-striped">
+      <thead>
+      <tr>
+      <th></th>
+      <th>#</th>
+      <th>Customer</th>
+      <th>Total</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td></td>
+      <td>1</td>
+      <td>Nguyễn Thị Thanh Thùy</td>
+      <td>200.000 VNĐ</td>
+      <td>
+        <mat-chip-listbox aria-label="status selection">
+          <mat-chip-option>pending</mat-chip-option>
+          <mat-chip-option color="warn">in transit</mat-chip-option>
+          <mat-chip-option color="accent" selected>received</mat-chip-option>
+          <mat-chip-option color="warn">cancelled</mat-chip-option>
+        </mat-chip-listbox>
+      </td>
+      <td>1/1/2023</td>
+      <td><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512.5 390.6c-29.9 0-57.9 11.6-79.1 32.8c-21.1 21.2-32.8 49.2-32.8 79.1c0 29.9 11.7 57.9 32.8 79.1c21.2 21.1 49.2 32.8 79.1 32.8c29.9 0 57.9-11.7 79.1-32.8c21.1-21.2 32.8-49.2 32.8-79.1c0-29.9-11.7-57.9-32.8-79.1a110.96 110.96 0 0 0-79.1-32.8zm412.3 235.5l-65.4-55.9c3.1-19 4.7-38.4 4.7-57.7s-1.6-38.8-4.7-57.7l65.4-55.9a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a442.5 442.5 0 0 0-79.6-137.7l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.2 28.9c-30-24.6-63.4-44-99.6-57.5l-15.7-84.9a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52-9.4-106.8-9.4-158.8 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.3a353.44 353.44 0 0 0-98.9 57.3l-81.8-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a445.93 445.93 0 0 0-79.6 137.7l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.2 56.5c-3.1 18.8-4.6 38-4.6 57c0 19.2 1.5 38.4 4.6 57l-66 56.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.3 44.8 96.8 79.6 137.7l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.8-29.1c29.8 24.5 63 43.9 98.9 57.3l15.8 85.3a32.05 32.05 0 0 0 25.8 25.7l2.7.5a448.27 448.27 0 0 0 158.8 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-84.9c36.2-13.6 69.6-32.9 99.6-57.5l81.2 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.5-87.4 79.6-137.7l.9-2.6c4.3-12.4.6-26.3-9.5-35zm-412.3 52.2c-97.1 0-175.8-78.7-175.8-175.8s78.7-175.8 175.8-175.8s175.8 78.7 175.8 175.8s-78.7 175.8-175.8 175.8z"/></svg></a></td>
+      </tr>
+      </tbody>
+      </table>
+</div>

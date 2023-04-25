@@ -4,6 +4,7 @@ import { CustomerDetailComponent } from './customer-detail/customer-detail.compo
 import { AdminDetailComponent } from './admin-detail/admin-detail.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
+import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 const routes: Routes = [
   {
     path:"customer-detail",component:CustomerDetailComponent
@@ -17,7 +18,9 @@ const routes: Routes = [
   {
     path:"admin-order",component:AdminOrderComponent
   },
-
+  {
+    path:"admin-order-detail",component:AdminOrderDetailComponent
+  },
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
