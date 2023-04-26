@@ -221,6 +221,7 @@ a:hover{
   margin-right: 10%;
   margin-left: 10%;
 }
+
 table{
   color: #6B4932;
   background-color: #ffffff;
@@ -231,6 +232,9 @@ table{
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 
+}
+tr{
+  border-top: none;
 }
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
   background-color: #d2beb4;
