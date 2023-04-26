@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AdminListComponent } from './admin-list/admin-list.component';
     AddAdminComponent,
     AdminOrderComponent,
     AdminOrderDetailComponent,
-    AdminListComponent
+    AdminListComponent,
+    CustomerListComponent
 
   ],
   imports: [

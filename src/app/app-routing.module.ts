@@ -6,6 +6,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
 const routes: Routes = [
   {
     path:"customer-detail",component:CustomerDetailComponent
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path:"admin-list",component:AdminListComponent
+  },
+  {
+    path:"customer-list",component:CustomerListComponent
   },
 
 ]
