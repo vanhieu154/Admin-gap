@@ -11,7 +11,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< Updated upstream
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,23 +22,18 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
-=======
 import { AdminListComponent } from './admin-list/admin-list.component';
 
 
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
     CustomerDetailComponent,
     AdminDetailComponent,
     AddAdminComponent,
-<<<<<<< Updated upstream
     AdminOrderComponent,
-    AdminOrderDetailComponent
-=======
+    AdminOrderDetailComponent,
     AdminListComponent
->>>>>>> Stashed changes
 
   ],
   imports: [
