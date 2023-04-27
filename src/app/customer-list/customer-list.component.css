@@ -108,6 +108,10 @@ a:hover{
 .header-top .btn-search{
   position: relative;
 }
+thead{
+  color: #D2BEB4;
+}
+
 .header-top .btn-search .ti-search {
   height: 40px;
   width: 40px;
@@ -176,7 +180,7 @@ a:hover{
 }
 .orders{
   color: #D2BEB4;
-  font-size: 45px;
+  font-size: 40px;
   font-weight: bold;
   font-family: Quicksand;
 
@@ -239,6 +243,8 @@ table{
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
+  font-weight: bold;
+
 }
 tr{
   border-top: none;
@@ -247,5 +253,11 @@ tr{
   background-color: #d2beb4;
 }
 
-
+.inactive{
+  border-radius: 5px;
+  border-style:solid;
+  border-color:#d2beb4;
+  color: #c6a697;
+  font-weight: bold;
+}
 
