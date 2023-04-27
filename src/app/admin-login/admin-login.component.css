@@ -1,0 +1,85 @@
+body{
+  background-color: #b8a898;
+}
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body{
+  background-color: #d2beb4;
+}
+.login{
+  width: 60%;
+  height: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+.row{
+  padding: 3%;
+}
+.col-md-8{
+  padding-left: 10%;
+}
+.img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  text-align: center;
+  color: #6B4932;
+  font-weight: 700;
+  padding-top: 5%;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+.exemple-form-field{
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-content{
+  padding-top: 10px;
+  width: 100%;
+}
+.btn-dangnhap{
+  background-color: initial;
+  font-weight: 500;
+  margin-left: auto;
+  border: 1px solid   #6B4932;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  width: 40%;
+  text-align: center;
+  font-size: 1.4rem;
+}
+.btn-dangnhap:hover{
+  background-color: #6B4932;
+  color: white;
+}
+.btn-dangnhap:active{
+  opacity: 0.7;
+  background-color: #6B4932;
+}
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--mdc-theme-error,#6B4932);
+}
+
+.footer{
+  text-align: center;
+}

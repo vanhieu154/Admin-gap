@@ -1,0 +1,37 @@
+<div class="body">
+  <div class="container">
+    <div class="login">
+      <div class="row">
+        <div class="col-md-4 img-container">
+          <img src="./assets/Img/Gap-Logo.webp" alt="" width="100%">
+        </div>
+        <div class="col-md-8">
+          <div class="form-container">
+            <h1>ĐĂNG NHẬP</h1>
+            <div class="form-content">
+              <mat-form-field appearance="fill" class="exemple-form-field">
+                <mat-label>Tên đăng nhập</mat-label>
+                <input matInput placeholder="Nhập tên đăng nhập" [formControl]="name" required>
+                <mat-error *ngIf="name.invalid">{{getErrorNameMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-content">
+              <mat-form-field appearance="fill" class="exemple-form-field">
+                <mat-label>Mật khẩu</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Nhập mật khẩu" [formControl]="password" required>
+                <mat-error *ngIf="password.invalid">{{getErrorPWMessage()}}</mat-error>
+                <button class="hide" style=" color:  #6B4932;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+            <div class="form-content footer">
+              <button onclick="dangnhap()"class="btn-dangnhap">ĐĂNG NHẬP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

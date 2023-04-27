@@ -18,7 +18,7 @@ import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
@@ -28,6 +28,9 @@ import { AdminProductComponent } from './admin-product/admin-product.component';
 import { FormsModule } from '@angular/forms';
 import { AdminPromotionComponent } from './admin-promotion/admin-promotion.component';
 import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { MatInputModule } from '@angular/material/input';
+import { BlogListComponent } from './blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
     CustomerListComponent,
     AdminProductComponent,
     AdminPromotionComponent,
-    AdminCouponComponent
+    AdminCouponComponent,
+    AdminLoginComponent,
+    BlogListComponent,
 
   ],
   imports: [
@@ -62,7 +67,8 @@ import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
     MatCheckboxModule,
     MatCardModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
   ],
   exports:[
     // MatButtonModule,
