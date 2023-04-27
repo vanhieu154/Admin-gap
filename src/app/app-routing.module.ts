@@ -7,6 +7,7 @@ import { AdminOrderComponent } from './admin-order/admin-order.component';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { AdminProductComponent } from './admin-product/admin-product.component';
 const routes: Routes = [
   {
     path:"customer-detail",component:CustomerDetailComponent
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path:"customer-list",component:CustomerListComponent
+  },
+  {
+    path:"admin-product",component:AdminProductComponent
   },
 
 ]

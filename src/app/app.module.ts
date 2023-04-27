@@ -24,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminOrderDetailComponent } from './admin-order-detail/admin-order-detail.component';
 import { AdminListComponent } from './admin-list/admin-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-
+import { AdminProductComponent } from './admin-product/admin-product.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     AdminOrderComponent,
     AdminOrderDetailComponent,
     AdminListComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    AdminProductComponent
 
   ],
   imports: [
@@ -55,7 +57,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
     MatPaginatorModule,
     MatCheckboxModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
     // MatButtonModule,
