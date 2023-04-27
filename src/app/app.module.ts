@@ -26,6 +26,8 @@ import { AdminListComponent } from './admin-list/admin-list.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AdminProductComponent } from './admin-product/admin-product.component';
 import { FormsModule } from '@angular/forms';
+import { AdminPromotionComponent } from './admin-promotion/admin-promotion.component';
+import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FormsModule } from '@angular/forms';
     AdminOrderDetailComponent,
     AdminListComponent,
     CustomerListComponent,
-    AdminProductComponent
+    AdminProductComponent,
+    AdminPromotionComponent,
+    AdminCouponComponent
 
   ],
   imports: [

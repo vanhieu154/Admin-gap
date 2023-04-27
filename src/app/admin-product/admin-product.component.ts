@@ -1,16 +1,5 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {MatInputHarness} from '@angular/material/input/testing';
-import {MatInputModule} from '@angular/material/input';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material/core';
-import {HttpClientModule} from '@angular/common/http';
-import { AfterViewInit, OnDestroy, OnInit, Renderer2, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
-import { Directive, ElementRef, Output, EventEmitter, HostListener } from '@angular/core';
 
 @Component({
   selector: '[app-admin-product]',

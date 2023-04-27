@@ -1,6 +1,6 @@
+
+
 <div id="header" >
-
-
       <div align="center">
         <div  >
           <span class="col title--sanpham" >
@@ -9,19 +9,14 @@
           <input type="text" id="searchProduct" style="font-size: 2rem;" [(ngModel)]="searchProduct" class="left__search--bar" >
             <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button>
             <button class="left_button-search" (click)="onClear()" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
-
-
     </div>
   </div>
-
 </div>
-
-
 
 
 <div class="container w-100" style="padding-top: 20px; padding-left: 50px;" align="right">
   <ng-container [ngSwitch]="activeContent">
-
+    <div *ngSwitchCase="'content1'">
     <div style="padding-top: 20px;">
       <span style="padding-right: 40px;">
         <mat-form-field class="example-form-field " style="max-width: 300px;">
@@ -38,11 +33,6 @@
 </div>
 
 
-
-
-
-
-<div *ngSwitchCase="'content1'">
 <div class="table-container" style=" padding-right: 40px;">
   <table align="right" class="table-hover"  >
     <thead>
@@ -50,7 +40,7 @@
         <th style="border-top-left-radius: 10px; padding-right: 5px; padding-left: 5px; text-align: right;" ><input type="checkbox" class="checkbox "  id="checkboxAll" [(ngModel)]="checkboxAllValue" (change)="updateCheckboxDetailValue()" >
           <span class="checkbox-custom"></span>
         </th>
-        <th>Tên sản phẩm</th>
+        <th>Brand & Tên sản phẩm</th>
         <th>Giá</th>
         <th>Số lượng</th>
         <th>Size và màu </th>
@@ -73,7 +63,7 @@
   </table>
 </div>
 </div>
-
+<br>
 
 
 
@@ -113,21 +103,21 @@ Thêm sản phẩm mới
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <textarea id="productPrice" name="productPrice" value="productPrice" rows="3" style=" width: 100%; height: 100px;"></textarea>
+          <input id="productPrice" name="productPrice" value="" rows="3" style=" width: 100%; ">
         </td>
       </tr>
 
         <tr>
           <td style="text-align: left; padding-left: 20px; font-weight: bold;">Màu</td>
           <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-            <textarea id="productColor" name="productColor" value="productColor" rows="3" style=" width: 100%; height: 100px;"></textarea>
+            <input id="productColor" name="productColor" value="" rows="3" style=" width: 100%; ">
           </td>
         </tr>
 
           <tr>
             <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
             <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <textarea id="productBrand" name="productBrand" value="productBrand" rows="3" style=" width: 100%; height: 100px;"></textarea>
+              <input id="productBrand" name="productBrand" value="" rows="3" style=" width: 100%; ">
             </td>
             </tr>
 
@@ -135,13 +125,13 @@ Thêm sản phẩm mới
             <tr>
               <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
               <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                <textarea id="productSize" name="productSize" value="productSize" rows="3" style=" width: 100%; height: 100px;"></textarea>
+                <input id="productSize" name="productSize" value="" rows="3" style=" width: 100%; ">
               </td>
               </tr>
               <tr>
                 <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
                 <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                  <textarea id="productQuantity" name="productQuantity" value="productQuantity" rows="3" style=" width: 100%; height: 100px;"></textarea>
+                  <input id="productQuantity" name="productQuantity" value="" rows="3" style=" width: 100%; ">
                 </td>
                 </tr>
 
@@ -257,7 +247,7 @@ Chỉnh sửa thông tin sản phẩm
   <tr>
     <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
     <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-      <textarea id="productName" name="productName" value="productName" rows="3" style=" width: 100%; height: 100px;"></textarea>
+      <input id="" name="" value="" rows="3" style=" width: 100%; ">
     </td>
   </tr>
 
@@ -265,21 +255,21 @@ Chỉnh sửa thông tin sản phẩm
     <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <textarea id="productPrice" name="productPrice" value="productPrice" rows="3" style=" width: 100%; height: 100px;"></textarea>
+        <input id="" name="" value="" rows="3" style=" width: 100%; ">
       </td>
     </tr>
 
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Màu</td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <textarea id="productColor" name="productColor" value="productColor" rows="3" style=" width: 100%; height: 100px;"></textarea>
+          <input id="" name="" value="" rows="3" style=" width: 100%; ">
         </td>
       </tr>
 
         <tr>
           <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
           <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-            <textarea id="productBrand" name="productBrand" value="productBrand" rows="3" style=" width: 100%; height: 100px;"></textarea>
+            <input id="" name="" value="" rows="3" style=" width: 100%; ">
           </td>
           </tr>
 
@@ -287,13 +277,13 @@ Chỉnh sửa thông tin sản phẩm
           <tr>
             <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
             <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <textarea id="productSize" name="productSize" value="productSize" rows="3" style=" width: 100%; height: 100px;"></textarea>
+              <input id="" name="" value="" rows="3" style=" width: 100%; ">
             </td>
             </tr>
             <tr>
               <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
               <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                <textarea id="productQuantity" name="productQuantity" value="productQuantity" rows="3" style=" width: 100%; height: 100px;"></textarea>
+                <input id="" name="" value="" rows="3" style=" width: 100%; ">
               </td>
               </tr>
 
@@ -306,3 +296,20 @@ Chỉnh sửa thông tin sản phẩm
 </div>
 </ng-container>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
