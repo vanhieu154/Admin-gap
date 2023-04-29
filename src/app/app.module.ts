@@ -31,6 +31,7 @@ import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MatInputModule } from '@angular/material/input';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
+    HttpClientModule,
   ],
   exports:[
     // MatButtonModule,

@@ -171,7 +171,17 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
   background-color: #dfdede; /* màu khi được tích chọn */
 }
+.input_border{
+  border-radius: 5px;
+  height: 45px;
+  border-style:solid;
+  border-color:#686361;
+}
 
+textarea {
+  border: 2px solid #686361;
+  border-radius: 5px;
+}
 .icon{
   color: #b8a898;
   width:35px;
