@@ -32,6 +32,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MatInputModule } from '@angular/material/input';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatInputModule,
     HttpClientModule,
+    CKEditorModule,
   ],
   exports:[
     // MatButtonModule,

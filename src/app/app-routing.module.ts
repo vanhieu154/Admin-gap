@@ -38,13 +38,13 @@ const routes: Routes = [
     path:"customer-list",component:CustomerListComponent
   },
   {
-    path:"admin-product",component:AdminProductComponent
+    path:"products",component:AdminProductComponent
   },
   {
     path:"admin-promotion",component:AdminPromotionComponent
   },
   {
-    path:"admin-coupon",component:AdminCouponComponent
+    path:"coupons",component:AdminCouponComponent
   },
   {
     path:"blog-list",component:BlogListComponent
