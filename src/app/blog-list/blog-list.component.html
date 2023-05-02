@@ -1,1 +1,74 @@
-<p>blog-list works!</p>
+<div class="right">
+  <div class="header">
+    <div class="row">
+      <div class="col title-header">Tất cả bài viết</div>
+    </div>
+
+    <div class="row">
+      <div class="search col-8">
+        <input type="text" placeholder="Tìm kiếm..." name="search" aria-label="Search" [(ngModel)]="searchBlog"   (ngModelChange)="filterBlogs()">
+        <button type="submit" (click)="onClear()"><i class="fa fa-search"></i></button>
+      </div>
+
+      <div class="btn-add col">
+        <button class="add" (click)="CreateNew()"><i class="fa fa-plus" style="margin-right: 10px;"></i> Tạo bài viết</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="body container">
+    <table mat-table [dataSource]="blogs" class="mat-elevation-z8">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> No. </th>
+        <td mat-cell *matCellDef="let blogs" style="text-align: center;"> {{blogs.position}} </td>
+      </ng-container>
+
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Tiêu đề </th>
+        <td mat-cell *matCellDef="let blogs">
+          <img src="{{blogs.img}}" class="img-blog">
+          {{blogs.title}}
+        </td>
+      </ng-container>
+
+      <!-- category Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Danh mục </th>
+        <td mat-cell *matCellDef="let blogs"> {{blogs.category}} </td>
+      </ng-container>
+
+      <!-- Tag Column -->
+      <ng-container matColumnDef="tag">
+        <th mat-header-cell *matHeaderCellDef> Nhãn </th>
+        <td mat-cell *matCellDef="let blogs"> {{blogs.tag}} </td>
+      </ng-container>
+
+       <!-- Author Column -->
+       <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Người viết </th>
+        <td mat-cell *matCellDef="let blogs"> {{blogs.author}} </td>
+      </ng-container>
+
+       <!-- Display Date Column -->
+       <ng-container matColumnDef="displayDate">
+        <th mat-header-cell *matHeaderCellDef> Ngày hiển thị </th>
+        <td mat-cell *matCellDef="let blogs"> {{blogs.displayDate}} </td>
+      </ng-container>
+
+      <!-- select Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Tùy chọn </th>
+        <td mat-cell *matCellDef="let blogs" style="text-align: center;">
+          <button class="btn-xoa" (click)="deleteBlog(blogs._id)">Xóa</button>
+          <button mat-button class="btn-sua" (click)="Edit(blogs)">Sửa</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

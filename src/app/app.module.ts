@@ -33,6 +33,11 @@ import { MatInputModule } from '@angular/material/input';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { AddBlogComponent } from './add-blog/add-blog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BlogEditComponent } from './blog-edit/blog-edit.component';
+
+
 
 @NgModule({
   declarations: [
@@ -49,6 +54,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AdminCouponComponent,
     AdminLoginComponent,
     BlogListComponent,
+    AddBlogComponent,
+    BlogEditComponent,
 
   ],
   imports: [
@@ -73,6 +80,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatInputModule,
     HttpClientModule,
     CKEditorModule,
+    MatDialogModule,
+
   ],
   exports:[
     // MatButtonModule,

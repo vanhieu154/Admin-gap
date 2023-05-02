@@ -1,0 +1,110 @@
+{{errMessage}}
+<div class="right">
+  <div class="header">
+    <div class="row">
+      <div class="col-8">
+        <div class="col title-header">Tạo bài viết</div>
+      </div>
+
+      <div class="btn-save col">
+        <button class="save" (click)="postBlog()">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="body container ">
+    <div class="row">
+      <div class="body-left col-8">
+        <div class="body-left_top">
+          <h2>Tiêu đề</h2>
+          <div class="input">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tiêu đề</mat-label>
+                <input matInput placeholder="Nhập tiêu đề" name="title" #subject="ngModel" [(ngModel)]="blog.title">
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+
+        <div class="body-left_middle">
+          <h2>Nội dung</h2>
+          <div class=" lable" style="max-height: 70%;">
+            <ckeditor class="description" style="height: 70%;" #subject="ngModel" debounce="500" [(ngModel)]="blog.description" [editor]="Editor"/>
+          </div>
+        </div>
+
+        <div class="body-left_bottom row">
+          <div class="col">
+            <h2>Người viết</h2>
+            <div class="input">
+              <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Người viết</mat-label>
+                  <input matInput placeholder="Nhập tên người viết" name="author" #subject="ngModel" [(ngModel)]="blog.author">
+                </mat-form-field>
+              </form>
+            </div>
+          </div>
+
+          <div class="col">
+            <h2>Danh mục Blog</h2>
+            <div class="input">
+              <mat-form-field class="example-full-width">
+                <mat-label>Chọn danh mục Blog</mat-label>
+                <mat-select name="category" #subject="ngModel" [(ngModel)]="blog.category">
+                  <mat-option>---</mat-option>
+                  <mat-option value="Tin Tức">Tin tức</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="body-right col">
+        <div class="row body-right_top">
+          <h2>Ngày hiển thị</h2>
+          <div class="date">
+              <mat-form-field class="example-form-field ">
+              <mat-label>Chọn ngày hiển thị</mat-label>
+              <input matInput [matDatepicker]="picker" #subject="ngModel" [(ngModel)]="blog.displayDate">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row body-right_middle">
+          <h2>Hình đại diện</h2>
+          <div class="input box">
+            <div class="input-img" *ngFor="let image of blog.img; let i = index;">
+              <mat-icon (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
+              <div class="img">
+                <img class="img-blog" src="{{image}}" >
+              </div>
+            </div>
+
+          </div>
+          <div class="btn-add-img">
+            <input type="file" class="file-input" multiple (change)="onFileSelected($event, blog)">
+          </div>
+        </div>
+
+        <div class="row body-right_bottom">
+          <h2>Nhãn</h2>
+          <div class="input">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nhãn</mat-label>
+                <input matInput placeholder="Nhập nhãn" name="tag" #subject="ngModel" [(ngModel)]="blog.tag">
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

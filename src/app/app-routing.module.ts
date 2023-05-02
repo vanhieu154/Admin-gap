@@ -12,6 +12,8 @@ import { AdminPromotionComponent } from './admin-promotion/admin-promotion.compo
 import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { AddBlogComponent } from './add-blog/add-blog.component';
+import { BlogEditComponent } from './blog-edit/blog-edit.component';
 const routes: Routes = [
   {
     path:"",component:AdminLoginComponent
@@ -48,6 +50,12 @@ const routes: Routes = [
   },
   {
     path:"blog-list",component:BlogListComponent
+  },
+  {
+    path:"add-blog",component:AddBlogComponent
+  },
+  {
+    path:"blog-edit/:id",component:BlogEditComponent
   },
 ]
 @NgModule({
