@@ -81,10 +81,11 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     FormsModule,
     MatInputModule,
     HttpClientModule,
-    CKEditorModule,
     MatDialogModule,
     MatSidenavModule,
     MatExpansionModule,
+    CKEditorModule
+
 
   ],
   exports:[
