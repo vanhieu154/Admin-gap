@@ -236,9 +236,20 @@ table{
 tr{
   border-top: none;
 }
+
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
   background-color: #d2beb4;
 }
+.mat-mdc-table tbody, .mat-mdc-table tfoot, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-footer-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-footer-row, .mat-mdc-table .mat-mdc-header-cell {
+  color: black;
+  font-size: 1.6rem;
+}
+.mdc-data-table__row:last-child .mdc-data-table__cel{
+  text-align: center;
+}
 
-
-
+.markeddelivery{
+  background-color: var(--lightpink);
+  width: 60%;
+  border-radius: 5px;
+}

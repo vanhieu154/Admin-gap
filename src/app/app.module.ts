@@ -79,8 +79,9 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     FormsModule,
     MatInputModule,
     HttpClientModule,
-    CKEditorModule,
     MatDialogModule,
+    CKEditorModule
+
 
   ],
   exports:[
