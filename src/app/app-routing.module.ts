@@ -14,6 +14,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 const routes: Routes = [
   {
     path:"",component:AdminLoginComponent
@@ -56,6 +57,9 @@ const routes: Routes = [
   },
   {
     path:"blog-edit/:id",component:BlogEditComponent
+  },
+  {
+    path:"side-nav",component:SideNavComponent
   },
 ]
 @NgModule({

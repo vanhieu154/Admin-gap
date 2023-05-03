@@ -49,13 +49,23 @@ deleteBlog(_id:any)
 
   // search Blog
   filteredBlogs: any[] | undefined;
+
   filterBlogs() {
-     this.filterBlogs = this.blogs.filter((blog:  { title: string; category: string; tag: string;author :string; }) =>
-     blog.title.toString().includes(this.searchBlog.toLowerCase()) ||
-     blog.category.toLowerCase().includes(this.searchBlog.toLowerCase()) ||
-     blog.tag.toLowerCase().includes(this.searchBlog.toLowerCase()) ||
-     blog.author.toLowerCase().includes(this.searchBlog.toLowerCase()));
-  }
+    this.filteredBlogs = this.blogs.filter((blog:  {
+      title:string,
+     category:string,
+     tag:string,
+     description:string,
+     author:string,
+     displayDate:string,
+     }) =>
+     blog.title.toString().includes(this.searchBlog) ||
+     blog.category.toString().includes(this.searchBlog)||
+     blog.tag.toString().includes(this.searchBlog)||
+     blog.description.toString().includes(this.searchBlog)||
+     blog.author.toString().includes(this.searchBlog)||
+     blog.displayDate.toString().includes(this.searchBlog)) ;
+ }
   public searchBlog:string=''
 
   onClear() {
@@ -63,6 +73,7 @@ deleteBlog(_id:any)
     this.filterBlogs();
  }
 
+ panelOpenState = false;
 }
 
 @Component({

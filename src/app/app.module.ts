@@ -36,8 +36,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
-
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     BlogListComponent,
     AddBlogComponent,
     BlogEditComponent,
+    SideNavComponent,
 
   ],
   imports: [
@@ -81,6 +83,8 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     HttpClientModule,
     CKEditorModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatExpansionModule,
 
   ],
   exports:[
