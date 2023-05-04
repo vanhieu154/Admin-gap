@@ -48,10 +48,10 @@ const routes: Routes = [
     path:"customer-list",component:CustomerListComponent
   },
   {
-    path:"products",component:AdminProductComponent
+    path:"adproducts",component:AdminProductComponent
   },
   {
-    path:"admin-promotion",component:AdminPromotionComponent
+    path:"promotions",component:AdminPromotionComponent
   },
   {
     path:"coupons",component:AdminCouponComponent
@@ -69,28 +69,28 @@ const routes: Routes = [
     path:"side-nav",component:SideNavComponent
   },
   {
-    path:"c-new",component:CNewComponent
+    path:"newcoupon",component:CNewComponent
   },
   {
-    path:"c-update",component:CUpdateComponent
+    path:"updatecoupon/:id",component:CUpdateComponent
   },
   {
-    path:"admin-product",component:AdminProductComponent
+    path:"adproducts",component:AdminProductComponent
   },
   {
-    path:"p-new",component:PNewComponent
+    path:"newproduct",component:PNewComponent
   },
   {
-    path:"p-update",component:PUpdateComponent
+    path:"updateproduct/:id",component:PUpdateComponent
   },
   {
-    path:"pro-new",component:ProNewComponent
+    path:"newpromotion",component:ProNewComponent
   },
   {
-    path:"pro-update",component:ProUpdateComponent
+    path:"updatepromotion/:id",component:ProUpdateComponent
   },
   {
-    path:"admin-coupon",component:AdminCouponComponent
+    path:"coupons",component:AdminCouponComponent
   },
 
 ]

@@ -78,6 +78,6 @@ range = new FormGroup({
 
 
 toMainProductPage(){
-  this.router.navigate(['products'])
+  this.router.navigate(['adproducts'])
     }
 }

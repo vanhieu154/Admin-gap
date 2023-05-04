@@ -82,6 +82,6 @@ export class PUpdateComponent {
   }
 
   toMainProductPage(){
-    this.router.navigate(['products'])
+    this.router.navigate(['adproducts'])
       }
 }
