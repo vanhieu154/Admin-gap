@@ -1,13 +1,5 @@
-.title--khuyenmai{
-  font-size: 2.9rem;
-  color: #6B4932;
-  font-weight: bold;
-  width: fit-content;
-  text-align: right;
-  padding: 0px -1px 2px 10px;
-}
 
-/* :root{
+:root{
   --darkpink: #b8a898;
   --lightpink: #d2beb4;
   --darkbrown: #6B4932;
@@ -16,15 +8,51 @@
   --grey: #ADA9A9;
   --lightgrey: #EEECEC;
   --red: #FF0000;
-} */
+}
 
-
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 5px ;
+  height: 45px ;
+  border-style:solid ;
+  border-color:#686361 ;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.375rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.input_border{
+  border-radius: 5px ;
+  height: 45px ;
+  border-style:solid ;
+  border-color:#686361 ;
+}
+ol, ul {
+  padding-left: 0.2rem;
+}
 
 
 
 
 /* left title */
 
+
+.title--sanpham{
+  font-size: 3rem;
+  color: #6B4932;
+  font-weight: bold;
+  width: fit-content;
+  text-align: right;
+  padding: 0px 0px 2px 10px;
+}
 /* thanh search --do dai */
 .example-form-field {
   width: 100%;
@@ -75,21 +103,25 @@ border: 0px;
 .left__search--bar{
   width: 40%;
   height: 100%;
-  padding: 10px 0px 10px 0px;
+  /* padding: 10px 0px 10px 0px; */
    height: 3em;
-  /* border: none;
-  border-radius: 10px; */
+  border: none;
   border-radius: 10px;
-  outline: none;
+  outline: 1px #ACACAC solid;
    padding: 30px 20px 30px 20px;
   font-size: 1.4rem;
-background-color: #EEECEC;
+background-color: rgb(233, 233, 233);
 }
+.left__search--key{
+  color: #6B4932;
+  font-size: 1.3rem;
+}
+
 
 
 #header{
   background-color: white;
-  /* position: fixed; */
+  position: fixed;
   padding: 0% 5% 1% 5%;
   top: 0;
   left: 0;
@@ -100,11 +132,8 @@ background-color: #EEECEC;
   font-family: 'arial', sans-serif;
   position: sticky;
   transition: top .2s ease;
+}
 
-}
-#header.show{
-  top: -100px;
-}
 /* ---trang chi tiet  */
 .title--themsp{
   font-size: 3rem;
@@ -113,11 +142,18 @@ background-color: #EEECEC;
   text-align: left;
 }
 
-/* ---trang chinhsua  */
+
+
+/* ---trang chínhua  */
 .file-input {
   position: relative;
   max-width: 280px;
+  padding-left: 2%;
 }
+
+
+
+
 
 
 
@@ -144,12 +180,13 @@ border: 0px;
 .checkbox{
  width: 30px;
  height: 30px;
+
 }
 input[type="checkbox"]:checked::before {
   content: "\2714";  /* kí tự Unicode của tick */
   position: absolute;
-  margin-left: -3px;
-  margin-top: -5px;
+  margin-left: -1px;
+  margin-bottom: 5px;
   font-size: 20px;
   color: #fff;  /* màu của tick */
 }
@@ -173,16 +210,20 @@ input[type="checkbox"]:checked {
 }
 
 .input_border{
-  border-radius: 5px;
-  height: 45px;
-  border-style:solid;
-  border-color:#686361;
+  border-radius: 5px !important;
+  height: 45px !important;
+  border-style:solid !important;
+  border-color:#686361 !important;
 }
 
 textarea {
   border: 2px solid #686361;
   border-radius: 5px;
 }
+
+
+
+
 .icon{
   color: #b8a898;
   width:35px;
@@ -198,15 +239,18 @@ textarea {
 }
 
 
+
+
 .table-container {
   margin: 0 0;
-  overflow-x: auto;
+  /* overflow-x: auto; */
 }
+
 
 table {
   border-collapse: collapse;
   width: 100%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -217,12 +261,14 @@ thead th {
   font-size: 3.5rem;
 }
 
-
+tr:hover {
+  cursor: pointer;
+}
 tbody td, thead th {
   /* border: 2px solid #d2beb4; */
-  padding: 15px 3px 5px 0px;
+  padding: 15px 3px 15px 3px;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   border-radius: 1px solid red;
 }
 tbody td{
@@ -287,4 +333,50 @@ tbody td{
   .box{
     margin-top: 10px;
   }
+}
+.input_border {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 14px;
+  width: 200px;
+}
+
+.style-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 4px 0;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.style-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.style-list li.selected {
+  background-color: lightblue;
+}
+
+.style-list li:hover {
+  background-color: lightgray;
+}
+
+.style-list .no-results {
+  color: gray;
+  padding: 8px;
+}
+
+.add-style-button {
+  padding: 8px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-style-button:hover {
+  background-color: lightgray;
 }

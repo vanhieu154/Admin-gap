@@ -216,9 +216,10 @@ thead th {
   font-size: 3.5rem;
 }
 
-
+tr:hover {
+  cursor: pointer;
+}
 tbody td, thead th {
-  /* border: 2px solid #d2beb4; */
   padding: 15px 2px 5px 0px;
   text-align: center;
   font-size: 2rem;
@@ -226,9 +227,11 @@ tbody td, thead th {
 }
 tbody td{
   border: #d2beb4 solid 1px;
-
+ padding-left: 0px;
 }
-
+ol, ul {
+  padding-left: 0.2rem;
+}
 
 @media (max-width: 499px) {
 

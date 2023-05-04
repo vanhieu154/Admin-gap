@@ -36,8 +36,19 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
-
+import { PUpdateComponent } from './p-update/p-update.component';
+import { PNewComponent } from './p-new/p-new.component';
+import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CNewComponent } from './c-new/c-new.component';
+import { CUpdateComponent } from './c-update/c-update.component';
+import { ProUpdateComponent } from './pro-update/pro-update.component';
+import { ProNewComponent } from './pro-new/pro-new.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +67,16 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     BlogListComponent,
     AddBlogComponent,
     BlogEditComponent,
+    SideNavComponent,
+    PUpdateComponent,
+    PNewComponent,
+    DeleteConfirmationDialogComponent,
+    SuccessDialogComponent,
+    CNewComponent,
+    CUpdateComponent,
+    ProUpdateComponent,
+    ProNewComponent
+
 
   ],
   imports: [
@@ -80,15 +101,13 @@ import { BlogEditComponent } from './blog-edit/blog-edit.component';
     MatInputModule,
     HttpClientModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatExpansionModule,
     CKEditorModule
-
-
   ],
   exports:[
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,113 @@
+<div class="container w-100" style="padding-top: 20px; padding-left: 50px;" align="right">
+<div class=" title--themsp" *ngIf="product" >
+  <mat-icon >edit</mat-icon>
+Chỉnh sửa thông tin sản phẩm
+ </div>
+<div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
+  <table class="table table-hover "  >
+    <thead>
+    <tr >
+    <th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
+    <th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
+    </tr>
+    </thead>
+    <tbody >
+
+
+    <tr >
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; ">
+
+        <input type="file" class="file-input"  name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,product)">
+        <div style="flex-basis: 50%; padding: 5px;" *ngFor="let image of product.Hinhanh; let i =index">
+          <img  style="max-width: 248px; max-height: 328px;" src="{{image}}" alt="">
+          <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
+        </div>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mã sản phẩm</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
+        <input type="number"  class=" input_border "  style=" width: 98%; " #subject="ngModel" [(ngModel)]="product.MaSP" >
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
+        <textarea type="text" class=" input_border" #subject="ngModel"   [(ngModel)]="product.TenSP"  style=" width: 98%; height: 100px;"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại sản phẩm</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
+        <select type="text" class="input_border"   #subject="ngModel" [(ngModel)]="product.LoaiSP">
+          <option value="" disabled selected >-- Chọn Loại sản phẩm --</option>
+          <option *ngFor="let t of types" >{{t}}</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
+        <input type="text" class="input_border" #style="ngModel" id="style" [(ngModel)]="product.Hang" list="brands">
+          <datalist id="brands">
+            <option *ngFor="let brand of Brands" [value]="brand"></option>
+          </datalist>
+      </td>
+      </tr>
+
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giảm giá</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
+        <input type="number" class=" input_border" #subject="ngModel"  [(ngModel)]="product.Discount"  style=" width: 98%; " >
+      </td>
+    </tr>
+
+
+      <tr>
+        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
+        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
+          <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Price"  style=" width: 98%; ">
+        </td>
+      </tr>
+
+        <tr>
+          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mô tả</td>
+          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; max-height: 300px; padding-left: 2%;">
+
+            <ckeditor  #subject="ngModel" debounce="500" [(ngModel)]="product.Mota" [editor]="Editor"/>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
+          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
+            <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Soluong"  style=" width: 98%;" >
+          </td>
+          </tr>
+
+
+            <tr>
+              <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
+              <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
+                <input type="text" class=" input_border" style=" width: 98%;"  #subject="ngModel"   [(ngModel)]="product.Size"  >
+              </td>
+              </tr>
+    </tbody>
+    </table>
+</div>
+
+<div align="right">
+<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="putProduct()"> <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
+<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="toMainProductPage()"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ sản phẩm </span></button>
+</div>
+
+</div>
+
+
+

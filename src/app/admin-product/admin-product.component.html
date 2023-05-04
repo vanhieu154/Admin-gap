@@ -1,65 +1,53 @@
 
-
 <div id="header" >
       <div align="center">
         <div  >
           <span class="col title--sanpham" >
            Sản phẩm
           </span>
-          <input type="text" id="searchProduct" style="font-size: 2rem;" [(ngModel)]="searchProduct" class="left__search--bar" >
-            <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button>
-            <button class="left_button-search" (click)="onClear()" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
+          <input type="text" id="searchProduct" style="font-size: 2rem;"   [(ngModel)]="searchProduct"   (ngModelChange)="filterProducts()"class="left__search--bar"  >
+            <button class="left_button-search" (click)="onClear()" (click)="showContent('content1')" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
     </div>
   </div>
 </div>
-
+<p>{{errMessage}}</p>
 
 <div class="container w-100" style="padding-top: 20px; padding-left: 50px;" align="right">
   <ng-container [ngSwitch]="activeContent">
     <div *ngSwitchCase="'content1'">
     <div style="padding-top: 20px;">
-      <span style="padding-right: 40px;">
-        <mat-form-field class="example-form-field " style="max-width: 300px;">
-          <mat-label> Chọn khoảng thời gian </mat-label>
-          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-            <input matStartDate formControlName="start" placeholder="Ngày đầu">
-            <input matEndDate formControlName="end" placeholder="Ngày cuối" >
-          </mat-date-range-input>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-      </span>
-      <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content2')"  > <span> <mat-icon>library_add</mat-icon> </span> <span style="padding-left: 30px;">  Thêm sản phẩm </span></button>
+
+      <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="toNewProductPage()"  > <span> <mat-icon>library_add</mat-icon> </span> <span style="padding-left: 30px;">  Thêm sản phẩm </span></button>
 </div>
 
 
+
+<!-- DANH SACH TAT CA SP -->
 <div class="table-container" style=" padding-right: 40px;">
   <table align="right" class="table-hover"  >
     <thead>
       <tr>
-        <th style="border-top-left-radius: 10px; padding-right: 5px; padding-left: 5px; text-align: right;" ><input type="checkbox" class="checkbox "  id="checkboxAll" [(ngModel)]="checkboxAllValue" (change)="updateCheckboxDetailValue()" >
-          <span class="checkbox-custom"></span>
-        </th>
-        <th>Brand & Tên sản phẩm</th>
-        <th>Giá</th>
-        <th>Số lượng</th>
-        <th>Size và màu </th>
+        <th>Mã </th>
+        <th>Tên sản phẩm</th>
+        <th>Giá sản phẩm </th>
+        <th>Loại sản phẩm</th>
         <th style="border-top-right-radius: 10px;">Tùy chỉnh</th>
       </tr>
     </thead>
+
     <tbody>
-      <tr >
-        <td style="word-wrap: break-word; max-width: 20px; padding-left: 1.5%; " ><input type="checkbox" class="checkbox" id="checkboxDetail" [(ngModel)]="checkboxDetailValue"  (change)="updateCheckboxAllValue()" ></td>
-        <td style="word-wrap: break-word; max-width: 75px;" >Áo phôngggggggggggggggggggggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhg</td>
-        <td style="word-wrap: break-word; max-width: 50px;" >111111111111111</td>
-        <td style="word-wrap: break-word; max-width: 20px;">12</td>
-        <td style="word-wrap: break-word; max-width: 40px;">Mddddddddddddddddddddd</td>
+         <tr *ngFor="let product of filteredProducts || products">
+        <td style="word-wrap: break-word; max-width: 10px;" >{{product.MaSP}}</td>
+        <td style="word-wrap: break-word; max-width: 75px;" >{{product.TenSP}}</td>
+        <td style="word-wrap: break-word; max-width: 50px;">{{product.Price.toLocaleString('vi-VN')}}</td>
+        <td style="word-wrap: break-word; max-width: 40px;">{{product.LoaiSP}}</td>
         <td style="word-wrap: break-word; max-width: 50px;">
-          <span style="padding-right: 10px;"><mat-icon class="icon" (click)="showContent('content3')" >remove_red_eye</mat-icon>  </span>
-          <span style="padding-right: 10px;"><mat-icon class="icon" (click)="showContent('content4')" >edit</mat-icon> </span>
-          <span style="padding-right: 10px;"> <mat-icon class="icon">delete</mat-icon> </span></td>
+          <span style="padding-right: 10px;" (click)="showContent('content3')"><mat-icon class="icon" (click)="showProductDetail(product)" >remove_red_eye</mat-icon>  </span>
+          <span style="padding-right: 10px;" (click)="toUpdateProductPage(product)"><mat-icon class="icon">edit</mat-icon> </span>
+          <span style="padding-right: 10px;" > <mat-icon class="icon" (click)="deleteProduct(product._id)">delete</mat-icon> </span></td>
       </tr>
     </tbody>
+
   </table>
 </div>
 </div>
@@ -67,233 +55,96 @@
 
 
 
-<!-- THEM SP  -->
-<div *ngSwitchCase="'content2'">
-
-<div class=" title--themsp" >
-  <mat-icon >add</mat-icon>
-Thêm sản phẩm mới
- </div>
-<div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
-  <table class="table table-hover "  >
-    <thead>
-    <tr >
-    <th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
-    <th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr>
-    <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
-    <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px; ">
-      <input type="file" class="file-input"  >
-    </td>
-    </tr>
+<!-- HIEN THI chi tiet  -->
+<div *ngSwitchCase="'detailproduct'">
 
 
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <textarea id="productName" name="productName" value="productName" rows="3" style=" width: 99%; height: 100px;"></textarea>
-      </td>
-    </tr>
-
-
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <input id="productPrice" name="productPrice" value="" rows="3" style=" width: 99%; ">
-        </td>
-      </tr>
-
-        <tr>
-          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Màu</td>
-          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-            <input id="productColor" name="productColor" value="" rows="3" style=" width: 99%; ">
-          </td>
-        </tr>
-
+  <div *ngIf="product">
+    <div class="title--themsp">
+      <mat-icon>remove_red_eye</mat-icon>
+      Chi tiết sản phẩm
+    </div>
+    <div class="table-container" style="padding-right: 40px; margin-top: 30px;">
+      <table class="table table-hover ">
+        <thead>
           <tr>
-            <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <input id="productBrand" name="productBrand" value="" rows="3" style=" width: 99%; ">
-            </td>
-            </tr>
-
-
-            <tr>
-              <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
-              <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                <input id="productSize" name="productSize" value="" rows="3" style=" width: 99%; ">
-              </td>
-              </tr>
-              <tr>
-                <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
-                <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                  <input id="productQuantity" name="productQuantity" value="" rows="3" style=" width: 99%; ">
-                </td>
-                </tr>
-
-
-    </tbody>
-    </table>
-  </div>
-  <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" > <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
-  <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content1')"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ sản phẩm </span></button>
-
-
-</div>
-
-
-
-<!-- chi tiet  -->
-<div *ngSwitchCase="'content3'">
-<div class=" title--themsp" >
-  <mat-icon>remove_red_eye</mat-icon>
-  Chi tiết sản phẩm
- </div>
-<div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
-  <table class="table table-hover "  >
-    <thead>
-    <tr >
-    <th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
-    <th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    <tr>
-    <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
-    <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px; ">
-      ....hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-    </td>
-    </tr>
-
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-
-      </td>
-    </tr>
-
-
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-
-        </td>
-      </tr>
-
-        <tr>
-          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Màu</td>
-          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-
-          </td>
-        </tr>
-
+            <th style="border-top-left-radius: 10px; word-wrap: break-word;"> Thuộc tính</th>
+            <th style="border-top-right-radius: 10px; text-align: center; padding-right: 20px;"  > Nội dung </th>
+          </tr>
+        </thead>
+        <tbody>
           <tr>
-            <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;"> Ảnh </td>
+            <td  style=" border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;  " >
+
+              <div style="display: flex; flex-wrap: wrap;">
+                <div style="flex-basis: 50%; padding: 1% 1% 1% 5%;" *ngFor="let image of product.Hinhanh">
+                  <img  style="max-width: 217px; max-height: 287px; text-align: center;" src='{{image}}' alt="" >
+                </div>
+              </div>
+
+
 
             </td>
-            </tr>
+          </tr>
 
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;"  > Mã sản phẩm </td>
+            <td style=" border-top-right-radius: 10px;  text-align: left; word-wrap: break-word;  max-width: 280px;" > {{ product.MaSP }}</td>
+          </tr>
 
-            <tr>
-              <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
-              <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;" > Tên sản phẩm </td>
+            <td style="  border-top-right-radius: 10px; text-align: left;  word-wrap: break-word;max-width: 280px;">{{ product.TenSP }}</td>
+          </tr>
 
-              </td>
-              </tr>
-              <tr>
-                <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
-                <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;" > Loại sản phẩm </td>
+            <td style=" border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; " > {{ product.LoaiSP }}</td>
+          </tr>
 
-                </td>
-                </tr>
+          <tr>
+             <td style="text-align: left; padding-left: 20px; font-weight: bold;" >  Thương hiệu </td>
+            <td style=" border-top-right-radius: 10px;  text-align: left;  word-wrap: break-word; max-width: 280px; " > {{ product.Hang }} </td>
+          </tr>
 
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;"  > Giảm giá </td>
+            <td style=" border-top-right-radius: 10px; text-align: left;word-wrap: break-word;max-width: 280px;">{{ product.Discount }} </td>
+          </tr>
 
-    </tbody>
-    </table>
+          <tr>
+            <td style="text-align: left; padding-left: 20px;font-weight: bold;"> Giá</td>
+            <td style="border-top-right-radius: 10px;text-align: left;word-wrap: break-word;max-width: 280px;">{{ product.Price.toLocaleString('vi-VN') }} </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;"> Mô tả </td>
+            <td style="border-top-right-radius: 10px; text-align: left;word-wrap: break-word;max-width: 280px;">
+            <ul style="list-style-type: none; ">
+              <li innerHTML={{product.Mota}} ></li>
+            </ul>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: left; padding-left: 20px;font-weight: bold;">
+              Số lượng </td>
+            <td style="border-top-right-radius: 10px;text-align: left; word-wrap: break-word; max-width: 280px; "> {{ product.Soluong }} </td>
+          </tr>
+
+          <tr>
+            <td style="text-align: left; padding-left: 20px;font-weight: bold;" > Size </td>
+            <td style=" border-top-right-radius: 10px;  text-align: left; word-wrap: break-word; max-width: 280px; " > {{ product.Size }}  </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
   <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;"(click)="showContent('content1')"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ sản phẩm </span></button>
 </div>
 
-
-<!-- CHINH SUA -->
-<div *ngSwitchCase="'content4'">
-<div class=" title--themsp" >
-  <mat-icon >edit</mat-icon>
-Chỉnh sửa thông tin sản phẩm
- </div>
-<div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
-<table class="table table-hover "  >
-  <thead>
-  <tr >
-  <th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
-  <th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
-  </tr>
-  </thead>
-  <tbody>
-
-  <tr>
-  <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
-  <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px; ">
-    <input type="file" class="file-input" name="" id="" >
-  </td>
-  </tr>
-
-  <tr>
-    <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
-    <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-      <input id="" name="" value="" rows="3" style=" width: 99%; ">
-    </td>
-  </tr>
-
-
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <input id="" name="" value="" rows="3" style=" width: 99%; ">
-      </td>
-    </tr>
-
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Màu</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <input id="" name="" value="" rows="3" style=" width: 99%; ">
-        </td>
-      </tr>
-
-        <tr>
-          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
-          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-            <input id="" name="" value="" rows="3" style=" width: 99%; ">
-          </td>
-          </tr>
-
-
-          <tr>
-            <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <input id="" name="" value="" rows="3" style=" width: 99%; ">
-            </td>
-            </tr>
-            <tr>
-              <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
-              <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                <input id="" name="" value="" rows="3" style=" width: 99%; ">
-              </td>
-              </tr>
-
-
-  </tbody>
-  </table>
-</div>
-<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" > <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
-<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content1')"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ sản phẩm </span></button>
-</div>
 </ng-container>
 </div>
 

@@ -79,11 +79,10 @@ border: 0px;
    height: 3em;
   /* border: none;
   border-radius: 10px; */
-  border-radius: 10px;
-  outline: none;
+  /* outline: 1px #ACACAC solid; */
    padding: 30px 20px 30px 20px;
   font-size: 1.4rem;
-background-color: #EEECEC;
+background-color: white;
 }
 
 

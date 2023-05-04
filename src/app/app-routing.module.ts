@@ -14,6 +14,14 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { CNewComponent } from './c-new/c-new.component';
+import { CUpdateComponent } from './c-update/c-update.component';
+import { PNewComponent } from './p-new/p-new.component';
+import { PUpdateComponent } from './p-update/p-update.component';
+import { ProUpdateComponent } from './pro-update/pro-update.component';
+import { ProNewComponent } from './pro-new/pro-new.component';
+
 const routes: Routes = [
   {
     path:"",component:AdminLoginComponent
@@ -40,10 +48,10 @@ const routes: Routes = [
     path:"customer-list",component:CustomerListComponent
   },
   {
-    path:"products",component:AdminProductComponent
+    path:"adproducts",component:AdminProductComponent
   },
   {
-    path:"admin-promotion",component:AdminPromotionComponent
+    path:"promotions",component:AdminPromotionComponent
   },
   {
     path:"coupons",component:AdminCouponComponent
@@ -57,6 +65,28 @@ const routes: Routes = [
   {
     path:"blog-edit/:id",component:BlogEditComponent
   },
+  {
+    path:"side-nav",component:SideNavComponent
+  },
+  {
+    path:"newcoupon",component:CNewComponent
+  },
+  {
+    path:"updatecoupon/:id",component:CUpdateComponent
+  },
+  {
+    path:"newproduct",component:PNewComponent
+  },
+  {
+    path:"updateproduct/:id",component:PUpdateComponent
+  },
+  {
+    path:"newpromotion",component:ProNewComponent
+  },
+  {
+    path:"updatepromotion/:id",component:ProUpdateComponent
+  },
+
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

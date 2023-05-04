@@ -1,41 +1,36 @@
 
 <div id="header" >
-
-
   <div align="center">
     <div  >
       <span class="col title--khuyenmai" >
        Coupon
       </span>
-      <input type="text" id="searchProduct" style="font-size: 2rem;" [(ngModel)]="searchPromoCode" class="left__search--bar" >
-        <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button>
+      <input type="text" id="searchCoupon" style="font-size: 2rem;" [(ngModel)]="searchCoupon" (ngModelChange)="filterCoupons()" class="left__search--bar" >
+        <!-- <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button> -->
         <button class="left_button-search" (click)="onClear()" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
-
-
 </div>
 </div>
-
 </div>
-
+<p>{{errMessage}}</p>
 
 
 
 <div class="container w-100" style="padding-top: 20px; padding-left: 50px;" align="right">
-<ng-container [ngSwitch]="activeContent">
-  <div *ngSwitchCase="'content1'">
+
+
 <div style="padding-top: 20px;">
   <span style="padding-right: 40px;">
     <mat-form-field class="example-form-field " style="max-width: 300px;">
       <mat-label> Chọn khoảng thời gian </mat-label>
-      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-        <input matStartDate formControlName="start" placeholder="Ngày đầu">
-        <input matEndDate formControlName="end" placeholder="Ngày cuối" >
+      <mat-date-range-input [rangePicker]="picker"  [formGroup]="range" [rangePicker]="picker" >
+        <input matStartDate formControlName="start" placeholder="Ngày đầu" (dateChange)="filterDate()">
+        <input matEndDate formControlName="end" placeholder="Ngày cuối" (dateChange)="filterDate()">
       </mat-date-range-input>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
   </span>
-  <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content2')"  >
+  <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="toNewCouponPage()"  >
     <span> <mat-icon>library_add</mat-icon> </span> <span style="padding-left: 30px;">  Thêm coupon </span>
   </button>
 </div>
@@ -45,197 +40,46 @@
 
 
 
-
+<!-- ----hien thi all------->
 <div class="table-container" style=" padding-right: 40px;">
 <table align="right" class="table-hover"  >
 <thead>
-  <tr>
-    <th style="border-top-left-radius: 10px; padding-right: 5px; padding-left: 5px; text-align: right;" ><input type="checkbox" class="checkbox "  id="checkboxAll" [(ngModel)]="checkboxAllValue" (change)="updateCheckboxDetailValue()" >
-      <span class="checkbox-custom"></span>
-    </th>
-    <th>Tên coupon</th>
-    <th>Loại coupon</th>
-    <th>Số lượng</th>
-    <th>Mức giảm</th>
-    <th>Thời gian áp dụng</th>
-    <th style="border-top-right-radius: 10px;">Tùy chỉnh</th>
-  </tr>
-</thead>
-<tbody>
   <tr >
-    <td style="word-wrap: break-word; max-width: 20px; padding-left: 1.5%; " ><input type="checkbox" class="checkbox" id="checkboxDetail" [(ngModel)]="checkboxDetailValue"  (change)="updateCheckboxAllValue()" ></td>
-    <td style="word-wrap: break-word; max-width: 45px;" >Áo phôngggggggggggggggggggggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhg</td>
-    <td style="word-wrap: break-word; max-width: 20px;" >111111111111111</td>
-    <td style="word-wrap: break-word; max-width: 20px;">12</td>
-    <td style="word-wrap: break-word; max-width: 20px;">Mddddddddddddddddddddd</td>
-    <td style="word-wrap: break-word; max-width: 40px;">
-      <mat-form-field class="example-form-field " style="max-width: 300px;">
-        <mat-label> Chọn khoảng thời gian </mat-label>
-        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-          <input matStartDate formControlName="start" placeholder="Ngày đầu">
-          <input matEndDate formControlName="end" placeholder="Ngày cuối" >
-        </mat-date-range-input>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-      </mat-form-field>
-    </td>
-    <td style="word-wrap: break-word; max-width: 20px;">
-      <span style="padding-right: 10px;"><mat-icon class="icon" (click)="showContent('content4')" >edit</mat-icon> </span>
-      <span style="padding-right: 10px;"> <mat-icon class="icon">delete</mat-icon> </span></td>
+    <th style="word-wrap: break-word; max-width: 100px;" >Mã coupon</th>
+    <th style="word-wrap: break-word; max-width: 45px;"  >Loại coupon</th>
+    <th style="word-wrap: break-word; max-width: 55px;">Giá trị giảm</th>
+    <th style="word-wrap: break-word; max-width: 35px;" >Số lượng</th>
+    <th style="word-wrap: break-word; max-width: 70px; padding: 0;">Nội dung</th>
+    <th style="word-wrap: break-word; max-width: 65px;">Thời gian áp dụng</th>
+    <th style="word-wrap: break-word; max-width: 40px;">Tùy chỉnh</th>
   </tr>
-</tbody>
-</table>
-</div>
-</div>
-<br>
-
-
-
-<!-- THEM COUPON -->
-<div *ngSwitchCase="'content2'">
-
-<div class=" title--themsp" >
-<mat-icon >add</mat-icon>
-Tạo coupon
-</div>
-<div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
-<table class="table table-hover "  >
-<thead>
-<tr >
-<th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
-<th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
-</tr>
 </thead>
 <tbody>
+  <tr *ngFor="let coupon of filteredCoupons || filteredDate || coupons" >
+    <td style="word-wrap: break-word; max-width: 75px;" > <b> {{coupon.MaCoupon}} </b><br>
+      <div style="flex-basis: 50%; padding: 0;" *ngFor="let image of coupon.Hinhanh; let i = index;">
+      <img  style="max-width: 75px; max-height: 60px;" src="{{image}}" alt="">
+    </div></td>
+    <td style="word-wrap: break-word; max-width: 45px;" > {{coupon.TenCoupon}} </td>
+    <td style="word-wrap: break-word; max-width: 55px;"> {{coupon.Giatrigiam.toLocaleString('vi-VN')}} </td>
+    <td style="word-wrap: break-word; max-width: 35px;">{{coupon.Soluong}}</td>
+    <td style="word-wrap: break-word; max-width: 70px; text-align: center;" >
+      <ul style="list-style-type: none; ">
+      <li innerHTML={{coupon.Noidung}} ></li>
+    </ul> </td>
+    <td style="word-wrap: break-word; max-width: 65px;" >
+      {{coupon. Ngaybatdau | date : "dd/MM/yyyy"}} - {{coupon.Ngayketthuc | date : "dd/MM/yyyy"}}
 
-
-<tr>
-  <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên coupon</td>
-  <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-    <textarea id="couponName" name="couponName" value="" rows="3" style=" width: 99%; height: 100px;"></textarea>
-  </td>
-</tr>
-
-
-  <tr>
-    <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại coupon</td>
-    <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-      <input id="couponType" name="couponType" value="" rows="3" style=" width: 99%; " class="input_border">
+    </td>
+    <td style="word-wrap: break-word; max-width: 40px;">
+      <span style="padding-right: 5px;"  ><mat-icon class="icon" (click)="toUpdateCouponPage(coupon)">edit</mat-icon> </span>
+      <span style="padding-right: 5px;"> <mat-icon class="icon" (click)="deleteCoupon(coupon._id)">delete</mat-icon> </span></td>
   </tr>
-
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Số lượng</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <input id="couponQuantity" name="couponQuantity" value="" rows="3" style=" width: 99%; " class="input_border">
-      </td>
-    </tr>
-
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mức giảm</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-          <input id="couponDiscount" name="couponDiscount" value="" rows="3" style=" width: 99%; " class="input_border">
-        </td>
-        </tr>
-
-
-          <tr>
-            <td style="text-align: left; padding-left: 20px;font-weight: bold;">Thời gian áp dụng</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <mat-form-field class="example-form-field " style="max-width: 300px;">
-                <mat-label> Chọn khoảng thời gian </mat-label>
-                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                  <input matStartDate formControlName="start" placeholder="Ngày đầu">
-                  <input matEndDate formControlName="end" placeholder="Ngày cuối" >
-                </mat-date-range-input>
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </mat-form-field>
-            </td>
-            </tr>
-
-
 </tbody>
 </table>
 </div>
-<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" > <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
-<button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content1')"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ Khuyến mãi </span></button>
-
-
 </div>
 
 
 
-<!-- CHINH SUA -->
-<div *ngSwitchCase="'content4'">
-
-  <div class=" title--themsp" >
-    <mat-icon >add</mat-icon>
-    Chỉnh sửa coupon
-    </div>
-    <div  class="table-container" style=" padding-right: 40px; margin-top: 30px;">
-    <table class="table table-hover "  >
-    <thead>
-    <tr >
-    <th style="border-top-left-radius: 10px;  word-wrap: break-word;">Thuộc tính</th>
-    <th style="border-top-right-radius: 10px; text-align: center;  padding-right: 20px;">Nội dung</th>
-    </tr>
-    </thead>
-    <tbody>
-
-
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên coupon</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <textarea id="couponName" name="couponName" value="" rows="3" style=" width: 99%;height: 100px;"></textarea>
-      </td>
-    </tr>
-
-
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại coupon</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <input id="couponType" name="couponType" value="" rows="3" style=" width: 99%; " class="input_border">
-        </td>
-      </tr>
-
-        <tr>
-          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Số lượng</td>
-          <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-            <input id="couponQuantity" name="couponQuantity" value="" rows="3" style=" width: 99%; " class="input_border">
-          </td>
-        </tr>
-
-          <tr>
-            <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mức giảm</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <input id="couponDiscount" name="couponDiscount" value="" rows="3" style=" width: 99%; " class="input_border">
-            </td>
-            </tr>
-
-              <tr>
-                <td style="text-align: left; padding-left: 20px;font-weight: bold;">Thời gian áp dụng</td>
-                <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-                  <mat-form-field class="example-form-field " style="max-width: 300px;">
-                    <mat-label> Chọn khoảng thời gian </mat-label>
-                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                      <input matStartDate formControlName="start" placeholder="Ngày đầu">
-                      <input matEndDate formControlName="end" placeholder="Ngày cuối" >
-                    </mat-date-range-input>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                  </mat-form-field>
-                </td>
-                </tr>
-
-
-    </tbody>
-    </table>
-    </div>
-    <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" > <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
-    <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="showContent('content1')"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ Coupon</span></button>
-
-
-</div>
-</ng-container>
-</div>
 
