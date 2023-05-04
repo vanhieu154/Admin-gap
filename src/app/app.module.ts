@@ -106,10 +106,8 @@ import { ProNewComponent } from './pro-new/pro-new.component';
     CKEditorModule
   ],
   exports:[
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

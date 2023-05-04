@@ -12,14 +12,13 @@ import { AdminPromotionComponent } from './admin-promotion/admin-promotion.compo
 import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
-
-import { PNewComponent } from './p-new/p-new.component';
-import { PUpdateComponent } from './p-update/p-update.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 import { CNewComponent } from './c-new/c-new.component';
 import { CUpdateComponent } from './c-update/c-update.component';
+import { PNewComponent } from './p-new/p-new.component';
+import { PUpdateComponent } from './p-update/p-update.component';
 import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
 
@@ -52,7 +51,7 @@ const routes: Routes = [
     path:"products",component:AdminProductComponent
   },
   {
-    path:"promotions",component:AdminPromotionComponent
+    path:"admin-promotion",component:AdminPromotionComponent
   },
   {
     path:"coupons",component:AdminCouponComponent
@@ -61,29 +60,37 @@ const routes: Routes = [
     path:"blog-list",component:BlogListComponent
   },
   {
-
     path:"add-blog",component:AddBlogComponent
   },
   {
     path:"blog-edit/:id",component:BlogEditComponent
   },
   {
-    path:"newproduct",component:PNewComponent
+    path:"side-nav",component:SideNavComponent
   },
   {
-    path:"updateproduct/:id",component:PUpdateComponent
+    path:"c-new",component:CNewComponent
   },
   {
-    path:"newcoupon",component:CNewComponent
+    path:"c-update",component:CUpdateComponent
   },
   {
-    path:"updatecoupon/:id",component:CUpdateComponent
+    path:"admin-product",component:AdminProductComponent
   },
   {
-    path:"updatepromotion/:id",component:ProUpdateComponent
+    path:"p-new",component:PNewComponent
   },
   {
-    path:"newpromotion",component:ProNewComponent
+    path:"p-update",component:PUpdateComponent
+  },
+  {
+    path:"pro-new",component:ProNewComponent
+  },
+  {
+    path:"pro-update",component:ProUpdateComponent
+  },
+  {
+    path:"admin-coupon",component:AdminCouponComponent
   },
 
 ]
