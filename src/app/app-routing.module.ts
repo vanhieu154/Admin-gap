@@ -31,7 +31,7 @@ const routes: Routes = [
     path:"admin-order",component:AdminOrderComponent
   },
   {
-    path:"admin-order/:_id",component:AdminOrderDetailComponent
+    path:"admin-order-detail/:_id",component:AdminOrderDetailComponent
   },
   {
     path:"admin-list",component:AdminListComponent

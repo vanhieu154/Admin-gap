@@ -44,15 +44,15 @@
     <div class="col">
       <button mat-icon-button class="example-icon bu_hover" aria-label="Example icon-button with share icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16" style="color:white ;"><g fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0a1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></g></svg>
-        <span class="order_status">This order is {{selectedProduct.Status}}</span>
+        <span class="order_status">This order is {{getStatusLabel(selectedProduct.status)}}</span>
       </button>
     </div>
-    <div class="col">
+    <!-- <div class="col">
       <button mat-icon-button class="example-icon bu_hover" aria-label="Example icon-button with share icon">
         <span class="order_status">Freight: {{selectedProduct.Freight| currency:'USD':'symbol-narrow'}}</span>
       </button>
 
-    </div>
+    </div> -->
   </div>
 <div class="row text-center">
   <div class="col text-center">
@@ -71,7 +71,7 @@
 
   <div class="col">
     <button mat-icon-button class="example-icon bu_hover" aria-label="Example icon-button with share icon">
-      <span class="order_status">Total Due:{{(selectedProduct.Total) | currency:'USD':'symbol-narrow'}}</span>
+      <span class="order_status">Total Due:{{(selectedProduct.total) | currency:'VND':'symbol-narrow'}}</span>
     </button>
 
   </div>
@@ -82,7 +82,7 @@
     <thead>
     <tr>
     <th>Invoice Number</th>
-    <th>PO Number</th>
+    <!-- <th>PO Number</th>  -->
     <th>Order Date</th>
     <th>Ship by Date</th>
     <th>Due Date</th>
@@ -92,10 +92,12 @@
     <tbody>
     <tr>
     <td>{{selectedProduct._id}}</td>
-    <td>{{selectedProduct.Order_Number}}</td>
-    <td>{{selectedProduct.Order_Date}}</td>
-    <td>{{selectedProduct.Ship_Date}}</td>
-    <td>{{selectedProduct.Due_Date}}</td>
+    <!-- <td>{{selectedProduct.Order_Number}}</td> -->
+    <td>{{selectedProduct.cDate | date: 'dd/MM/yyyy'}}</td>
+    <td>--</td>
+    <!-- <td>{{selectedProduct.Ship_Date}}</td> -->
+    <td>--</td>
+    <!-- <td>{{selectedProduct.Due_Date}}</td> -->
     <td>{{selectedProduct.discountID}}</td>
     </tr>
     </tbody>
@@ -110,12 +112,14 @@
   <div class="row">
     <div class="col" style="text-align: right;"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" style="color: #D2BEB4;"><path fill="currentColor" d="M15 14c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4m0-2a4 4 0 0 0 4-4a4 4 0 0 0-4-4a4 4 0 0 0-4 4a4 4 0 0 0 4 4M5 15l-.6-.5C2.4 12.6 1 11.4 1 9.9c0-1.2 1-2.2 2.2-2.2c.7 0 1.4.3 1.8.8c.4-.5 1.1-.8 1.8-.8C8 7.7 9 8.6 9 9.9c0 1.5-1.4 2.7-3.4 4.6L5 15Z"/></svg></div>
     <div class="col customer">
-      <div class="row"><span style="font-size: 1.6rem;margin-bottom: 20px;">Name: {{selectedProduct.user[0].name}}</span> </div>
-      <div class="row"><span style="font-size: 1.6rem;">Address: {{selectedProduct.user[0].Address[0].diachicuthe}}, {{selectedProduct.user[0].Address[0].district}}, {{selectedProduct.user[0].Address[0].city}}</span></div>
+      <div class="row"><span style="font-size: 1.6rem;margin-bottom: 20px;">Name: {{selectedOrderAddress.hovaten}}</span> </div>
+      <div class="row"><span style="font-size: 1.6rem;">Address: {{selectedOrderAddress.diachicuthe}}, {{selectedOrderAddress.district}}, {{selectedOrderAddress.city}}</span></div>
+      <!-- <div class="row"><span style="font-size: 1.6rem;">Address: </span></div> -->
     </div>
     <div class="col customer">
-      <div class="row"><span style="font-size: 1.6rem;margin-bottom: 20px;">Email: {{selectedProduct.user[0].email}}</span> </div>
-      <div class="row"><span style="font-size: 1.6rem;">Phone: (+84) {{selectedProduct.user[0].Address[0].phonenumber}}</span></div>
+      <div class="row"><span style="font-size: 1.6rem;margin-bottom: 20px;">Email: {{selectedOrderUser.email}}</span> </div>
+      <div class="row"><span style="font-size: 1.6rem;">Phone: (+84) {{selectedOrderAddress.phonenumber}} </span></div>
+      <!-- <div class="row"><span style="font-size: 1.6rem;">Phone: (+84) {{selectedOrderAddress.phonenumber}}</span></div> -->
     </div>
   </div>
   <div class="row">
@@ -137,15 +141,18 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-      <td>{{selectedProduct.OrderItem[0].Product[0]._id}}</td>
-      <td><img src="{{selectedProduct.OrderItem[0].Product[0].Hinhanh}}" alt=""></td>
-      <td>{{selectedProduct.OrderItem[0].Product[0].TenSP}}</td>
-      <td>{{selectedProduct.OrderItem[0].Product[0].Hang}}</td>
-      <td>{{selectedProduct.OrderItem[0].Product[0].Size}}</td>
-      <td>{{selectedProduct.OrderItem[0].Product[0].Price}}</td>
-      <td>{{selectedProduct.OrderItem[0].qty}}</td>
-      <td>{{selectedProduct.OrderItem[0].Product[0].Discount}}</td>
+
+      <tr *ngFor="let p of selectedOrderDetail;let i=index">
+      <td>{{p._id}}</td>
+      <!-- <td><img src="{{p.Hinhanh[0]}}" alt=""></td> -->
+      <td></td>
+      <td>{{p.TenSP}}</td>
+      <td>{{p.Hang}}</td>
+      <td>{{p.Size}}</td>
+      <td>{{p.Price}}</td>
+      <td>{{selectedProduct.orderItems[i].qty}}</td>      <!-- hiển thị số lượng -->
+
+      <td>{{p.Discount}}</td>
 
       </tr>
       </tbody>
