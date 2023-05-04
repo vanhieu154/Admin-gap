@@ -12,8 +12,18 @@ import { AdminPromotionComponent } from './admin-promotion/admin-promotion.compo
 import { AdminCouponComponent } from './admin-coupon/admin-coupon.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+<<<<<<< Updated upstream
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
+=======
+import { PNewComponent } from './p-new/p-new.component';
+import { PUpdateComponent } from './p-update/p-update.component';
+import { CNewComponent } from './c-new/c-new.component';
+import { CUpdateComponent } from './c-update/c-update.component';
+import { ProUpdateComponent } from './pro-update/pro-update.component';
+import { ProNewComponent } from './pro-new/pro-new.component';
+
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {
@@ -44,7 +54,7 @@ const routes: Routes = [
     path:"products",component:AdminProductComponent
   },
   {
-    path:"admin-promotion",component:AdminPromotionComponent
+    path:"promotions",component:AdminPromotionComponent
   },
   {
     path:"coupons",component:AdminCouponComponent
@@ -53,11 +63,32 @@ const routes: Routes = [
     path:"blog-list",component:BlogListComponent
   },
   {
+<<<<<<< Updated upstream
     path:"add-blog",component:AddBlogComponent
   },
   {
     path:"blog-edit/:id",component:BlogEditComponent
   },
+=======
+    path:"newproduct",component:PNewComponent
+  },
+  {
+    path:"updateproduct/:id",component:PUpdateComponent
+  },
+  {
+    path:"newcoupon",component:CNewComponent
+  },
+  {
+    path:"updatecoupon/:id",component:CUpdateComponent
+  },
+  {
+    path:"updatepromotion/:id",component:ProUpdateComponent
+  },
+  {
+    path:"newpromotion",component:ProNewComponent
+  },
+
+>>>>>>> Stashed changes
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
