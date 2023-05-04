@@ -135,7 +135,9 @@
   width: 150px;
   padding: 10px 10px 10px 0;
 }
-
+.search{
+  background-color: none;
+}
 @media (max-width: 1023px) and (min-width: 740px) {
 
 }

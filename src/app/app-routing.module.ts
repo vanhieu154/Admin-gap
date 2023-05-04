@@ -75,9 +75,6 @@ const routes: Routes = [
     path:"updatecoupon/:id",component:CUpdateComponent
   },
   {
-    path:"adproducts",component:AdminProductComponent
-  },
-  {
     path:"newproduct",component:PNewComponent
   },
   {
@@ -88,9 +85,6 @@ const routes: Routes = [
   },
   {
     path:"updatepromotion/:id",component:ProUpdateComponent
-  },
-  {
-    path:"coupons",component:AdminCouponComponent
   },
 
 ]
