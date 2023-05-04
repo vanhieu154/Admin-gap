@@ -33,17 +33,15 @@ import { MatInputModule } from '@angular/material/input';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-<<<<<<< Updated upstream
 import { AddBlogComponent } from './add-blog/add-blog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BlogEditComponent } from './blog-edit/blog-edit.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SideNavComponent } from './side-nav/side-nav.component';
-=======
+
 import { PUpdateComponent } from './p-update/p-update.component';
 import { PNewComponent } from './p-new/p-new.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -51,7 +49,6 @@ import { CNewComponent } from './c-new/c-new.component';
 import { CUpdateComponent } from './c-update/c-update.component';
 import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -68,11 +65,9 @@ import { ProNewComponent } from './pro-new/pro-new.component';
     AdminCouponComponent,
     AdminLoginComponent,
     BlogListComponent,
-<<<<<<< Updated upstream
     AddBlogComponent,
     BlogEditComponent,
     SideNavComponent,
-=======
     PUpdateComponent,
     PNewComponent,
     DeleteConfirmationDialogComponent,
@@ -82,7 +77,6 @@ import { ProNewComponent } from './pro-new/pro-new.component';
     ProUpdateComponent,
     ProNewComponent
 
->>>>>>> Stashed changes
 
   ],
   imports: [
@@ -106,18 +100,10 @@ import { ProNewComponent } from './pro-new/pro-new.component';
     FormsModule,
     MatInputModule,
     HttpClientModule,
-<<<<<<< Updated upstream
     MatDialogModule,
     MatSidenavModule,
     MatExpansionModule,
     CKEditorModule
-
-=======
-    CKEditorModule,
-    MatDialogModule,
-    MatAutocompleteModule,
->>>>>>> Stashed changes
-
   ],
   exports:[
     // MatButtonModule,
