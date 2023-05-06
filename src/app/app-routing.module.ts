@@ -27,7 +27,7 @@ const routes: Routes = [
     path:"",component:AdminLoginComponent
   },
   {
-    path:'customer/:id',component:CustomerDetailComponent
+    path:'customer-detail/:id',component:CustomerDetailComponent
   },
   {
     path:"admin-detail",component:AdminDetailComponent

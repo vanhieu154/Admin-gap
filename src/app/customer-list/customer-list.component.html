@@ -64,10 +64,7 @@
         <button mat-menu-item>Closed</button>
         <button mat-menu-item>All Orders</button>
       </mat-menu> -->
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-        <mat-tab label="Active"><a href="#"></a></mat-tab>
-        <mat-tab label="Inactive">Dữ liệu bị vô hiệu hóa</mat-tab>
-      </mat-tab-group>
+
 
       <span class="example-spacer"></span>
 
@@ -80,25 +77,50 @@
         <span style="font-size: 13px;">Attach</span>
       </button> -->
     </mat-toolbar>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Active">
+        <table class="table">
+          <thead>
+          <tr>
+          <th>ID</th>
+          <th>Tên khách hàng</th>
+          <th></th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let user of activeUser">
+          <tr>
+          <td>{{user._id}}</td>
+          <td ><a style="cursor: pointer;" (click)="toUserDetail(user)">{{user.name}} </a></td>
+          <td>
+            <button class="inactive" (click)="updateUserStatus(user,false)">Vô hiệu hóa</button>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+      </mat-tab>
+      <mat-tab label="Inactive">
+        <table class="table">
+          <thead>
+          <tr>
+          <th>ID</th>
+          <th>Tên khách hàng</th>
+          <th></th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let user of inactiveUser">
+          <tr>
+          <td>{{user._id}}</td>
+          <td ><a style="cursor: pointer;" (click)="toUserDetail(user)">{{user.name}} </a></td>
+          <td>
+            <button class="inactive" (click)="updateUserStatus(user,true)">Kích hoạt lại</button>
+          </td>
+          </tr>
+          </tbody>
+          </table>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 </div>
 <div class="row body__3">
-<table class="table">
-  <thead>
-  <tr>
-  <th>ID</th>
-  <th>Tên khách hàng</th>
-  <th></th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let user of users">
-  <tr>
-  <td>{{user._id}}</td>
-  <td ><a routerLink="">{{user.name}} </a></td>
-  <td>
-    <button class="inactive">Vô hiệu hóa</button>
-  </td>
-  </tr>
-  </tbody>
-  </table>
+
 </div>

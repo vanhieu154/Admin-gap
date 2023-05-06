@@ -43,7 +43,7 @@ export class AdminListService {
   }
 
   //lấy detail của 1 customer
-  getUser(userId:string):Observable<any>
+  getUser(_id:string):Observable<any>
   {
   const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
   const requestOptions:Object={
@@ -51,11 +51,27 @@ export class AdminListService {
   responseType:"text"
   }
 
-  return this._http.get<any>("/users/"+userId,requestOptions).pipe(
+  return this._http.get<any>("/users/"+_id,requestOptions).pipe(
     map(res=>JSON.parse(res) as User),
     retry(3),
     catchError(this.handleError))
   }
+
+
+  //lấy detail của 1 admin
+  // getAdmin(_id:string):Observable<any>
+  // {
+  // const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
+  // const requestOptions:Object={
+  // headers:headers,
+  // responseType:"text"
+  // }
+
+  // return this._http.get<any>("/users/"+_id,requestOptions).pipe(
+  //   map(res=>JSON.parse(res) as User),
+  //   retry(3),
+  //   catchError(this.handleError))
+  // }
 
 
 //create 1 admin
@@ -75,6 +91,8 @@ export class AdminListService {
 
   private apiUrl = 'http://localhost:4000';
 
+
+  //thêm admin
   addAdmin(admin: Admin): Observable<any> {
     const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
     const requestOptions:Object={
@@ -90,6 +108,7 @@ export class AdminListService {
         catchError(this.handleError)
       );
   }
+
   updateUser(user:any): Observable<any> {
     const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
     const requestOptions:Object={
@@ -102,6 +121,39 @@ export class AdminListService {
       catchError(this.handleError)
     )
   }
+
+
+
+    //vô hiệu hóa customer
+  updateUserStatus(aUser:any):Observable<any>
+    {
+      const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
+      const requestOptions:Object={
+        headers:headers,
+        responseType:"text"
+      }
+      return this._http.put<any>("http://localhost:4000/users/"+aUser._id,JSON.stringify(aUser),requestOptions).pipe(
+        map(res=>JSON.parse(res) as Array<User>),
+        retry(3),
+        catchError(this.handleError)
+      )
+    }
+
+        //vô hiệu hóa admin
+  updateAdminStatus(anAdmin:any):Observable<any>
+  {
+    const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
+    const requestOptions:Object={
+      headers:headers,
+      responseType:"text"
+    }
+    return this._http.put<any>("http://localhost:4000/admins/"+anAdmin._id,JSON.stringify(anAdmin),requestOptions).pipe(
+      map(res=>JSON.parse(res) as Array<Admin>),
+      retry(3),
+      catchError(this.handleError)
+    )
+  }
+
 
   }
 

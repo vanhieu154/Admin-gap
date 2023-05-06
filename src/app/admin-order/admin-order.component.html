@@ -60,7 +60,7 @@
 
 
   <mat-tab-group  >
-    <mat-tab label="All Orders" (click)="showAllOrder()">
+    <mat-tab label="All Orders" >
       <div >
         <table mat-table [dataSource]="admin_orders"class="table table-hover table-danger table-striped">
           <ng-container matColumnDef="_id">
@@ -101,7 +101,7 @@
         </table>
       </div>
     </mat-tab>
-    <mat-tab label="Open"(click)="showopenOrder()">
+    <mat-tab label="Open">
       <div >
         <table mat-table [dataSource]="admin_open_order"class="table table-hover table-danger table-striped">
           <ng-container matColumnDef="_id">
@@ -142,7 +142,7 @@
         </table>
       </div>
     </mat-tab>
-    <mat-tab label="Closed" (click)="showClosedOrder()">
+    <mat-tab label="Closed">
       <div >
         <table mat-table [dataSource]="admin_closed_order"class="table table-hover table-danger table-striped">
           <ng-container matColumnDef="_id">
