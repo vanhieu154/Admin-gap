@@ -1,104 +1,136 @@
 <div class="container">
   <h1>THÊM QUẢN TRỊ VIÊN</h1>
   <div class="frame">
+    <!-- <form  [formGroup]="addAdminForm" (ngSubmit)="onSubmit()"> -->
+
+    <!-- <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">ID:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <div class="">
+          <input type="text" name="Name" id="" placeholder="">
+        </div>
+      </div>
+    </div> -->
     <div class="row">
-      <img src="" alt="">
-      <!-- thêm hình dô chỗ này -->
-    </div>
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">ID:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Họ tên:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="Name" id="">
+        <div class="">
+          <input type="text"  name="Name" id="Name" placeholder="Nhập họ tên"  required [(ngModel)]="admin.adminname"/>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Họ tên:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Tên đăng nhập:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="Name" id="">
+        <div class="">
+          <input type="text" name="userName" id="Account_Name" placeholder="Nhập Tên đăng nhập"
+          required [(ngModel)]="admin.Account_Name"/>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Tên đăng nhập:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Ngày sinh:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="userName" id="">
+        <div class="">
+          <input matInput [matDatepicker]="picker" placeholder="Chọn ngày sinh" [(ngModel)]="admin.Date_of_Birth" required/>
+          <!-- <mat-error *ngIf="Date_of_Birth.invalid">{{getErrorDOBMessage()}}</mat-error> -->
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Giới tính:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="">
+          <!-- <div class="form-content exemple-form-field"  style="text-align: left; font-weight: 450;"> -->
+          <mat-radio-group aria-label="Select an option"  [(ngModel)]="admin.Gender">
+            <mat-radio-button value="Nam" checked>Nam</mat-radio-button>
+            <mat-radio-button value="Nữ">Nữ</mat-radio-button>
+            <mat-radio-button value="Khác">Khác</mat-radio-button>
+            </mat-radio-group>
+          <!-- <input type="text" name="gender" id="" placeholder="" [(ngModel)]="admin.Gender"/> -->
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Ngày sinh:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Email:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="DOB" id="">
+        <div class="">
+          <input type="text" name="email" id="" placeholder="Nhập Email"  [(ngModel)]="admin.Email"/>
+          <!-- <mat-error *ngIf="Email.invalid">{{getErrorEmailMessage()}}</mat-error> -->
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Giới tính:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Số điện thoại:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="gender" id="">
+        <div class="">
+          <input type="text" name="number" id="" placeholder="Nhập số điện thoại" [(ngModel)]="admin.Phone_Number"
+          required>
+          <!-- <mat-error *ngIf="Phone_Number.invalid">{{getErrorPhoneMessage()}}</mat-error> -->
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Email:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Hình ảnh:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="col-sm-10">
-          <input type="text" name="email" id="">
+        <div class="image">
+          <input type="file" name="Image" id="Image" multiple (change)="onFileSelected($event, admin)">
+
+        </div>
+        <div *ngFor="let image of admin.Image">
+          <img style="width: 100px,;height: 100px;" src="{{image}}" alt="">
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Số điện thoại:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4">Quyền hạn:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
-        <div class="00">
-          <input type="text" name="number" id="">
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3">Quyền hạn:</div>
-      <!-- <div class="col-sm-1"></div> -->
-      <div class="col-sm-6">
-        <div class="col-sm-10">
+        <div class="">
           <mat-form-field appearance="fill">
             <mat-label>Quyền hạn</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="admin.Permission">
               <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
             </mat-select>
           </mat-form-field>
+            <!-- <select type="text" class="form-control" #style="ngModel" name="style"
+            id="Permission" [(ngModel)]="admin.Permission">
+              <option  >-- Chọn Quyền hạn --</option>
+              <option *ngFor="let q of qh" >{{q}}</option>
+            </select> -->
           </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
-        <button class="stroked-button-1" routerLink="/">Back</button>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <button class="stroked-button-1" routerLink="/admin-list" >Back</button>
       </div>
       <div class="col-sm-1">
-        <button class="stroked-button-2" routerLink="/">Save</button>
+        <button class="stroked-button-2" (click)="postAdmin()">Save</button>
+        <div class="col-sm-5"></div>
       </div>
-      <div class="col-sm-5"></div>
+
     </div>
+    <!-- </form> -->
   </div>
 </div>

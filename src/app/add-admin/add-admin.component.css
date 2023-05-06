@@ -66,3 +66,9 @@ mat-form-field{
   width: 100%;
 
 }
+/* Responsive */
+@media (max-width: 768px) {
+  stroked-button-1{
+  margin-right: 30px;
+  }
+  }

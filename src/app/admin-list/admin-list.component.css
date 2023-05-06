@@ -54,6 +54,14 @@ button{
   background-color: #D2BEB4;
 }
 
+.example-icon{
+  size: small;
+}
+
+/* mat-tap-group .add-admin{
+
+} */
+
 #header{
   background-color: white;
   /* position: fixed; */
@@ -195,13 +203,12 @@ a:hover{
   border-color: none;
   border-radius: 5px;
   border:none;
-  font-size: 24px;
+  font-size: 15px;
   margin: 5px;
   height:75%;
   font-family: quicksand;
   font-weight: bold;
   color: white;
-
 }
 .body__2 button:hover{
   background-color: #b8a898;
@@ -217,6 +224,7 @@ a:hover{
 }
 thead{
   color: #c6a697;
+  /* align-items: center; */
   font-weight: bold;
 }
 
@@ -227,7 +235,7 @@ thead{
 }
 
 .body__3{
-  margin-top: 2%;
+  /* margin-top: 2%; */
   margin-right: 10%;
   margin-left: 10%;
 }
@@ -265,3 +273,21 @@ mat-tab{
   font-family: Quicksand;
 }
 
+#quyenHan{
+  border-radius: 5px;
+  /* border-style:solid; */
+  margin: auto;
+  padding: 5px;
+  background-color: #fbf1eb;
+  /* border-color:; */
+  color: #c6a697;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  /* .input-phonenumber-container {
+      width: 250px;
+      padding: 2rem;
+  } */
+}
