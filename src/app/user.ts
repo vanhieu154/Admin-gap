@@ -14,7 +14,9 @@ import { Cart } from "./cart";
       public cDate:Date=new Date(),
       public cart:Cart []=[],
       public discount:string[] =[],
-      public Address:string []=[]
+      public Address:string []=[],
+      public UserStatus:boolean=true,
+
     ){}
   }
 

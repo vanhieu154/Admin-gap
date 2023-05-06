@@ -89,12 +89,6 @@ error:(err)=>{this.errMessage=err}
   showClosedOrder(){
     this.show_orders=this.admin_closed_order
 
-  }
-  showopenOrder(){
-    this.show_orders=this.admin_open_order
-    // console.log(this.show_orders);
-
-  }
 }
-
+}
 

@@ -13,6 +13,8 @@ export class Admin {
     public Created_Date:string="",
     public Modified_Date:string="",
     public Image:string[]=[],
-    public cDate: Date = new Date()
+    public cDate: Date = new Date(),
+    public AdminStatus:boolean=true,
+
     ){}
 }
