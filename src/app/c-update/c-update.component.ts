@@ -63,21 +63,21 @@ putCoupon()
     this.router.navigate(['coupons'])
   });
  }
- onFileSelected(event: any,coupon:Coupon) {
-  let files = event.target.files;
-  for(let i = 0; i < files.length; i++) {
-    let reader = new FileReader();
-    reader.readAsDataURL(files[i]);
-    reader.onload = function () {
-      coupon.Hinhanh.push(reader.result!.toString());
-    };
+//  onFileSelected(event: any,coupon:Coupon) {
+//   let files = event.target.files;
+//   for(let i = 0; i < files.length; i++) {
+//     let reader = new FileReader();
+//     reader.readAsDataURL(files[i]);
+//     reader.onload = function () {
+//       coupon.Hinhanh.push(reader.result!.toString());
+//     };
 
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-  }
+//     reader.onerror = function (error) {
+//       console.log('Error: ', error);
+//     };
+//   }
 
-}
+// }
 
  range = new FormGroup({
   start: new FormControl<Date | null>(null),

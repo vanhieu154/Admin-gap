@@ -51,13 +51,16 @@ postPromotion()  {
   });
 }
 
+isInputFocused = false;
 
-range = new FormGroup({
-  start: new FormControl<Date | null>(null),
-  end: new FormControl<Date | null>(null),
-});
+hideProducts() {
+  if (!this.isInputFocused) {
+    //Nếu không tập trung vào ô input nữa, đóng danh sách sản phẩm.
+    console.log('Hide products');
+    this.isInputFocused = true;
+  }}
 
-displayTable = false;
+  displayTable = false;
   showTable() {
     this.displayTable = true;
     this.getProducts();
@@ -80,6 +83,11 @@ displayTable = false;
      product.LoaiSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
      product.Price.toString().toLowerCase().includes(this.searchProduct.toLowerCase()));
   }
+
+range = new FormGroup({
+  start: new FormControl<Date | null>(null),
+  end: new FormControl<Date | null>(null),
+});
 
 
 toMainPromotionPage(){

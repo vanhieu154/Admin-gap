@@ -27,7 +27,7 @@
   <table align="right" class="table-hover"  >
     <thead>
       <tr>
-        <th>Mã </th>
+        <th>STT </th>
         <th>Tên sản phẩm</th>
         <th>Giá sản phẩm </th>
         <th>Loại sản phẩm</th>
@@ -36,8 +36,8 @@
     </thead>
 
     <tbody>
-         <tr *ngFor="let product of filteredProducts || products">
-        <td style="word-wrap: break-word; max-width: 10px;" >{{product.MaSP}}</td>
+         <tr *ngFor="let product of filteredProducts || products; let i = index">
+        <td style="word-wrap: break-word; max-width: 10px;" >{{ getCellValue(i) }}</td>
         <td style="word-wrap: break-word; max-width: 75px;" >{{product.TenSP}}</td>
         <td style="word-wrap: break-word; max-width: 50px;">{{product.Price.toLocaleString('vi-VN')}}</td>
         <td style="word-wrap: break-word; max-width: 40px;">{{product.LoaiSP}}</td>

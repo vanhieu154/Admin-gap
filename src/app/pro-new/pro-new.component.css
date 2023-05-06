@@ -213,6 +213,11 @@ ol, ul {
   }
 
 
+
+  /* Khi kích thước màn hình lớn hơn hoặc bằng 600px */
+
+
+
   table {
     border-collapse: scroll;
     width: 100%;

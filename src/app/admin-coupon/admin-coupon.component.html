@@ -56,11 +56,13 @@
 </thead>
 <tbody>
   <tr *ngFor="let coupon of filteredCoupons || filteredDate || coupons" >
+
     <td style="word-wrap: break-word; max-width: 75px;" > <b> GAP2002DISCOUNT{{coupon.MaCoupon}} </b><br>
 
       <img  style="max-width: 100%; max-height: 100%;"  src="\assets\Img\coupon.png" alt="">
 
     </td>
+
     <td style="word-wrap: break-word; max-width: 45px;" > {{coupon.TenCoupon}} </td>
     <td style="word-wrap: break-word; max-width: 55px;"> {{coupon.Giatrigiam.toLocaleString('vi-VN')}} </td>
     <td style="word-wrap: break-word; max-width: 35px;">{{coupon.Soluong}}</td>
