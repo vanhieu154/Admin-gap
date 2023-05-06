@@ -24,7 +24,7 @@ import { ProNewComponent } from './pro-new/pro-new.component';
 
 const routes: Routes = [
   {
-    path:"",component:AdminLoginComponent
+    path:"admin-login",component:AdminLoginComponent
   },
   {
     path:'customer/:id',component:CustomerDetailComponent

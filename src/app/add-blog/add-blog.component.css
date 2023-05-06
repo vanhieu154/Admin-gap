@@ -9,7 +9,7 @@
 }
 .header{
   padding: 1.5%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
 }
 .title-header{
   font-size: 4rem;

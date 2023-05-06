@@ -1,0 +1,44 @@
+.left{
+  background-color: #d2beb4;
+  height: 100%;
+  /* padding-right: 8px;
+  padding-left: 8px; */
+  width: 300px;
+}
+
+.logo{
+  width: 100%;
+  padding: 30px;
+}
+
+.list{
+  height: 30px;
+  padding-top: 7px;
+}
+
+a{
+  font-size: 1.5rem;
+  text-decoration: none;
+  color:  #6B4932;
+}
+a:hover{
+  color: #d2beb4;
+}
+a:active{
+  opacity: 0.7;
+  color: #000;
+}
+
+.item{
+  padding-top: 5px;
+}
+.font{
+  font-size: 1.8rem;
+}
+.row-style{
+  padding-bottom: 20px;
+}
+.icon{
+  background-color: initial;
+  border: none;
+}
