@@ -6,11 +6,11 @@ export class Order {
     public discountID: string ="",
     public total: number = 0,
     public addressID:number =0,
+    public previousStatus:number=0,
     public status:number=0,
     public cDate: Date = new Date(),
     public ShipByDate:Date=new Date(),
-    public DueDate:Date=new Date(),
-
+    public DueDate:Date=new Date()
   ) {}
 }
 export class OrderItem {
