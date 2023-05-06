@@ -9,7 +9,8 @@ export class Order {
     public status:number=0,
     public cDate: Date = new Date(),
     public ShipByDate:Date=new Date(),
-    public DueDate:Date=new Date()
+    public DueDate:Date=new Date(),
+
   ) {}
 }
 export class OrderItem {
