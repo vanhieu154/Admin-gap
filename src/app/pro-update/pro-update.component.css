@@ -94,7 +94,7 @@ background-color: white;
   left: 0;
   right:0;
   z-index: 99;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
   /* height: 126px; */
   font-family: 'arial', sans-serif;
   position: sticky;

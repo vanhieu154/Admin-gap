@@ -1,3 +1,133 @@
 
+<mat-drawer-container  style="height: 100%;  overflow-y: auto;">
+  <mat-drawer #drawer [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="(isHandset$ | async) ? isDrawerOpen : true"  (closed)="closeDrawer()" class="left">
+  <div class="left-top">
+    <img src="./assets/Img/Gap-Logo.webp" class="logo">
+  </div>
+  <div class="left-content">
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a routerLink="/admin-list" class="item font">Quản lý Admin</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/admin-list" class="item">Danh sách Admin</a>
+            </div>
+            <div class="list">
+              <a routerLink="/add-admin" class="item">Thêm tài khoản Admin</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
 
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a routerLink="/customer-list" class="item font">Quản lý khách hàng</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/customer-list" class="item">Danh sách tài khoản khách hàng</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a routerLink="/blog-list" class="item font">Quản lý Blog</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/blog-list" class="item">Danh sách Blog</a>
+            </div>
+            <div class="list">
+              <a routerLink="/add-blog" class="item">Tạo Blog</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a class="item font">Quản lý khuyến mãi</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/promotions" class="item">Chương trình khuyến mãi</a>
+            </div>
+            <div class="list">
+              <a routerLink="/newpromotion" class="item">Tạo chương trình khuyến mãi</a>
+            </div>
+            <div class="list">
+              <a routerLink="/coupons" class="item">Mã giảm giá</a>
+            </div>
+            <div class="list">
+              <a routerLink="/newcoupon" class="item">Tạo mã giảm giá</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a routerLink="/admin-order" class="item font">Quản lý đơn hàng</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/admin-order" class="item">Danh sách đơn hàng</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="row-style">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <a routerLink="/admin-product" class="item font">Quản lý sản phẩm</a>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <div class="list">
+              <a routerLink="/admin-product" class="item">Danh sách sản phẩm</a>
+            </div>
+            <div class="list">
+              <a routerLink="/newproduct" class="item">Tạo sản phẩm</a>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+</mat-drawer>
+
+<mat-drawer-content>
+<button *ngIf="(isHandset$ | async) && !isDrawerOpen" (click)="openDrawer()" class="icon"><mat-icon>menu</mat-icon></button>
 <router-outlet></router-outlet>
+</mat-drawer-content>
+</mat-drawer-container>
+
+
+
+

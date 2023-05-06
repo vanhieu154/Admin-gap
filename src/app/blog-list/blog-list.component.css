@@ -9,7 +9,7 @@
 }
 .header{
   padding: 1.5% 1.5% 0 1.5%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
 }
 .title-header{
   font-size: 4rem;
@@ -144,5 +144,17 @@
 
 /*mobile*/
 @media (max-width: 740px) {
-
+  .add{
+    font-size: 1.2rem;
+    width: 100%;
+  }
+  .search button {
+    width: 20%;
+  }
+  .search input {
+    width: 80%;
+  }
+  .search{
+    margin-bottom: 10px;
+  }
 }
