@@ -18,7 +18,7 @@
   </div>
 
   <div class="body container">
-    <table mat-table [dataSource]="blogs" class="mat-elevation-z8">
+    <table mat-table [dataSource]="filteredBlogs||blogs" class="mat-elevation-z8">
 
       <!-- Position Column -->
       <ng-container matColumnDef="position">

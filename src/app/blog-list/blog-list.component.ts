@@ -51,6 +51,8 @@ deleteBlog(_id:any)
   filteredBlogs: any[] | undefined;
 
   filterBlogs() {
+    console.log(this.searchBlog.toLowerCase());
+
     this.filteredBlogs = this.blogs.filter((blog:  {
       title:string,
      category:string,
@@ -59,7 +61,7 @@ deleteBlog(_id:any)
      author:string,
      displayDate:string,
      }) =>
-     blog.title.toString().includes(this.searchBlog) ||
+     blog.title.toString().includes(this.searchBlog.toLowerCase()) ||
      blog.category.toString().includes(this.searchBlog)||
      blog.tag.toString().includes(this.searchBlog)||
      blog.description.toString().includes(this.searchBlog)||
