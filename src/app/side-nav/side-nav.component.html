@@ -1,8 +1,10 @@
-<nav class="left" id="left" #left>
+
+<mat-drawer-container  style="height: 100%;">
+  <mat-drawer #drawer [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="(isHandset$ | async) ? isDrawerOpen : true" style="width: 250px;" (closed)="closeDrawer()">
   <div class="left-top">
     <img src="./assets/Img/Gap-Logo.webp" class="logo">
   </div>
-
   <div class="left-content">
     <div class="row">
       <mat-accordion>
@@ -118,4 +120,11 @@
     </div>
 
   </div>
-</nav>
+</mat-drawer>
+
+<mat-drawer-content>
+<button *ngIf="(isHandset$ | async) && !isDrawerOpen" (click)="openDrawer()">Open Drawer</button>
+
+</mat-drawer-content>
+</mat-drawer-container>
+

@@ -81,14 +81,13 @@ error:(err)=>{this.errMessage=err}
         },
         error:(err)=>{this.errMessage=err}
         })
-      // Thực hiện các tác động cần thiết khi giá trị thay đổi
+
     }
   showAllOrder(){
     this.show_orders=this.admin_orders
   }
   showClosedOrder(){
     this.show_orders=this.admin_closed_order
-    // console.log(this.show_orders);
 
   }
   showopenOrder(){
