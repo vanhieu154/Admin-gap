@@ -49,6 +49,8 @@ import { CNewComponent } from './c-new/c-new.component';
 import { CUpdateComponent } from './c-update/c-update.component';
 import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { ProNewComponent } from './pro-new/pro-new.component';
   ],
   imports: [
     MatFormFieldModule,
+    MatRadioModule,
     BrowserModule,
     AppRoutingModule,
     MatSelectModule,
@@ -103,7 +106,8 @@ import { ProNewComponent } from './pro-new/pro-new.component';
     MatDialogModule,
     MatSidenavModule,
     MatExpansionModule,
-    CKEditorModule
+    CKEditorModule,
+
   ],
   exports:[
     MatFormFieldModule,
