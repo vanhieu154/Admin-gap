@@ -19,20 +19,20 @@ Chỉnh sửa thông tin sản phẩm
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; ">
 
         <input type="file" class="file-input"  name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,product)">
-        <div style="flex-basis: 50%; padding: 5px;" *ngFor="let image of product.Hinhanh; let i =index">
-          <img  style="max-width: 248px; max-height: 328px;" src="{{image}}" alt="">
+        <span style="flex-basis: 50%;" *ngFor="let image of product.Hinhanh; let i =index">
+          <img  style="max-width: 150px; max-height: 200px;" src="{{image}}" alt="">
           <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
-        </div>
+        </span>
       </td>
     </tr>
 
 
-    <tr>
+    <!-- <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mã sản phẩm</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
         <input type="number"  class=" input_border "  style=" width: 98%; " #subject="ngModel" [(ngModel)]="product.MaSP" >
       </td>
-    </tr>
+    </tr> -->
 
     <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
@@ -61,12 +61,12 @@ Chỉnh sửa thông tin sản phẩm
       </td>
       </tr>
 
-    <tr>
+    <!-- <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giảm giá</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
         <input type="number" class=" input_border" #subject="ngModel"  [(ngModel)]="product.Discount"  style=" width: 98%; " >
       </td>
-    </tr>
+    </tr> -->
 
 
       <tr>

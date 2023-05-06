@@ -140,37 +140,7 @@ border: 0px;
   background-color:#6B4932;
   border: 0px;
 }
-.checkbox{
- width: 30px;
- height: 30px;
 
-}
-input[type="checkbox"]:checked::before {
-  content: "\2714";  /* kí tự Unicode của tick */
-  position: absolute;
-  margin-left: -1px;
-  margin-bottom: 5px;
-  font-size: 20px;
-  color: #fff;  /* màu của tick */
-}
-
-
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-width: 2px 2px 2px 2px;
-  background-color: #b8a898; /* màu mặc định */
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-
-input[type="checkbox"]:checked {
-  background-color: #dfdede; /* màu khi được tích chọn */
-}
 .input_border{
   border-radius: 5px;
   height: 45px;
