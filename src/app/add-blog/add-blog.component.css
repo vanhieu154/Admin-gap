@@ -7,9 +7,20 @@
   --grey:#EDEDED ;
   --darkgrey: #908B8B;
 }
-.header{
-  padding: 1.5%;
-  box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
+
+#header{
+  background-color: white;
+  position: fixed;
+  padding: 1.5%;;
+  top: 0;
+  left: 0;
+  right:0;
+  z-index: 99;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* height: 126px; */
+  /* font-family: 'arial', sans-serif; */
+  position: sticky;
+  transition: top .2s ease;
 }
 .title-header{
   font-size: 4rem;
@@ -120,12 +131,16 @@ h2{
   text-align: center;
 }
 .box{
-  height: 300px;
+  height: flex;
+  min-height: 300px;
   width: 100%;
   border: 1px solid #c0aa9d;
   background-color: #fdf8f6;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px;
+  padding-right: 10px; */
+}
+.ckeditor{
+  padding-bottom: 20px;
 }
 .input-img{
   display: flex;
@@ -134,13 +149,16 @@ h2{
   text-align: center;
 }
 .img-blog{
-  height: 100%;
+  height: auto;
   width: 200px;
   text-align: center;
-  padding-top: 35px;
+  align-items: center;
+  display: flex;
+  padding-bottom: 20px;
 }
 .description{
   font-size: 1.6rem;
+  min-height: 500px;
 }
 
 .img{

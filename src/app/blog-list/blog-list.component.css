@@ -7,9 +7,20 @@
   --grey:#EDEDED ;
   --darkgrey: #908B8B;
 }
-.header{
-  padding: 1.5% 1.5% 0 1.5%;
-  box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
+
+#header{
+  background-color: white;
+  position: fixed;
+  padding: 1.5%;;
+  top: 0;
+  left: 0;
+  right:0;
+  z-index: 99;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* height: 126px; */
+  /* font-family: 'arial', sans-serif; */
+  position: sticky;
+  transition: top .2s ease;
 }
 .title-header{
   font-size: 4rem;
@@ -138,6 +149,7 @@
 .search{
   background-color: none;
 }
+
 @media (max-width: 1023px) and (min-width: 740px) {
 
 }

@@ -1,6 +1,6 @@
 {{errMessage}}
 <div class="right">
-  <div class="header">
+  <div class="header" id="header">
     <div class="row">
       <div class="col-8">
         <div class="col title-header">Tạo bài viết</div>
@@ -29,7 +29,7 @@
 
         <div class="body-left_middle">
           <h2>Nội dung</h2>
-          <div class=" lable" style="max-height: 70%;">
+          <div class="ckeditor lable">
             <ckeditor  class="description"  #subject="ngModel" debounce="1000" [(ngModel)]="blog.description" [editor]="Editor"/>
           </div>
         </div>
