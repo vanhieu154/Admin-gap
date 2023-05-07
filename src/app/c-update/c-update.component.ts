@@ -7,6 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Product } from '../admin-product/product';
+import { ProductApiService } from '../admin-product/product-api.service';
 @Component({
   selector: '[app-c-update]',
   templateUrl: './c-update.component.html',
@@ -18,10 +20,12 @@ export class CUpdateComponent {
   selectCouponId: string='';
   coupon=new Coupon();
   coupons:any;
+  products:any;
+  product=new Product();
   selectedFiles: File[] = [];
   errMessage:string='';
   id: any;
-constructor(public _service: CouponApiService, private http: HttpClient,private router:Router,public dialog: MatDialog,private activateRoute:ActivatedRoute){
+constructor(public _service: CouponApiService,private _pservice: ProductApiService, private http: HttpClient,private router:Router,public dialog: MatDialog,private activateRoute:ActivatedRoute){
   activateRoute.paramMap.subscribe(
     (param)=>{
       this.id=param.get('id')
@@ -56,33 +60,53 @@ putCoupon()
     height: '220px',
   });
   dialogRef.afterClosed().subscribe(() => {
-    // refresh product list
+    this.router.navigate(['coupons'])
   });
  }
- onFileSelected(event: any,coupon:Coupon) {
-  let files = event.target.files;
-  for(let i = 0; i < files.length; i++) {
-    let reader = new FileReader();
-    reader.readAsDataURL(files[i]);
-    reader.onload = function () {
-      coupon.Hinhanh.push(reader.result!.toString());
-    };
+//  onFileSelected(event: any,coupon:Coupon) {
+//   let files = event.target.files;
+//   for(let i = 0; i < files.length; i++) {
+//     let reader = new FileReader();
+//     reader.readAsDataURL(files[i]);
+//     reader.onload = function () {
+//       coupon.Hinhanh.push(reader.result!.toString());
+//     };
 
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-  }
+//     reader.onerror = function (error) {
+//       console.log('Error: ', error);
+//     };
+//   }
 
-}
+// }
 
  range = new FormGroup({
   start: new FormControl<Date | null>(null),
   end: new FormControl<Date | null>(null),
 });
+displayTable = false;
+  showTable() {
+    this.displayTable = true;
+    this.getProducts();
+  }
+  getProducts(){
+    this._pservice.getProducts().subscribe({
+      next:(data)=>{this.products=data;  },
+      error:(err)=>{this.errMessage=err}
+      })
+  }
 
- onDeleteImage(index: number) {
-  this.coupon.Hinhanh.splice(index, 1);
-}
+
+  filteredProducts: any[] | undefined;
+  public searchProduct:string=''
+
+  filterProducts() {
+     this.filteredProducts = this.products.filter((product:  { MaSP: string; TenSP: string; Price: number;LoaiSP :string; }) =>
+     product.MaSP.toString().includes(this.searchProduct.toLowerCase()) ||
+     product.TenSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
+     product.LoaiSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
+     product.Price.toString().toLowerCase().includes(this.searchProduct.toLowerCase()));
+  }
+
 
 
  toMainCouponPage(){

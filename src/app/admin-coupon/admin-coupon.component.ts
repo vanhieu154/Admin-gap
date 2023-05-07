@@ -96,11 +96,10 @@ deleteCoupon(id: string) {
       const Ngaybatdau = new Date(coupon.Ngaybatdau);
       const Ngayketthuc = new Date(coupon.Ngayketthuc);
       return Ngaybatdau >= start && Ngayketthuc <= end;
+      // Ngayketthuc <= end;
     });
   }
-  onDeleteImage(index: number) {
-    this.coupon.Hinhanh.splice(index, 1);
-  }
+
 
 
 

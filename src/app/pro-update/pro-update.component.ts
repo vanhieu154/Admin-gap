@@ -8,7 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Promotion } from '../admin-promotion/Promotion';
 import { PromotionService } from '../admin-promotion/promotion.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Product } from '../admin-product/product';
+import { ProductApiService } from '../admin-product/product-api.service';
 @Component({
   selector: '[app-pro-update]',
   templateUrl: './pro-update.component.html',
@@ -19,10 +20,12 @@ export class ProUpdateComponent {
   selectPromotionId: string='';
   promotion=new Promotion();
   promotions:any;
+  products:any;
+  product=new Product();
   id: any;
   errMessage:string='';
   types=["Giảm giá loại sản phẩm","Đồng giá"]
-  constructor(public _service: PromotionService, private http: HttpClient,private router:Router, public dialog: MatDialog,private activateRoute:ActivatedRoute){
+  constructor(public _service: PromotionService,private _pservice: ProductApiService, private http: HttpClient,private router:Router, public dialog: MatDialog,private activateRoute:ActivatedRoute){
 
     activateRoute.paramMap.subscribe(
       (param)=>{
@@ -58,10 +61,33 @@ export class ProUpdateComponent {
       height: '220px',
     });
     dialogRef.afterClosed().subscribe(() => {
-      // refresh product list
+      this.router.navigate(['promotions'])
     });
    }
 
+   displayTable = false;
+   showTable() {
+     this.displayTable = true;
+     this.getProducts();
+   }
+   getProducts(){
+     this._pservice.getProducts().subscribe({
+       next:(data)=>{this.products=data;  },
+       error:(err)=>{this.errMessage=err}
+       })
+   }
+
+
+   filteredProducts: any[] | undefined;
+   public searchProduct:string=''
+
+   filterProducts() {
+      this.filteredProducts = this.products.filter((product:  { MaSP: string; TenSP: string; Price: number;LoaiSP :string; }) =>
+      product.MaSP.toString().includes(this.searchProduct.toLowerCase()) ||
+      product.TenSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
+      product.LoaiSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
+      product.Price.toString().toLowerCase().includes(this.searchProduct.toLowerCase()));
+   }
 
   toMainPromotionPage(){
     this.router.navigate(['promotions'])

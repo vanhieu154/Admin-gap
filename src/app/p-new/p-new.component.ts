@@ -37,7 +37,8 @@ export class PNewComponent {
 
 postProduct()  {
   // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
-  this.product.cDate= new Date(Date.now())
+  this.product.MaSP=this.products.length+1;
+  this.product.cDate= new Date()
   this._service.postProduct(this.product).subscribe({
     next:(data)=>{this.product=data},
     error:(err)=>{this.errMessage=err}
@@ -47,7 +48,7 @@ postProduct()  {
     height: '220px',
   });
   dialogRef.afterClosed().subscribe(() => {
-    // refresh product list
+    this.router.navigate(['adproducts'])
   });
 }
 onFileSelected(event: any,product:Product) {

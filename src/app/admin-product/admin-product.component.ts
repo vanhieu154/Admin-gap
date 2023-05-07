@@ -41,6 +41,7 @@ getProduct() {
   }
 
   deleteProduct(id: string): void {
+
     const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
       width: '417px',
       height: '220px',
@@ -58,6 +59,25 @@ getProduct() {
       // console.log(`Lỗi xóa sản phẩm với id=${id}: `, err);
     }
   });
+  const index = this.products.findIndex((product: { _id: string; }) => product._id === id);
+
+    // Xử lý khi xóa sản phẩm đầu tiên
+    if (index === 0) {
+      this.firstCellValue = 1;
+      this.products.splice(index, 1);
+      for (let i = 1; i < this.products.length; i++) {
+        this.products[i].MaSP = this.products[i - 1].MaSP + 1;
+      }
+      return;
+    }
+
+    // Xử lý khi xóa sản phẩm không phải đầu tiên
+    if (index > 0) {
+      const deletedProduct = this.products.splice(index, 1)[0];
+      for (let i = index; i < this.products.length; i++) {
+        this.products[i].MaSP = deletedProduct.MaSP + i;
+      }
+    }
       }
     });
   }
@@ -80,6 +100,7 @@ getProduct() {
       start: new FormControl<Date | null>(null),
       end: new FormControl<Date | null>(null),
     });
+
 
 
 
@@ -109,6 +130,20 @@ getProduct() {
   showContent(content: string): void {
           this.activeContent = content;
   }
+
+  ngOnInit(): void {
+    // Thực hiện khởi tạo giá trị cho các ô còn lại
+    for (let i = 1; i < this.products.length; i++) {
+      this.products[i].MaSP = this.products[i - 1].MaSP + 1;
+    }
+  }
+  getCellValue(i: number): number {
+    // Trả về giá trị của ô đầu tiên hoặc giá trị của ô tiếp theo nếu ô đầu tiên được xóa
+    return i === 0 ? this.firstCellValue : this.products[i - 1].MaSP;
+  }
+  firstCellValue = 1;
+
+
 }
 
 

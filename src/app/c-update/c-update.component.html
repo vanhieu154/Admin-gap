@@ -15,23 +15,6 @@
     <tbody>
 
 
-      <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mã coupon</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-          <input  type="text" #subject="ngModel"  [(ngModel)]="coupon.MaCoupon" style=" width: 99%;" class="input_border">
-        </td>
-      </tr>
-      <tr >
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; ">
-
-          <input style="padding-left: 2%;" type="file" class="file-input"  name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,coupon)">
-          <div style="flex-basis: 50%; padding: 5px;" *ngFor="let image of coupon.Hinhanh; let i = index;">
-            <img  style="max-width: 248px; max-height: 328px;" src="{{image}}" alt="">
-            <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
-          </div>
-        </td>
-      </tr>
 
         <tr>
           <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại coupon</td>
@@ -56,7 +39,36 @@
             </td>
           </tr>
 
+          <tr>
+            <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại sản phẩm áp dụng</td>
+            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
+              <input type="text" class="input_border" style=" width: 99%; "   (click)="showTable()" [(ngModel)]="searchProduct" (ngModelChange)="filterProducts()">
+             <table *ngIf="displayTable" style=" max-height: 200px; max-width: 100%; overflow-x: auto;display: block;">
+              <tr style="background-color: #d2beb4;" >
+                <td style=" padding-left: 2px; padding-right: 2px;" > <input type="checkbox"> </td>
+                <td style="word-wrap: break-word; " >Mã</td>
+                <td style="word-wrap: break-word; ">Loại</td>
+                <td style="word-wrap: break-word; ">Hình ảnh </td>
+                <td style="word-wrap: break-word;" >Tên sản phẩm</td>
+                <td style="word-wrap: break-word; " >Giá</td>
+              </tr>
+              <tr *ngFor="let product of filteredProducts || products" >
+                <td style="max-width: 30px; width: 250px; padding-left: 2px; padding-right: 2px;" > <input type="checkbox"> </td>
+                <td style="word-wrap: break-word; max-width: 200px;" >{{product.MaSP}}</td>
+                <td style="word-wrap: break-word; max-width: 200px;">{{product.LoaiSP}}</td>
+                <td style="word-wrap: break-word; max-width: 100px;">
 
+                  <div style="display: flex; flex-wrap: wrap; word-wrap: break-word;">
+
+                      <img  style=" max-height: 100%; max-width: 100%; text-align: center;" src='{{product.Hinhanh[0]}}' alt="" >
+
+                  </div>
+                </td>
+                <td style="word-wrap: break-word; max-width: 475px;" >{{product.TenSP}}</td>
+                <td style="word-wrap: break-word; max-width: 250px;" >{{product.Price.toLocaleString('vi-VN')}}</td>
+              </table>
+            </td>
+          </tr>
               <tr>
                 <td style="text-align: left; padding-left: 20px; font-weight: bold;">Nội dung</td>
                 <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">

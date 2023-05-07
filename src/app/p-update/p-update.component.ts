@@ -57,7 +57,8 @@ export class PUpdateComponent {
       height: '220px',
     });
     dialogRef.afterClosed().subscribe(() => {
-      // refresh product list
+      this.router.navigate(['adproducts'])
+
     });
    }
 
