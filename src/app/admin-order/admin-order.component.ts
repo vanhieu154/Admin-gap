@@ -89,6 +89,36 @@ error:(err)=>{this.errMessage=err}
   showClosedOrder(){
     this.show_orders=this.admin_closed_order
 
+  }
+  showopenOrder(){
+    this.show_orders=this.admin_open_order
+    // console.log(this.show_orders);
+
+  }
+  public searchOrders:string=''
+  filteredOrders: any[] | undefined;
+  filteredDate: any[] | undefined;
+
+  filterOrders() {
+    this.filteredOrders = this.admin_orders.filter((coupon:  {
+      _id:string,
+      userId:string
+
+     }) =>
+   coupon._id.toString().includes(this.searchOrders.toLocaleLowerCase()) ||
+   coupon.userId.toString().includes(this.searchOrders))}
+   onClear() {
+    this.searchOrders = '';
+    this.filterOrders();
+ }
+ filterDate() {
+  const start = this.range.value.start ?? new Date('2020-01-01');
+  const end = this.range.value.end ?? new Date('2999-12-31');
+  this.filteredDate = this.admin_orders.filter((admin_order: { cDate: string | number | Date; ShipByDate: string | number | Date; }) => {
+    const cDate = new Date(admin_order.cDate);
+    const ShipByDate = new Date(admin_order.ShipByDate);
+    return cDate >= start && ShipByDate <= end;
+  });
 }
 }
 

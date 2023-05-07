@@ -1,14 +1,14 @@
 
 <div id="header" >
-  <div align="center">
-    <div  >
-      <span class="col title--khuyenmai" >
-       Coupon
-      </span>
-      <input type="text" id="searchCoupon" style="font-size: 2rem;" [(ngModel)]="searchCoupon" (ngModelChange)="filterCoupons()" class="left__search--bar" >
-        <!-- <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button> -->
-        <button class="left_button-search" (click)="onClear()" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
-</div>
+    <div align="center">
+      <div  >
+        <span class="col title--khuyenmai" >
+        Coupon
+        </span>
+        <input type="text" id="searchCoupon" style="font-size: 2rem;" [(ngModel)]="searchCoupon" (ngModelChange)="filterCoupons()" class="left__search--bar" >
+          <!-- <button class="left_button-search" >   <mat-icon class="left_icon-search">search</mat-icon> </button> -->
+          <button class="left_button-search" (click)="onClear()" >   <mat-icon class="left_icon-search"> backspace</mat-icon> </button>
+  </div>
 </div>
 </div>
 <p>{{errMessage}}</p>

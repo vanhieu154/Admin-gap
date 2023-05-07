@@ -181,10 +181,18 @@ a:hover{
  margin-top: 10px;
  border-radius: 10px;
  border-color: #6B4932;
- width: 100%;
+ height: fit-content;
 }
 .example-spacer {
   flex: 1 1 auto;
+}
+.body__2{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  border-radius: 5px;
+  z-index: 1;
+  padding-left: 0;
+  border-color: #cfa897;
 }
 .body__2 button {
   background-color: #d2beb4;
@@ -194,7 +202,6 @@ a:hover{
   font-size: 24px;
   margin: 5px;
   height:75%;
-  font-family: quicksand;
   font-weight: bold;
   color: white;
 
@@ -208,18 +215,17 @@ a:hover{
 }
 .mat-mdc-tab.mdc-tab{
   font-size: 24px;
-  font-family: quicksand;
 
 }
 .mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label{
-  color: #d2beb4  ;
+  color: white  ;
   font-weight: bold;
   overflow-y: hidden;
 }
 .body__3{
-  /* margin-top: 2%;
+  margin-top: 2%;
   margin-right: 10%;
-  margin-left: 10%; */
+  margin-left: 10%;
 }
 
 table{
@@ -252,4 +258,12 @@ tr{
   background-color: var(--lightpink);
   width: 60%;
   border-radius: 5px;
+}
+.mat-mdc-tab-header{
+  background-color: var(--lightpink);
+  font-size: 1.6rem;
+  background: linear-gradient(to right, --lightpink, --darkbrown);
+}
+.mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label, .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label {
+  color: #6B4932;
 }

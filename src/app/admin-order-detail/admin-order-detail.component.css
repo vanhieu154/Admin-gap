@@ -208,6 +208,7 @@ a:hover{
 .bu_hover hover{
   border-color: #ac9a92;
   background-color: #cfa897;
+  border-color: black;
 }
 .order_status{
   font-size: 1.6rem;
@@ -270,3 +271,4 @@ table{
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
   background-color: #d2beb4;
 }
+
