@@ -18,6 +18,7 @@
 }
 .body{
   padding: 3% 0 3% 0;
+  overflow: hidden;
 }
 .btn-save{
   text-align: right;
