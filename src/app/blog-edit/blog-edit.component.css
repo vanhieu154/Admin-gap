@@ -18,6 +18,7 @@
 }
 .body{
   padding: 3% 0 3% 0;
+  overflow-x: hidden;
 }
 .btn-save{
   text-align: right;
@@ -147,7 +148,7 @@ h2{
   margin-top: 20px;
   margin-left: 5px;
 }
-@media (max-width: 1023px) and (min-width: 740px) {
+@media (max-width: 1500px) and (min-width: 740px) {
   .body-left{
     width: 100%;
   }
