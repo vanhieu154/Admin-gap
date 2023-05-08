@@ -5,6 +5,8 @@ import { BlogService } from '../blog.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-blog',
@@ -19,7 +21,7 @@ export class AddBlogComponent {
   blogs:any;
   errMessage:string=''
   selectedFiles: File[] = [];
-  constructor(private _service: BlogService,private router:Router,private http: HttpClient){
+  constructor(private _service: BlogService,private router:Router,private http: HttpClient, public dialog: MatDialog){
     this._service.getBlogs().subscribe({
       next:(data)=>{this.blogs=data},
       error:(err)=>{this.errMessage=err}
@@ -36,8 +38,13 @@ export class AddBlogComponent {
       next:(data)=>{this.blog=data},
       error:(err)=>{this.errMessage=err}
     })
-    alert("thành công")
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
     this.router.navigate(['blog-list'])
+    });
   }
 
   onFileSelected(event: any,blog:Blog) {

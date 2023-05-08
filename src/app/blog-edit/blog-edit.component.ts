@@ -5,6 +5,8 @@ import { BlogService } from '../blog.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-blog-edit',
@@ -17,7 +19,7 @@ export class BlogEditComponent {
   blogs:any
   errMessage:string=''
   id: any;
-   constructor(private _service:BlogService,private activateRoute:ActivatedRoute,private router:Router,private http: HttpClient){
+   constructor(private _service:BlogService,private activateRoute:ActivatedRoute,private router:Router,private http: HttpClient, public dialog: MatDialog){
     activateRoute.paramMap.subscribe(
       (param)=>{
         this.id=param.get('id')
@@ -45,7 +47,13 @@ export class BlogEditComponent {
        next:(data)=>{this.blogs=data},
        error:(err)=>{this.errMessage=err}
      })
-     this.router.navigate(['blog-list'])
+     const dialogRef = this.dialog.open(SuccessDialogComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+    this.router.navigate(['blog-list'])
+    });
    }
 
   onFileSelected(event: any,blog:Blog) {
