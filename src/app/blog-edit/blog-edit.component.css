@@ -148,7 +148,7 @@ h2{
   margin-top: 20px;
   margin-left: 5px;
 }
-@media (max-width: 1023px) and (min-width: 740px) {
+@media (max-width: 150px) and (min-width: 740px) {
   .body-left{
     width: 100%;
   }
