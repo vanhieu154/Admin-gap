@@ -34,16 +34,12 @@
       </td>
     </tr>
 
-
     <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại khuyến mãi</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <select type="text" class="input_border"  #subject="ngModel"   [(ngModel)]="promotion.LoaiPromotion">
-          <option value="" disabled selected >-- Chọn Loại khuyến mãi --</option>
-          <option *ngFor="let t of types" >{{t}}</option>
-        </select>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm</td>
+      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
+        <input  type="number" min="0"  #subject="ngModel"   [(ngModel)]="promotion.Gia" style=" width: 99%; " class="input_border">
       </td>
-    </tr>
+      </tr>
 <!-- -------------chua lam-------- -->
     <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại sản phẩm áp dụng</td>
@@ -68,7 +64,7 @@
           <td style="word-wrap: break-word; " >Giá</td>
         </tr>
         <tr *ngFor="let product of filteredProducts || products" >
-          <td style="max-width: 30px; width: 250px; padding-left: 2px; padding-right: 2px;" > <input type="checkbox"> </td>
+          <td style="max-width: 30px; width: 250px; padding-left: 2px; padding-right: 2px;" > <input type="checkbox"  (change)="onCheckboxChange($event, product)"> </td>
           <td style="word-wrap: break-word; max-width: 200px;" >{{product.MaSP}}</td>
           <td style="word-wrap: break-word; max-width: 200px;">{{product.LoaiSP}}</td>
           <td style="word-wrap: break-word; max-width: 100px;">
@@ -95,12 +91,7 @@
         </tr>
 
 
-          <tr>
-            <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm</td>
-            <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-              <input  type="number" min="0"  #subject="ngModel"   [(ngModel)]="promotion.Gia" style=" width: 99%; " class="input_border">
-            </td>
-            </tr>
+
 
 
               <tr>
@@ -127,4 +118,9 @@
     <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="toMainPromotionPage()"  >
       <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ chương trình khuyến mãi </span></button>
     </div>
+
+    <!-- <div #selectedProductsDiv *ngFor="product of products">
+
+    </div> -->
+
     </div>

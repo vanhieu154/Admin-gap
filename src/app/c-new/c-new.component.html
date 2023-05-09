@@ -13,25 +13,27 @@
   </tr>
   </thead>
   <tbody>
-
-
-
-
     <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại coupon</td>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mã coupon</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <select type="text" class="input_border"  #subject="ngModel"   [(ngModel)]="coupon.TenCoupon">
-          <option value="" disabled selected >-- Chọn Loại coupon --</option>
-          <option *ngFor="let t of types" >{{t}}</option>
-        </select>
+        <input type="text" min="0" #subject="ngModel"   [(ngModel)]="coupon.MaCoupon" style=" width: 99%; " class="input_border">
+
     </tr>
 
-    <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá trị giảm</td>
-      <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-        <input type="number" min="0"  #subject="ngModel"   [(ngModel)]="coupon.Giatrigiam" style=" width: 99%; " class="input_border">
-      </td>
+        <tr  >
+          <td style="text-align: left; padding-left: 20px; font-weight: bold;">  <label for="coupon-value">Giá trị giảm </label> </td>
+
+      <td align="left" >
+        <input style=" width: 85px; text-align: center;" class="input_border" type="number" disabled [ngModel]="coupon.Giatrigiam"/>
+
+        <mat-icon class="icon" (mousedown)="onCouponValueIncreaseStart($event)" (mouseup)="onCouponValueEnd()" (mouseleave)="onCouponValueEnd()" (click)="onCouponValueIncreaseClick()">add_circle</mat-icon>
+        <mat-icon class="icon" (mousedown)="onCouponValueDecreaseStart($event)" (mouseup)="onCouponValueEnd()" (mouseleave)="onCouponValueEnd()" (click)="onCouponValueDecreaseClick()">remove_circle</mat-icon>
+
+    </td>
       </tr>
+
+
+
 
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Số lượng</td>
@@ -54,7 +56,7 @@
             <td style="word-wrap: break-word; " >Giá</td>
           </tr>
           <tr *ngFor="let product of filteredProducts || products" >
-            <td style="max-width: 30px; width: 250px; padding-left: 2px; padding-right: 2px;" > <input type="checkbox"> </td>
+            <td style="max-width: 30px; width: 250px; padding-left: 2px; padding-right: 2px;" > <input type="checkbox" (change)="onCheckboxChange($event, product)"> </td>
             <td style="word-wrap: break-word; max-width: 200px;" >{{product.MaSP}}</td>
             <td style="word-wrap: break-word; max-width: 200px;">{{product.LoaiSP}}</td>
             <td style="word-wrap: break-word; max-width: 100px;">
@@ -97,8 +99,13 @@
   </table>
   </div>
   <div align="right">
+
   <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)="postCoupon()"> <span> <mat-icon>save</mat-icon> </span> <span style="padding-left: 30px;"> Lưu </span></button>
   <button class="button--sp" style="margin-bottom: 10px; margin-right: 40px;" (click)=" toMainCouponPage()"  > <span> <mat-icon>arrow_back</mat-icon> </span> <span style="padding-left: 30px;"> Về trang chủ Coupon</span></button>
 </div>
+
+
+
+<div #selectedProductsDiv></div>
 
   </div>

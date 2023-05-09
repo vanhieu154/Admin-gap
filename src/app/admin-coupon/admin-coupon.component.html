@@ -46,7 +46,7 @@
 <thead>
   <tr >
     <th style="word-wrap: break-word; max-width: 100px;" >Mã coupon</th>
-    <th style="word-wrap: break-word; max-width: 45px;"  >Loại coupon</th>
+    <!-- <th style="word-wrap: break-word; max-width: 45px;"  >Loại coupon</th> -->
     <th style="word-wrap: break-word; max-width: 55px;">Giá trị giảm</th>
     <th style="word-wrap: break-word; max-width: 35px;" >Số lượng</th>
     <th style="word-wrap: break-word; max-width: 70px; padding: 0;">Nội dung</th>
@@ -57,14 +57,14 @@
 <tbody>
   <tr *ngFor="let coupon of filteredCoupons || filteredDate || coupons" >
 
-    <td style="word-wrap: break-word; max-width: 75px;" > <b> GAP2002DISCOUNT{{coupon.MaCoupon}} </b><br>
+    <td style="word-wrap: break-word; max-width: 75px;" > <b>{{coupon.MaCoupon}} </b><br>
 
       <img  style="max-width: 100%; max-height: 100%;"  src="\assets\Img\coupon.png" alt="">
 
     </td>
 
-    <td style="word-wrap: break-word; max-width: 45px;" > {{coupon.TenCoupon}} </td>
-    <td style="word-wrap: break-word; max-width: 55px;"> {{coupon.Giatrigiam.toLocaleString('vi-VN')}} </td>
+    <!-- <td style="word-wrap: break-word; max-width: 45px;" > {{coupon.TenCoupon}} </td> -->
+    <td style="word-wrap: break-word; max-width: 55px;"> {{coupon.Giatrigiam}} %</td>
     <td style="word-wrap: break-word; max-width: 35px;">{{coupon.Soluong}}</td>
     <td style="word-wrap: break-word; max-width: 70px; text-align: center;" >
       <ul style="list-style-type: none; ">
