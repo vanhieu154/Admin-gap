@@ -70,8 +70,14 @@ error:(err)=>{this.errMessage=err}
         })
 
     }
+    showAllOrder(){
+      this.show_orders=this.admin_orders
+    }
+    showClosedOrder(){
+      this.show_orders=this.admin_closed_order
 
-  }
+    }
+
   showopenOrder(){
     this.show_orders=this.admin_open_order
     // console.log(this.show_orders);
@@ -101,5 +107,6 @@ error:(err)=>{this.errMessage=err}
     const ShipByDate = new Date(admin_order.ShipByDate);
     return cDate >= start && ShipByDate <= end;
   });
+ }
 }
 

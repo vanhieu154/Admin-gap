@@ -13,8 +13,8 @@ export class AdminLoginComponent {
   name = new FormControl('', [Validators.required]);
 
 
-  adminname = '';
-  password = '';
+  adminname:string = '';
+  password:string = '';
   message = '';
   admin:any;
   errMessage:string='';
@@ -23,14 +23,17 @@ export class AdminLoginComponent {
   }
 
   onLogin(): void {
+    // console.log(this.adminname);
+    console.log(this.adminname, this.password);
+
     this.logService.login(this.adminname, this.password).subscribe({
       next: (data) => {
         this.admin = data;
-        sessionStorage.setItem("Account", JSON.stringify(this.admin));
-        if(this.admin.adminname!=null && this.admin.password!=null){
-          alert('Tên đăng nhập hoặc mật khẩu không đúng!');
+        if(this.admin.message==null){
+          sessionStorage.setItem("Account", JSON.stringify(this.admin));
+
         }else{
-          this.router.navigate(['']);  // dẫn điến trang quản lý admin
+          alert('Tên đăng nhập hoặc mật khẩu không đúng!');
         }
       },
 
