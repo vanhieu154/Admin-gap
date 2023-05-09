@@ -13,7 +13,6 @@ import { Cart } from "./cart";
       public Img:string="",
       public cDate:Date=new Date(),
       public cart:Cart []=[],
-      public order:string[] =[],
       public discount:string[] =[],
       public Address:string []=[],
       public UserStatus:boolean=true,

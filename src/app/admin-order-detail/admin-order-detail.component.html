@@ -53,18 +53,24 @@
       </button>
 
     </div> -->
+    <div class="col">
+      <button mat-icon-button class="example-icon bu_hover" aria-label="Example icon-button with share icon">
+        <span class="order_status">Total Due:{{(selectedProduct.total) | currency:'VND':'symbol-narrow'}}</span>
+      </button>
+
+    </div>
   </div>
-<div class="row text-center">
+<!-- <div class="row text-center">
   <div class="col text-center">
-<!-- <span>Orders #1002</span> -->
+<span>Orders #1002</span>
 <div  style="margin-left: 20%;margin-top: 2%;">
-  <!-- <mat-chip-listbox aria-label="status selection">
+  <mat-chip-listbox aria-label="status selection">
 
     <mat-chip-option>pending</mat-chip-option>
     <mat-chip-option color="warn">in transit</mat-chip-option>
     <mat-chip-option color="accent" selected>received</mat-chip-option>
     <mat-chip-option color="warn" >cancelled</mat-chip-option>
-  </mat-chip-listbox> -->
+  </mat-chip-listbox>
 </div>
 
   </div>
@@ -75,7 +81,7 @@
     </button>
 
   </div>
-</div>
+</div> -->
 <hr>
 <div class="row">
   <table class="table table-hover table-danger table-striped">

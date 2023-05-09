@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Blog } from '../blog';
+import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -30,7 +31,10 @@ CreateNew() {
 
 deleteBlog(_id:any)
   {
-    const dialogRef = this.dialog.open(DeleteDialogComponent);
+    const dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+      width: '417px',
+      height: '220px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
@@ -78,22 +82,4 @@ deleteBlog(_id:any)
  panelOpenState = false;
 }
 
-@Component({
-  selector: 'app-delete-dialog',
-  templateUrl: './delete-dialog-component.component.html',
-})
-export class DeleteDialogComponent {
-  constructor(
-    public dialogRef: MatDialogRef<DeleteDialogComponent>,private router:Router,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
 
-  onCancelClick(): void {
-    this.dialogRef.close();
-  }
-
-  onConfirmClick(): void {
-    this.dialogRef.close(true);
-  }
-
-}
