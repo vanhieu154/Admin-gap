@@ -6,7 +6,7 @@ export class Product {
   public TenSP: string="",
   public LoaiSP: string="",
   public Hang: string="",
-  public Discount: number=0,
+  public DiscountId: number=0,
   public Price: number=0,
   public Hinhanh: string[] =[],
   public Mota: string[]=[],
@@ -20,7 +20,7 @@ export interface IProduct {
    TenSP: string
    LoaiSP: string
    Hang: string
-   Discount: number
+   DiscountId: number
    Price: number
    Hinhanh: string[]
    Mota: string[]

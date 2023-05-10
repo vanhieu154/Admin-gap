@@ -4,6 +4,7 @@ export class Promotion {
   public _id:any=null,
   public TenPromotion: string="",
   public LoaiPromotion: string="",
+  public Hinhanh: string="",
   public Mota: string[]=[],
   public Gia: number=0,
   public SanphamApdung: string="",

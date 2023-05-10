@@ -68,7 +68,17 @@ export class ProUpdateComponent {
         this.router.navigate(['promotions'])
       });
     }
-
+    onFileSelected(event: any,promotion:Promotion) {
+      let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+    promotion.Hinhanh=reader.result!.toString()
+    };
+    reader.onerror = function (error) {
+    console.log('Error: ', error);
+    };
+    }
   // putPromotion()
   //  {
   //   this.promotion.cDate= new Date(Date.now())

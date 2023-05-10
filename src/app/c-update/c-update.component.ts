@@ -22,7 +22,7 @@ export class CUpdateComponent {
   coupons:any;
   products:any;
   product=new Product();
-  selectedFiles: File[] = [];
+  // selectedFiles: File[] = [];
   errMessage:string='';
   id: any;
 constructor(public _service: CouponApiService,private _pservice: ProductApiService, private http: HttpClient,private router:Router,public dialog: MatDialog,private activateRoute:ActivatedRoute){
@@ -63,54 +63,17 @@ putCoupon()
     this.router.navigate(['coupons'])
   });
  }
-
-
- @ViewChild('selectedProductsDiv') selectedProductsDiv!: ElementRef;
-  selectedProducts: any[] = [];
-
-  onCheckboxChange(event: any, product: any) {
-    if (event.target.checked) {
-      this.selectedProducts.push(product);
-    } else {
-      const index = this.selectedProducts.indexOf(product);
-      this.selectedProducts.splice(index, 1);
-    }
-    this.showSelectedProducts();
-  }
-  showSelectedProducts() {
-    const selectedProductsHtml = this.selectedProducts.map(product => {
-      return `
-        <tr>
-          <td style="font-size:1rem; padding-right: 20px">${product.MaSP}</td>
-          <td style="width: 100px"><img style="max-height: 40%; max-width: 40%; text-align: center;" src="${product.Hinhanh[0]}" /></td>
-          <td style="margi"> ${product.TenSP} </td>
-        </tr>
-      `;
-    }).join('');
-
-    const html = `
-      <table class="product-table">
-        <thead>
-          <tr style="font-size:1rem">
-            <th>Mã </th>
-            <th>Hình ảnh</th>
-            <th>Tên sản phẩm</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${selectedProductsHtml}
-        </tbody>
-      </table>
-    `;
-
-    this.selectedProductsDiv.nativeElement.innerHTML = html;
-  }
-
-
-
-  ngAfterViewInit() {
-    this.showSelectedProducts();
-  }
+ onFileSelected(event: any,coupon:Coupon) {
+  let file = event.target.files[0];
+let reader = new FileReader();
+reader.readAsDataURL(file);
+reader.onload = function () {
+coupon.Hinhanh=reader.result!.toString()
+};
+reader.onerror = function (error) {
+console.log('Error: ', error);
+};
+}
 
 
 

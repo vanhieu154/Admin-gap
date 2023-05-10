@@ -22,6 +22,16 @@
       </td>
     </tr>
 
+    <tr>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Hình ảnh</td>
+      <td style=" text-align: left; word-wrap: break-word; max-width: 280px; ">
+
+        <input type="file" class="file-input" name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,promotion)" required minlength="1">
+        <div style="flex-basis: 50%; padding: 5px;">
+          <img  style="max-width: 150px; max-height: 200px;" src="{{promotion.Hinhanh}}" alt="">
+        </div>
+      </td>
+    </tr>
 
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại khuyến mãi</td>
