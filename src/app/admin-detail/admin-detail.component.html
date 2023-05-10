@@ -8,43 +8,43 @@
       <div class="col-sm-3"></div>
       <div class="col-sm-2">ID:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">1008</div>
+      <div class="col-sm-6">{{user ? user._id : ''}}</div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-2">Họ tên:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">Ty Thy</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.adminname"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
-      <div class="col-sm-2">Tên dăng nhập:</div>
+      <div class="col-sm-2">Tên đăng nhập:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">tythy123</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.AccountName"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-2">Ngày sinh:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">02/04/2002</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.DOB"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-2">Giới tính:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">Nữ</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Gender"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-2">Email:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">kdkwe@gmail.com</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Email"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-2">Số điện thoại:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">0859078555</div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Phone"></div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
@@ -61,7 +61,7 @@
         </form> -->
         <mat-form-field appearance="fill">
           <mat-label>Quyền hạn</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="selectedRole" (ngModelChange)="changeRole()">
             <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -71,10 +71,10 @@
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-5">
-        <button class="stroked-button-1" routerLink="/admin-list" >Back</button>
+        <button class="stroked-button-1" routerLink="/admin-list">Back</button>
       </div>
       <div class="col-sm-1">
-        <button class="stroked-button-2" >Save</button>
+        <button (click)="update()" class="stroked-button-2">Save</button>
         <div class="col-sm-5"></div>
       </div>
 
