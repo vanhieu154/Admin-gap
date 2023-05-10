@@ -13,14 +13,14 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a routerLink="/admin-list" class="item font">Quản lý Admin</a>
+                <a (click)="toAdminList()" class="item font">Quản lý Admin</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/admin-list" class="item">Danh sách Admin</a>
+                <a (click)="toAdminList()" class="item">Danh sách Admin</a>
               </div>
               <div class="list">
-                <a routerLink="/add-admin" class="item">Thêm tài khoản Admin</a>
+                <a (click)="toAddAdmin()" class="item">Thêm tài khoản Admin</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>
@@ -32,11 +32,11 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a routerLink="/customer-list" class="item font">Quản lý khách hàng</a>
+                <a (click)="toCustomerList()" class="item font">Quản lý khách hàng</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/customer-list" class="item">Danh sách tài khoản khách hàng</a>
+                <a (click)="toCustomerList()" class="item">Danh sách tài khoản khách hàng</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>
@@ -48,14 +48,14 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a routerLink="/blog-list" class="item font">Quản lý Blog</a>
+                <a (click)="toBlogList()" class="item font">Quản lý Blog</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/blog-list" class="item">Danh sách Blog</a>
+                <a (click)="toBlogList()" class="item">Danh sách Blog</a>
               </div>
               <div class="list">
-                <a routerLink="/add-blog" class="item">Tạo Blog</a>
+                <a (click)="toAddBlog()" class="item">Tạo Blog</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>
@@ -71,16 +71,16 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/promotions" class="item">Chương trình khuyến mãi</a>
+                <a (click)="toPromotion()" class="item">Chương trình khuyến mãi</a>
               </div>
               <div class="list">
-                <a routerLink="/newpromotion" class="item">Tạo chương trình khuyến mãi</a>
+                <a (click)="toNewPromotion()" class="item">Tạo chương trình khuyến mãi</a>
               </div>
               <div class="list">
-                <a routerLink="/coupons" class="item">Mã giảm giá</a>
+                <a (click)="toCoupons()" class="item">Mã giảm giá</a>
               </div>
               <div class="list">
-                <a routerLink="/newcoupon" class="item">Tạo mã giảm giá</a>
+                <a (click)="toNewCoupons()" class="item">Tạo mã giảm giá</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>
@@ -92,11 +92,11 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a routerLink="/admin-order" class="item font">Quản lý đơn hàng</a>
+                <a (click)="toAdminOrder()" class="item font">Quản lý đơn hàng</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/admin-order" class="item">Danh sách đơn hàng</a>
+                <a (click)="toAdminOrder()" class="item">Danh sách đơn hàng</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>
@@ -107,14 +107,14 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a routerLink="/adproducts" class="item font">Quản lý sản phẩm</a>
+                <a (click)="toAddProduct()" class="item font">Quản lý sản phẩm</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">
-                <a routerLink="/adproducts" class="item">Danh sách sản phẩm</a>
+                <a (click)="toAddProduct()" class="item">Danh sách sản phẩm</a>
               </div>
               <div class="list">
-                <a routerLink="/newproduct" class="item">Tạo sản phẩm</a>
+                <a (click)="toNewProduct()" class="item">Tạo sản phẩm</a>
               </div>
             </mat-expansion-panel>
         </mat-accordion>

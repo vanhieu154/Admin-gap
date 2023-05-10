@@ -11,11 +11,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-admin.component.css']
 })
 export class AddAdminComponent {
-  qh:string[] = [
-    'Nhân viên trực chat',
-    'Nhân viên',
-    'Cửa hàng trưởng',];
+    qh = [
+      { value: 0, label: 'Quản trị viên' },
+      { value: 1, label: 'Cửa hàng trưởng' },
+      { value: 2, label: 'Nhân viên cửa hàng' },
+      // { value: 3, label: 'Nhân viên trực chat' },
 
+    ];
     admin=new Admin();
     errMessage:string=''
     selectedFiles: File[] = [];
@@ -47,11 +49,14 @@ export class AddAdminComponent {
     }
     postAdmin()
     {
-      this._service.postAdmin(this.admin).subscribe({
-      next:(data)=>{this.admin=data},
-      error:(err)=>{this.errMessage=err}
-    })
-    this.router.navigate(['admin-list'])
+
+        // this.admin.Is_Active=true,
+        this.admin.cDate=new Date()
+        this._service.postAdmin(this.admin).subscribe({
+        next:(data)=>{this.admin=data},
+        error:(err)=>{this.errMessage=err}
+      })
+      this.router.navigate(['admin-list'])
 
     }
 

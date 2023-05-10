@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, retry, throwError } from 'rxjs';
+import { Admin } from './admin';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class LogService {
         retry(3),
         catchError(this.handleError)
       );
+  };
+  getAdmin(_id:any):Observable<any>
+  {
+    const headers=new HttpHeaders().set("Content-Type","text/plain;charset=utf-8")
+    const requestOptions:Object={
+    headers:headers,
+    responseType:"text"
+  }
+  return this.http.get<any>("http://localhost:4000/admins/"+_id,requestOptions).pipe(
+  map(res=>JSON.parse(res) as Admin),
+  retry(3),
+  catchError(this.handleError))
   }
   handleError(error:HttpErrorResponse){
     return throwError(()=>new Error(error.message))

@@ -120,7 +120,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Quyền hạn</mat-label>
             <mat-select [(ngModel)]="admin.Permission">
-              <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
+              <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan.value">{{quyenHan.label}}</mat-option>
             </mat-select>
           </mat-form-field>
             <!-- <select type="text" class="form-control" #style="ngModel" name="style"
