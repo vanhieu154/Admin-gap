@@ -31,7 +31,7 @@ const routes: Routes = [
     path:'customer-detail/:id',component:CustomerDetailComponent
   },
   {
-    path:"admin-detail",component:AdminDetailComponent
+    path:"admin-detail/:id",component:AdminDetailComponent
   },
   {
     path:"add-admin",component:AddAdminComponent

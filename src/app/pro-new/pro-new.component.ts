@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
@@ -33,12 +33,19 @@ export class ProNewComponent {
       next:(data)=>{this.promotions=data},
       error:(err)=>{this.errMessage=err}
       })
+
+
   }
 
 postPromotion()  {
+  let post=[]
   // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
   this.promotion.cDate= new Date(Date.now())
-  this._service.postPromotion(this.promotion).subscribe({
+  post.push(this.promotion)
+  post.push(this.selectedProducts)
+  console.log(post[0]);
+
+  this._service.postPromotion(post).subscribe({
     next:(data)=>{this.promotion=data},
     error:(err)=>{this.errMessage=err}
   })
@@ -50,7 +57,17 @@ postPromotion()  {
     this.router.navigate(['promotions'])
   });
 }
-
+onFileSelected(event: any,promotion:Promotion) {
+  let file = event.target.files[0];
+let reader = new FileReader();
+reader.readAsDataURL(file);
+reader.onload = function () {
+promotion.Hinhanh=reader.result!.toString()
+};
+reader.onerror = function (error) {
+console.log('Error: ', error);
+};
+}
 isInputFocused = false;
 
 hideProducts() {
@@ -90,6 +107,56 @@ range = new FormGroup({
 });
 
 
+
+
+@ViewChild('selectedProductsDiv') selectedProductsDiv!: ElementRef;
+selectedProducts: any[] = [];
+
+onCheckboxChange(event: any, product: any) {
+  if (event.target.checked) {
+    this.selectedProducts.push(product._id);
+  } else {
+    const index = this.selectedProducts.indexOf(product);
+    this.selectedProducts.splice(index, 1);
+  }
+  console.log( this.selectedProducts);
+
+  // this.showSelectedProducts();
+}
+// showSelectedProducts() {
+//   const selectedProductsHtml = this.selectedProducts.map(product => {
+//     return `
+//       <tr>
+//         <td style="font-size:1rem; padding-right: 20px">${product.MaSP}</td>
+//         <td style="width: 100px"><img style="max-height: 40%; max-width: 40%; text-align: center;" src="${product.Hinhanh[0]}" /></td>
+//         <td style="margi"> ${product.TenSP} </td>
+//       </tr>
+//     `;
+//   }).join('');
+
+//   const html = `
+//     <table class="product-table">
+//       <thead>
+//         <tr style="font-size:1rem">
+//           <th>Mã </th>
+//           <th>Hình ảnh</th>
+//           <th>Tên sản phẩm</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         ${selectedProductsHtml}
+//       </tbody>
+//     </table>
+//   `;
+
+//   this.selectedProductsDiv.nativeElement.innerHTML = html;
+// }
+
+
+
+ngAfterViewInit() {
+  // this.showSelectedProducts();
+}
 toMainPromotionPage(){
   this.router.navigate(['promotions'])
     }

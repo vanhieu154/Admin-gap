@@ -44,9 +44,11 @@
 </thead>
 <tbody>
   <tr *ngFor="let promotion of filteredPromotions || filteredDate || promotions">
-    <td style="word-wrap: break-word; max-width: 45px;" > <b>{{promotion.TenPromotion}} </b> </td>
+    <td style="word-wrap: break-word; max-width: 45px;" > <b>{{promotion.TenPromotion}} </b><br>
+
+      <img  style=" max-height: 98%; max-width: 98%; text-align: center;" src='{{promotion. Hinhanh}}' alt="" > </td>
     <td style="word-wrap: break-word; max-width: 20px;" >{{promotion.LoaiPromotion}}</td>
-    <td style="word-wrap: break-word; max-width: 20px;">{{promotion.Mota}}</td>
+    <td style="word-wrap: break-word; max-width: 20px;" innerHTML={{promotion.Mota}}></td>
     <td style="word-wrap: break-word; max-width: 20px;">{{promotion.Gia.toLocaleString('vi-VN')}}đ</td>
     <td style="word-wrap: break-word; max-width: 40px;">
       {{promotion.Ngaybatdau | date : "dd/MM/yyyy"}} - {{promotion.Ngayketthuc | date : "dd/MM/yyyy"}}

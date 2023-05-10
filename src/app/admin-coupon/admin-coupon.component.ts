@@ -65,15 +65,13 @@ deleteCoupon(id: string) {
 
   filterCoupons() {
      this.filteredCoupons = this.coupons.filter((coupon:  {
-      MaCoupon:string,
       TenCoupon:string,
       Soluong:number,
       Giatrigiam:number,
       Noidung:string,
 
       }) =>
-    coupon.MaCoupon.toString().includes(this.searchCoupon.toLocaleLowerCase()) ||
-    coupon.TenCoupon.toString().includes(this.searchCoupon) ||
+    coupon.TenCoupon.toString().includes(this.searchCoupon.toLocaleLowerCase()) ||
     coupon.Soluong.toString().includes(this.searchCoupon)||
     coupon.Giatrigiam.toString().includes(this.searchCoupon)||
     coupon.Noidung.toString().includes(this.searchCoupon));

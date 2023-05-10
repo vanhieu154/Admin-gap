@@ -45,20 +45,7 @@ next:(data)=>{
 },
 error:(err)=>{this.errMessage=err}
 })
-// this.activateRoute.paramMap.subscribe((paramMap: ParamMap) => {
-//   const _id = paramMap.get('_id');
-//   if (_id) {
-//     this._fs.getAdminOrder(_id).subscribe({
-//       next: (data) => {
-//         this.selectedProduct = data;
-//         this.admin_order = this.selectedProduct;
-//       },
-//       error: (err) => {
-//         this.errMessage = err;
-//       }
-//     });
-//   }
-// });
+
 }
   viewDetail(f:any)
     {
@@ -83,13 +70,14 @@ error:(err)=>{this.errMessage=err}
         })
 
     }
-  showAllOrder(){
-    this.show_orders=this.admin_orders
-  }
-  showClosedOrder(){
-    this.show_orders=this.admin_closed_order
+    showAllOrder(){
+      this.show_orders=this.admin_orders
+    }
+    showClosedOrder(){
+      this.show_orders=this.admin_closed_order
 
-  }
+    }
+
   showopenOrder(){
     this.show_orders=this.admin_open_order
     // console.log(this.show_orders);
@@ -119,6 +107,6 @@ error:(err)=>{this.errMessage=err}
     const ShipByDate = new Date(admin_order.ShipByDate);
     return cDate >= start && ShipByDate <= end;
   });
-}
+ }
 }
 

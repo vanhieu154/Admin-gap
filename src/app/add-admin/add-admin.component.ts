@@ -11,11 +11,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-admin.component.css']
 })
 export class AddAdminComponent {
-  qh:string[] = [
-    'Nhân viên trực chat',
-    'Nhân viên',
-    'Cửa hàng trưởng',];
+    qh = [
+      { value: 0, label: 'Quản trị viên' },
+      { value: 1, label: 'Cửa hàng trưởng' },
+      { value: 2, label: 'Nhân viên cửa hàng' },
+      // { value: 3, label: 'Nhân viên trực chat' },
 
+    ];
     admin=new Admin();
     errMessage:string=''
     selectedFiles: File[] = [];
@@ -47,11 +49,14 @@ export class AddAdminComponent {
     }
     postAdmin()
     {
-      this._service.postAdmin(this.admin).subscribe({
-      next:(data)=>{this.admin=data},
-      error:(err)=>{this.errMessage=err}
-    })
-    this.router.navigate(['admin-list'])
+
+        // this.admin.Is_Active=true,
+        this.admin.cDate=new Date()
+        this._service.postAdmin(this.admin).subscribe({
+        next:(data)=>{this.admin=data},
+        error:(err)=>{this.errMessage=err}
+      })
+      this.router.navigate(['admin-list'])
 
     }
 
@@ -103,43 +108,5 @@ export class AddAdminComponent {
     }
 
 
-
-  // admins: Admin[] = [];
-  //   this.Account_Name = new FormControl('', [Validators.required]);
-  //   this.password = new FormControl('', [Validators.required, Validators.minLength(6)]);
-  //   this.name = new FormControl('', Validators.required);
-  //   this.email = new FormControl('');
-  //   this.dob = new FormControl('', Validators.required);
-  //   this.phoneNumber = new FormControl('', [
-  //     Validators.required,
-  //     Validators.pattern(/^(03|05|08|09)\d{8}$/),
-  //   ]);
-  //   this.gender = new FormControl('', Validators.required);
-  //   this.registerForm = this.formBuilder.group({
-  //     Account_Name: this.Account_Name,
-  //     password: this.password,
-  //     name: this.name,
-  //     email: this.email,
-  //     dob: this.dob,
-  //     phoneNumber: this.phoneNumber,
-  //     gender:this.gender,
-  //   });
-  //   getAdminFromForm(): Admin {
-  //     return new Admin(
-  //       null,
-  //       this.acc.value,
-  //       this.password.value,
-  //       this.name.value,
-  //       this.email.value,
-  //       this.dob.value,
-  //       this.phoneNumber.value,
-  //       this.gender.value,
-  //       '',
-  //       new Date(),
-  //       [],
-  //       [],
-  //       [],
-  //       [],
-  //     );
 }
 

@@ -1,9 +1,8 @@
 export class Coupon{
   constructor(
   public _id:any=null,
-  public MaCoupon:number=0,
   public TenCoupon:string="",
-  public Hinhanh: string[] =[],
+  public Hinhanh: string="",
   public Soluong:number=0,
   public Giatrigiam:number=0,
   public Noidung:string="",

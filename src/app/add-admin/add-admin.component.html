@@ -36,6 +36,17 @@
     </div>
     <div class="row">
       <div class="col-sm-1"></div>
+      <div class="col-sm-4">Mật khẩu:</div>
+      <!-- <div class="col-sm-1"></div> -->
+      <div class="col-sm-6">
+        <div class="">
+          <input type="password" name="password" id="password" placeholder="Nhập mật khẩu"
+          required [(ngModel)]="admin.password"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
       <div class="col-sm-4">Ngày sinh:</div>
       <!-- <div class="col-sm-1"></div> -->
       <div class="col-sm-6">
@@ -109,7 +120,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Quyền hạn</mat-label>
             <mat-select [(ngModel)]="admin.Permission">
-              <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
+              <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan.value">{{quyenHan.label}}</mat-option>
             </mat-select>
           </mat-form-field>
             <!-- <select type="text" class="form-control" #style="ngModel" name="style"

@@ -20,6 +20,7 @@ export class ProUpdateComponent {
   selectPromotionId: string='';
   promotion=new Promotion();
   promotions:any;
+  productpromotions:any;
   products:any;
   product=new Product();
   id: any;
@@ -36,34 +37,66 @@ export class ProUpdateComponent {
             next:(data)=>{this.promotion=data},
             error:(err)=>{this.errMessage=err}
           })
-
+          this._service.getProductPromotion(this.id).subscribe({
+            next:(data)=>{this.productpromotions=data},
+            error:(err)=>{this.errMessage=err}
+          })
         }
       }
     )
-    this._service.getPromotions().subscribe({
-     next:(data)=>{this.promotions=data},
-     error:(err)=>{this.errMessage=err}
-   })
-
     }
 
+    selectedProducts: any[] = [];
 
-  putPromotion()
-   {
-    this.promotion.cDate= new Date(Date.now())
-    this._service.putPromotion(this.promotion).subscribe({
-      next:(data)=>{this.promotions=data},
-      error:(err)=>{this.errMessage=err}
+    putPromotion()  {
+      let put=[]
+      // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
+      // this.promotion.cDate= new Date(Date.now())
+      put.push(this.promotion)
+      put.push(this.selectedProducts)
+      console.log(put[0]);
 
-    })
-    const dialogRef = this.dialog.open(SuccessDialogComponent, {
-      width: '417px',
-      height: '220px',
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['promotions'])
-    });
-   }
+      this._service.putPromotion(put).subscribe({
+        next:(data)=>{this.promotion=data},
+        error:(err)=>{this.errMessage=err}
+      })
+      const dialogRef = this.dialog.open(SuccessDialogComponent, {
+        width: '417px',
+        height: '220px',
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['promotions'])
+      });
+    }
+    onFileSelected(event: any,promotion:Promotion) {
+      let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+    promotion.Hinhanh=reader.result!.toString()
+    };
+    reader.onerror = function (error) {
+    console.log('Error: ', error);
+    };
+    }
+  // putPromotion()
+  //  {
+  //   this.promotion.cDate= new Date(Date.now())
+  //   this._service.putPromotion(this.promotion).subscribe({
+  //     next:(data)=>{this.promotions=data},
+  //     error:(err)=>{this.errMessage=err}
+
+  //   })
+  //   const dialogRef = this.dialog.open(SuccessDialogComponent, {
+  //     width: '417px',
+  //     height: '220px',
+  //   });
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     this.router.navigate(['promotions'])
+  //   });
+  //  }
+
+
 
    displayTable = false;
    showTable() {

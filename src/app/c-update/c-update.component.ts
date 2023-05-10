@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CouponApiService } from '../admin-coupon/coupon-api.service';
 import { HttpClient } from '@angular/common/http';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -22,7 +22,7 @@ export class CUpdateComponent {
   coupons:any;
   products:any;
   product=new Product();
-  selectedFiles: File[] = [];
+  // selectedFiles: File[] = [];
   errMessage:string='';
   id: any;
 constructor(public _service: CouponApiService,private _pservice: ProductApiService, private http: HttpClient,private router:Router,public dialog: MatDialog,private activateRoute:ActivatedRoute){
@@ -63,21 +63,88 @@ putCoupon()
     this.router.navigate(['coupons'])
   });
  }
-//  onFileSelected(event: any,coupon:Coupon) {
-//   let files = event.target.files;
-//   for(let i = 0; i < files.length; i++) {
-//     let reader = new FileReader();
-//     reader.readAsDataURL(files[i]);
-//     reader.onload = function () {
-//       coupon.Hinhanh.push(reader.result!.toString());
-//     };
+ onFileSelected(event: any,coupon:Coupon) {
+  let file = event.target.files[0];
+let reader = new FileReader();
+reader.readAsDataURL(file);
+reader.onload = function () {
+coupon.Hinhanh=reader.result!.toString()
+};
+reader.onerror = function (error) {
+console.log('Error: ', error);
+};
+}
 
-//     reader.onerror = function (error) {
-//       console.log('Error: ', error);
-//     };
-//   }
 
-// }
+
+
+ onCouponValueIncrease() {
+  if (this.coupon.Giatrigiam < 100) {
+    this.coupon.Giatrigiam++;
+  }
+}
+
+onCouponValueDecrease() {
+  if (this.coupon.Giatrigiam > 0) {
+    this.coupon.Giatrigiam--;
+  }
+}
+
+onCouponValueKeyPress(event: KeyboardEvent) {
+  const couponValue = parseInt((event.target as HTMLInputElement).value.padStart(1 || 2));
+
+  if (!isNaN(couponValue) && couponValue >= 10 && couponValue <= 100) {
+    this.coupon.Giatrigiam = couponValue;
+  }
+  else {
+    this.coupon.Giatrigiam = 0;
+  }
+}
+couponValueIncreaseIntervalId: any;
+couponValueDecreaseIntervalId: any;
+couponValueChangeTimer: any;
+onCouponValueIncreaseStart(event: MouseEvent) {
+  this.couponValueChangeTimer = setTimeout(() => {
+    this.couponValueIncreaseIntervalId = setInterval(() => {
+      this.onCouponValueIncrease();
+    }, 100);
+  }, 200);
+}
+
+onCouponValueDecreaseStart(event: MouseEvent) {
+  this.couponValueChangeTimer = setTimeout(() => {
+    this.couponValueDecreaseIntervalId = setInterval(() => {
+      this.onCouponValueDecrease();
+    }, 100);
+  }, 200);
+}
+
+increaseCouponValue() {
+  if (this.coupon.Giatrigiam < 100) {
+    this.coupon.Giatrigiam++;
+  }
+}
+
+decreaseCouponValue() {
+  if (this.coupon.Giatrigiam > 0) {
+    this.coupon.Giatrigiam--;
+  }
+}
+
+
+onCouponValueEnd() {
+  clearInterval(this.couponValueIncreaseIntervalId);
+  clearInterval(this.couponValueDecreaseIntervalId);
+  clearTimeout(this.couponValueChangeTimer);
+}
+
+onCouponValueIncreaseClick() {
+  this.increaseCouponValue();
+}
+
+onCouponValueDecreaseClick() {
+  this.decreaseCouponValue();
+}
 
  range = new FormGroup({
   start: new FormControl<Date | null>(null),

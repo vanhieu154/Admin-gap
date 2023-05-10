@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CouponApiService } from '../admin-coupon/coupon-api.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ export class CNewComponent {
   coupons:any;
   products:any;
   product=new Product();
-  selectedFiles: File[] = [];
+  // selectedFiles: File = null;
   errMessage:string=''
   constructor(public _service: CouponApiService,private _pservice: ProductApiService, private http: HttpClient,private router:Router,public dialog: MatDialog){
   this._service.getCoupons().subscribe({
@@ -34,7 +34,7 @@ export class CNewComponent {
   }
 
   postCoupon()  {
-    this.coupon.MaCoupon=this.coupons.length+1;
+
     this.coupon.cDate= new Date(Date.now())
     this._service.postCoupon(this.coupon).subscribe({
       next:(data)=>{this.coupon=data},
@@ -50,21 +50,91 @@ export class CNewComponent {
 
     });
   }
-  // onFileSelected(event: any,coupon:Coupon) {
-  //   let files = event.target.files;
-  //   for(let i = 0; i < files.length; i++) {
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(files[i]);
-  //     reader.onload = function () {
-  //       coupon.Hinhanh.push(reader.result!.toString());
-  //     };
 
-  //     reader.onerror = function (error) {
-  //       console.log('Error: ', error);
-  //     };
-  //   }
+  onFileSelected(event: any,coupon:Coupon) {
+            let file = event.target.files[0];
+        let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+      coupon.Hinhanh=reader.result!.toString()
+      };
+      reader.onerror = function (error) {
+      console.log('Error: ', error);
+      };
+     }
 
-  // }
+
+  onDeleteImage(index: number) {
+    this.product.Hinhanh.splice(index, 1);
+  }
+
+  onCouponValueIncrease() {
+    if (this.coupon.Giatrigiam < 100) {
+      this.coupon.Giatrigiam++;
+    }
+  }
+
+  onCouponValueDecrease() {
+    if (this.coupon.Giatrigiam > 0) {
+      this.coupon.Giatrigiam--;
+    }
+  }
+
+  onCouponValueKeyPress(event: KeyboardEvent) {
+    const couponValue = parseInt((event.target as HTMLInputElement).value.padStart(1 || 2));
+
+    if (!isNaN(couponValue) && couponValue >= 10 && couponValue <= 100) {
+      this.coupon.Giatrigiam = couponValue;
+    }
+    else {
+      this.coupon.Giatrigiam = 0;
+    }
+  }
+  couponValueIncreaseIntervalId: any;
+  couponValueDecreaseIntervalId: any;
+  couponValueChangeTimer: any;
+  onCouponValueIncreaseStart(event: MouseEvent) {
+    this.couponValueChangeTimer = setTimeout(() => {
+      this.couponValueIncreaseIntervalId = setInterval(() => {
+        this.onCouponValueIncrease();
+      }, 100);
+    }, 200);
+  }
+
+  onCouponValueDecreaseStart(event: MouseEvent) {
+    this.couponValueChangeTimer = setTimeout(() => {
+      this.couponValueDecreaseIntervalId = setInterval(() => {
+        this.onCouponValueDecrease();
+      }, 100);
+    }, 200);
+  }
+
+  increaseCouponValue() {
+    if (this.coupon.Giatrigiam < 100) {
+      this.coupon.Giatrigiam++;
+    }
+  }
+
+  decreaseCouponValue() {
+    if (this.coupon.Giatrigiam > 0) {
+      this.coupon.Giatrigiam--;
+    }
+  }
+
+
+  onCouponValueEnd() {
+    clearInterval(this.couponValueIncreaseIntervalId);
+    clearInterval(this.couponValueDecreaseIntervalId);
+    clearTimeout(this.couponValueChangeTimer);
+  }
+
+  onCouponValueIncreaseClick() {
+    this.increaseCouponValue();
+  }
+
+  onCouponValueDecreaseClick() {
+    this.decreaseCouponValue();
+  }
 
 
   displayTable = false;
@@ -90,8 +160,6 @@ export class CNewComponent {
      product.LoaiSP.toLowerCase().includes(this.searchProduct.toLowerCase()) ||
      product.Price.toString().toLowerCase().includes(this.searchProduct.toLowerCase()));
   }
-
-
 
 
   range = new FormGroup({

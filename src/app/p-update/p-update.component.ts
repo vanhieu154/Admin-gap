@@ -17,6 +17,7 @@ export class PUpdateComponent {
   public Editor = ClassicEditor;
   types=["Váy","Áo","Phụ kiện","Quần"]
   Brands = ["ZARA", "LABB", "H&M", "JUNO", "SHEIN"];
+  Sizes = ["S", "M", "L", "XL", "Freesize"];
   selectProductId: string='';
   // product: Product | undefined;
   product=new Product();
