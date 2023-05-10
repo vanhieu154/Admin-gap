@@ -50,6 +50,7 @@ import { CUpdateComponent } from './c-update/c-update.component';
 import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { OverviewComponent } from './overview/overview.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { MatRadioModule } from '@angular/material/radio';
     CNewComponent,
     CUpdateComponent,
     ProUpdateComponent,
-    ProNewComponent
+    ProNewComponent,
+    OverviewComponent
 
 
   ],

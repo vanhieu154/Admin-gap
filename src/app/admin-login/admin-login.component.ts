@@ -30,7 +30,7 @@ export class AdminLoginComponent {
         if(this.admin.adminname!=null && this.admin.password!=null){
           alert('Tên đăng nhập hoặc mật khẩu không đúng!');
         }else{
-          this.router.navigate(['']);  // dẫn điến trang quản lý admin
+          this.router.navigate(['']);  // dẫn điến trang chủ admin
         }
       },
 

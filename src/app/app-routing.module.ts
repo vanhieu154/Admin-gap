@@ -21,6 +21,7 @@ import { PNewComponent } from './p-new/p-new.component';
 import { PUpdateComponent } from './p-update/p-update.component';
 import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
+import { OverviewComponent } from './overview/overview.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,9 @@ const routes: Routes = [
   },
   {
     path:"updatepromotion/:id",component:ProUpdateComponent
+  },
+  {
+    path:"overview",component:OverviewComponent
   },
 
 ]
