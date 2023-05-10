@@ -17,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class PNewComponent {
   public Editor = ClassicEditor;
   Brands = ["ZARA", "LABB", "H&M", "JUNO", "SHEIN"];
+  Sizes = ["S", "M", "L", "XL", "Freesize"];
   types=["Váy","Áo","Phụ kiện","Quần"];
 
 
