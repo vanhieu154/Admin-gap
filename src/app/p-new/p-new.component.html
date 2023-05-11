@@ -18,7 +18,7 @@
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Ảnh</td>
         <td style=" text-align: left; word-wrap: break-word; max-width: 280px; ">
 
-          <input type="file" class="file-input" name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,product)" required minlength="1">
+          <input type="file" class="file-input" name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,product)" required minlength="1" >
           <div style="flex-basis: 50%; padding: 5px;" *ngFor="let image of product.Hinhanh; let i = index;">
             <img  style="max-width: 150px; max-height: 200px;" src="{{image}}" alt="">
             <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
@@ -37,7 +37,7 @@
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Tên sản phẩm</td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
-          <textarea type="text" class=" input_border" #subject="ngModel"   [(ngModel)]="product.TenSP"  style=" width: 98%; height: 100px;" minlength="1"></textarea>
+          <textarea type="text" class=" input_border" #subject="ngModel"   [(ngModel)]="product.TenSP"  style=" width: 98%; height: 100px;" minlength="1" required></textarea>
         </td>
       </tr>
 
@@ -54,25 +54,20 @@
       <tr>
         <td style="text-align: left; padding-left: 20px; font-weight: bold;">Thương hiệu</td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
-          <input type="text" class="input_border" #style="ngModel" id="style" [(ngModel)]="product.Hang" list="brands" minlength="1">
+          <input type="text" class="input_border" #style="ngModel" id="style" [(ngModel)]="product.Hang" list="brands" minlength="1" required>
           <datalist id="brands">
             <option *ngFor="let brand of Brands" [value]="brand"></option>
           </datalist>
         </td>
         </tr>
 
-      <!-- <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giảm giá</td>
-        <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
-          <input type="number" class=" input_border" #subject="ngModel"  [(ngModel)]="product.Discount"  style=" width: 98%; "  min="0" max="100">
-        </td>
-      </tr> -->
+
 
 
         <tr>
-          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
+          <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá <br> <h4>* Giá phải từ 1000 đ</h4> </td>
           <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
-            <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Price"  style=" width: 98%; " minlength="4" required>
+            <input type="number" class=" input_border" #subject="ngModel" [(ngModel)]="product.Price" style=" width: 98%; " min="1000" [ngModelOptions]="{updateOn: 'blur'}" (ngModelChange)="checkPrice()" required>
           </td>
         </tr>
 
@@ -80,14 +75,14 @@
             <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mô tả</td>
             <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; max-height: 300px; padding-left: 2%;">
 
-              <ckeditor  #subject="ngModel" debounce="500" [(ngModel)]="product.Mota" [editor]="Editor"/>
+              <ckeditor  #subject="ngModel" debounce="500" [(ngModel)]="product.Mota" [editor]="Editor" required/>
             </td>
           </tr>
 
           <tr>
             <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
             <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
-              <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Soluong"  style=" width: 98%;" minlength="1">
+              <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Soluong"  style=" width: 98%;" minlength="1" required>
             </td>
             </tr>
 
@@ -95,7 +90,7 @@
               <tr>
                 <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
                 <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
-                  <input type="text" class=" input_border" style=" width: 98%;"  #subject="ngModel"   [(ngModel)]="product.Size"  list="Sizes" minlength="1">
+                  <input type="text" class=" input_border" style=" width: 98%;"  #subject="ngModel"   [(ngModel)]="product.Size"  list="Sizes" minlength="1" required>
                   <datalist id="Sizes">
                     <option *ngFor="let Size of Sizes" [value]="Size"></option>
                   </datalist>

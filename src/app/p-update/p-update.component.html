@@ -20,7 +20,7 @@ Chỉnh sửa thông tin sản phẩm
 
         <input type="file" class="file-input"  name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,product)">
         <span style="flex-basis: 50%;" *ngFor="let image of product.Hinhanh; let i =index">
-          <img  style="max-width: 150px; max-height: 200px;" src="{{image}}" alt="">
+          <img  style="max-width: 180px; max-height: 240px;" src="{{image}}" alt="">
           <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
         </span>
       </td>
@@ -70,9 +70,9 @@ Chỉnh sửa thông tin sản phẩm
 
 
       <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá</td>
+        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá <br> <h4>* Giá phải từ 1000 đ</h4></td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 2%;">
-          <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Price"  style=" width: 98%; ">
+          <input type="number" class=" input_border" #subject="ngModel" [(ngModel)]="product.Price" style=" width: 98%; " min="1000" minlength="4" [ngModelOptions]="{updateOn: 'blur'}" (ngModelChange)="checkPrice()" required>
         </td>
       </tr>
 
@@ -87,7 +87,7 @@ Chỉnh sửa thông tin sản phẩm
         <tr>
           <td style="text-align: left; padding-left: 20px;font-weight: bold;">Số lượng</td>
           <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
-            <input type="number" class=" input_border" #subject="ngModel"   [(ngModel)]="product.Soluong"  style=" width: 98%;" >
+            <input type="number" class=" input_border" #subject="ngModel" min="0"  [(ngModel)]="product.Soluong"  style=" width: 98%;" >
           </td>
           </tr>
 

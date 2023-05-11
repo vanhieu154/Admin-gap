@@ -9,6 +9,7 @@ import { SuccessDialogComponent } from '../success-dialog/success-dialog.compone
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from '../admin-product/product';
 import { ProductApiService } from '../admin-product/product-api.service';
+import { LackInforDialogComponentComponent } from '../lack-infor-dialog-component/lack-infor-dialog-component.component';
 @Component({
   selector: '[app-c-update]',
   templateUrl: './c-update.component.html',
@@ -48,7 +49,19 @@ constructor(public _service: CouponApiService,private _pservice: ProductApiServi
 
 
 putCoupon()
+
  {
+  if (!this.coupon.Ngaybatdau || !this.coupon.Ngayketthuc || !this.coupon.Soluong || !this.coupon.Giatrigiam || !this.coupon.TenCoupon || !this.coupon.Dieukiengiam || this.coupon.Hinhanh == '' ) {
+    // Nếu không có giá trị, hiển thị thông báo lỗi và dừng hàm postProduct
+    const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['newcoupon'])
+    });
+    return;
+  }
   this.coupon.cDate= new Date(Date.now())
   this._service.putCoupon(this.coupon).subscribe({
     next:(data)=>{this.coupons=data},

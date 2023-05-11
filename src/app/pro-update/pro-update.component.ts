@@ -10,6 +10,7 @@ import { PromotionService } from '../admin-promotion/promotion.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../admin-product/product';
 import { ProductApiService } from '../admin-product/product-api.service';
+import { LackInforDialogComponentComponent } from '../lack-infor-dialog-component/lack-infor-dialog-component.component';
 @Component({
   selector: '[app-pro-update]',
   templateUrl: './pro-update.component.html',
@@ -51,7 +52,17 @@ export class ProUpdateComponent {
     putPromotion()  {
       // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
       // this.promotion.cDate= new Date(Date.now())
-
+      if (!this.promotion.Ngaybatdau || !this.promotion.Ngayketthuc || !this.promotion.Mota || !this.promotion.Gia || !this.promotion.LoaiPromotion || this.promotion.Hinhanh == '' || !this.promotion.TenPromotion) {
+        // Nếu không có giá trị, hiển thị thông báo lỗi và dừng hàm postProduct
+        const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+          width: '417px',
+          height: '220px',
+        });
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['updatepromotion/:id'])
+        });
+        return;
+      }
       this.promotion.SanphamApdung=this.selectedProducts
       this._service.putPromotion( this.promotion).subscribe({
         next:(data)=>{this.promotion=data},
@@ -126,7 +137,20 @@ export class ProUpdateComponent {
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+  checkPrice() {
+    if (this.promotion.Gia < 500) {
+      // Nếu giá trị không hợp lệ, hiển thị thông báo lỗi
+      const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+        width: '417px',
+        height: '220px',
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        this.promotion.Gia = 0
+        this.router.navigate(['updatepromotion/:id'])
 
+      });
+    }
+  }
   @ViewChild('selectedProductsDiv', {static: false}) selectedProductsDiv!: ElementRef;
   selectedProducts: any[] = [];
 

@@ -23,7 +23,7 @@
     </tr>
 
     <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Hình ảnh</td>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Hình ảnh <br> <h4>*Phải nhập ảnh</h4></td>
       <td style=" text-align: left; word-wrap: break-word; max-width: 280px; ">
 
         <input type="file" class="file-input" name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,promotion)" required minlength="1">
@@ -44,9 +44,9 @@
       </tr>
 
       <tr>
-        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm</td>
+        <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm <br> <h4>* Giá phải từ 500 đ</h4> </td>
         <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-          <input  type="number" min="0" #subject="ngModel"   [(ngModel)]="promotion.Gia" style=" width: 99%; " class="input_border">
+          <input  type="number"   #subject="ngModel"   [(ngModel)]="promotion.Gia" required style=" width: 99%; " class="input_border"  [ngModelOptions]="{updateOn: 'blur'}" (ngModelChange)="checkPrice()">
         </td>
         </tr>
 <!-- ---------chua lam-----  -->

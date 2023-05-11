@@ -8,6 +8,8 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LackInforDialogComponentComponent } from '../lack-infor-dialog-component/lack-infor-dialog-component.component';
+import { LackImageDialogComponent } from '../lack-image-dialog/lack-image-dialog.component';
 
 @Component({
   selector: '[app-p-new]',
@@ -37,7 +39,28 @@ export class PNewComponent {
 
 
 postProduct()  {
-  // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
+  if (!this.product.TenSP || !this.product.Hinhanh || !this.product.LoaiSP || !this.product.Hang || !this.product.Price || !this.product.Mota || !this.product.Soluong || !this.product.Size) {
+    // Nếu không có giá trị, hiển thị thông báo lỗi và dừng hàm postProduct
+    const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['newproduct'])
+    });
+    return;
+  }
+  if (this.product.Hinhanh.length < 1) {
+    // Nếu không có ảnh nào được chọn, hiển thị thông báo lỗi và dừng hàm postProduct
+    const dialogRef = this.dialog.open(LackImageDialogComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['newproduct'])
+    });
+    return;
+  }
   this.product.MaSP=this.products.length+1;
   this.product.cDate= new Date()
   this._service.postProduct(this.product).subscribe({
@@ -71,6 +94,21 @@ onFileSelected(event: any,product:Product) {
 
 onDeleteImage(index: number) {
   this.product.Hinhanh.splice(index, 1);
+}
+
+checkPrice() {
+  if (this.product.Price < 1000) {
+    // Nếu giá trị không hợp lệ, hiển thị thông báo lỗi
+    const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.product.Price = 0
+      this.router.navigate(['newproduct'])
+
+    });
+  }
 }
 
 range = new FormGroup({

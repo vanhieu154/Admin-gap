@@ -18,12 +18,12 @@
     <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold; width: 250px;">Tên chương trình</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <textarea #subject="ngModel"  [(ngModel)]="promotion.TenPromotion" style=" width: 99%; height: 100px;"></textarea>
+        <textarea #subject="ngModel"  [(ngModel)]="promotion.TenPromotion" style=" width: 99%; height: 100px;" required></textarea>
       </td>
     </tr>
 
     <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Hình ảnh</td>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Hình ảnh <br> <h4>*Phải nhập ảnh</h4></td>
       <td style=" text-align: left; word-wrap: break-word; max-width: 280px; ">
 
         <input type="file" class="file-input" name="Hinhanh" id="Hinhanh" multiple (change)="onFileSelected($event,promotion)" required minlength="1">
@@ -36,7 +36,7 @@
     <tr>
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Loại khuyến mãi</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-        <select type="text" class="input_border"  #subject="ngModel"   [(ngModel)]="promotion.LoaiPromotion">
+        <select type="text" class="input_border"  #subject="ngModel"   [(ngModel)]="promotion.LoaiPromotion" required>
           <option value="" disabled selected >-- Chọn Loại khuyến mãi --</option>
           <option *ngFor="let t of types" >{{t}}</option>
         </select>
@@ -44,9 +44,9 @@
     </tr>
 
     <tr>
-      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm</td>
+      <td style="text-align: left; padding-left: 20px; font-weight: bold;">Giá giảm <br> <h4>* Giá phải từ 500 đ</h4> </td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 10px;">
-        <input  type="number" min="0"  #subject="ngModel"   [(ngModel)]="promotion.Gia" style=" width: 99%; " class="input_border">
+        <input  type="number"   #subject="ngModel"   [(ngModel)]="promotion.Gia" required style=" width: 99%; " class="input_border"  [ngModelOptions]="{updateOn: 'blur'}" (ngModelChange)="checkPrice()">
       </td>
       </tr>
 <!-- -------------chua lam-------- -->
@@ -54,7 +54,7 @@
       <td style="text-align: left; padding-left: 20px; font-weight: bold;">Sản phẩm áp dụng</td>
       <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
 
-       <input type="text" class="input_border" style=" width: 99%; "   (click)="showTable()" [(ngModel)]="searchProduct" (ngModelChange)="filterProducts()">
+       <input type="text" class="input_border" style=" width: 99%; "   (click)="showTable()"  [(ngModel)]="searchProduct" (ngModelChange)="filterProducts()">
        <table *ngIf="displayTable" style=" max-height: 200px; max-width: 100%;
        /* width: 100%; */
        overflow-x: auto;
@@ -65,7 +65,7 @@
 
 
         <tr style="background-color: #d2beb4;" >
-          <td style=" padding-left: 2px; padding-right: 2px;" > <input type="checkbox"> </td>
+          <!-- <td style=" padding-left: 2px; padding-right: 2px;" > <input type="checkbox" > </td> -->
           <td style="word-wrap: break-word; " >Mã</td>
           <td style="word-wrap: break-word; ">Loại</td>
           <td style="word-wrap: break-word; ">Hình ảnh </td>
@@ -94,7 +94,7 @@
         <tr>
           <td style="text-align: left; padding-left: 20px; font-weight: bold;">Mô tả</td>
           <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px; padding-left: 10px;">
-            <ckeditor  #subject="ngModel" debounce="500" [(ngModel)]="promotion.Mota" [editor]="Editor"/>
+            <ckeditor  #subject="ngModel" debounce="500" required [(ngModel)]="promotion.Mota" [editor]="Editor"/>
           </td>
         </tr>
 
@@ -108,8 +108,8 @@
                   <mat-form-field class="example-form-field " style="max-width: 300px;">
                     <mat-label> Chọn khoảng thời gian </mat-label>
                     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                      <input matStartDate formControlName="start" placeholder="Ngày đầu" [(ngModel)]="promotion.Ngaybatdau">
-                      <input matEndDate formControlName="end" placeholder="Ngày cuối" [(ngModel)]="promotion.Ngayketthuc">
+                      <input matStartDate formControlName="start" placeholder="Ngày đầu" [(ngModel)]="promotion.Ngaybatdau" required>
+                      <input matEndDate formControlName="end" placeholder="Ngày cuối" [(ngModel)]="promotion.Ngayketthuc" required>
                     </mat-date-range-input>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>

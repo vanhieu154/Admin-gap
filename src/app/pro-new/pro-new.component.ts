@@ -10,6 +10,8 @@ import { PromotionService } from '../admin-promotion/promotion.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../admin-product/product';
 import { ProductApiService } from '../admin-product/product-api.service';
+import { LackImageDialogComponent } from '../lack-image-dialog/lack-image-dialog.component';
+import { LackInforDialogComponentComponent } from '../lack-infor-dialog-component/lack-infor-dialog-component.component';
 @Component({
   selector: 'app-pro-new',
   templateUrl: './pro-new.component.html',
@@ -45,6 +47,18 @@ postPromotion()  {
   // post.push(this.promotion)
   // post.push(this.selectedProducts)
   // console.log(post[0]);
+  if (!this.promotion.Ngaybatdau || !this.promotion.Ngayketthuc || !this.promotion.Mota || !this.promotion.Gia || !this.promotion.LoaiPromotion || this.promotion.Hinhanh == '' || !this.promotion.TenPromotion) {
+    // Nếu không có giá trị, hiển thị thông báo lỗi và dừng hàm postProduct
+    const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['newpromotion'])
+    });
+    return;
+  }
+
   this.promotion.SanphamApdung=this.selectedProducts
   this._service.postPromotion(this.promotion).subscribe({
     next:(data)=>{this.promotion=data},
@@ -107,7 +121,20 @@ range = new FormGroup({
   end: new FormControl<Date | null>(null),
 });
 
+checkPrice() {
+  if (this.promotion.Gia < 500) {
+    // Nếu giá trị không hợp lệ, hiển thị thông báo lỗi
+    const dialogRef = this.dialog.open(LackInforDialogComponentComponent, {
+      width: '417px',
+      height: '220px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.promotion.Gia = 0
+      this.router.navigate(['newpromotion'])
 
+    });
+  }
+}
 
 @ViewChild('selectedProductsDiv', {static: false}) selectedProductsDiv!: ElementRef;
 selectedProducts: any[] = [];

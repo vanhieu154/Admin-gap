@@ -51,6 +51,8 @@ import { ProUpdateComponent } from './pro-update/pro-update.component';
 import { ProNewComponent } from './pro-new/pro-new.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { OverviewComponent } from './overview/overview.component';
+import { LackInforDialogComponentComponent } from './lack-infor-dialog-component/lack-infor-dialog-component.component';
+import { LackImageDialogComponent } from './lack-image-dialog/lack-image-dialog.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { OverviewComponent } from './overview/overview.component';
     CUpdateComponent,
     ProUpdateComponent,
     ProNewComponent,
-    OverviewComponent
+    OverviewComponent,
+    LackInforDialogComponentComponent,
+    LackImageDialogComponent
 
 
   ],
