@@ -3,6 +3,7 @@ export class Coupon{
   public _id:any=null,
   public TenCoupon:string="",
   public Hinhanh: string="",
+  public Dieukiengiam: number=0,
   public Soluong:number=0,
   public Giatrigiam:number=0,
   public Noidung:string="",

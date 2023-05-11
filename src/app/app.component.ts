@@ -37,6 +37,7 @@ export class AppComponent {
   const account = JSON.parse(sessionStorage.getItem('Account') || '{}');
   if (sessionStorage.getItem('checkLogin') === '1') {
     this.isLoggedIn=true
+    this.admin=JSON.parse(sessionStorage.getItem('Account') || '{}')
 
   }
   console.log(account._id);
@@ -104,8 +105,10 @@ export class AppComponent {
  }
 
  toPromotion(){
+  console.log(this.admin.Permission);
+
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/promotions'])
+    this.router.navigate(['promotions'])
   }
   else{
     console.log("Bạn không có thẩm quyền");
@@ -113,7 +116,7 @@ export class AppComponent {
  }
  toNewPromotion(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/newpromotion'])
+    this.router.navigate(['newpromotion'])
   }
   else{
     console.log("Bạn không có thẩm quyền");
@@ -121,7 +124,7 @@ export class AppComponent {
  }
  toCoupons(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/coupons'])
+    this.router.navigate(['coupons'])
   }
   else{
     console.log("Bạn không có thẩm quyền");
@@ -129,7 +132,7 @@ export class AppComponent {
  }
  toNewCoupons(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/newcoupon`'])
+    this.router.navigate(['newcoupon'])
   }
   else{
     console.log("Bạn không có thẩm quyền");

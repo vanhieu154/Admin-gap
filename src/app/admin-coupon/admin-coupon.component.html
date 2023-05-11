@@ -51,6 +51,7 @@
     <th style="word-wrap: break-word; max-width: 35px;" >Số lượng</th>
     <th style="word-wrap: break-word; max-width: 70px; padding: 0;">Nội dung</th>
     <th style="word-wrap: break-word; max-width: 65px;">Thời gian áp dụng</th>
+    <th style="word-wrap: break-word; max-width: 65px;">Đơn áp dụng</th>
     <th style="word-wrap: break-word; max-width: 40px;">Tùy chỉnh</th>
   </tr>
 </thead>
@@ -74,6 +75,12 @@
       {{coupon. Ngaybatdau | date : "dd/MM/yyyy"}} - {{coupon.Ngayketthuc | date : "dd/MM/yyyy"}}
 
     </td>
+
+    <td style="word-wrap: break-word; max-width: 65px;" >
+     Áp dụng cho đơn từ {{coupon.Dieukiengiam.toLocaleString('vi-VN')}} đ
+
+    </td>
+
     <td style="word-wrap: break-word; max-width: 40px;">
       <span style="padding-right: 5px;"  ><mat-icon class="icon" (click)="toUpdateCouponPage(coupon)">edit</mat-icon> </span>
       <span style="padding-right: 5px;"> <mat-icon class="icon" (click)="deleteCoupon(coupon._id)">delete</mat-icon> </span></td>

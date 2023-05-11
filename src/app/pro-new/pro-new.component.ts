@@ -24,7 +24,7 @@ export class ProNewComponent {
   product=new Product();
   id: any;
   errMessage:string='';
-  types=["Giảm giá loại sản phẩm","Đồng giá"]
+  types=["Giảm Giá","Đồng Giá"]
 
 
 
@@ -38,14 +38,15 @@ export class ProNewComponent {
   }
 
 postPromotion()  {
-  let post=[]
+  // let post=[]
   // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
-  this.promotion.cDate= new Date(Date.now())
-  post.push(this.promotion)
-  post.push(this.selectedProducts)
-  console.log(post[0]);
+  // this.promotion.cDate= new Date(Date.now())
 
-  this._service.postPromotion(post).subscribe({
+  // post.push(this.promotion)
+  // post.push(this.selectedProducts)
+  // console.log(post[0]);
+  this.promotion.SanphamApdung=this.selectedProducts
+  this._service.postPromotion(this.promotion).subscribe({
     next:(data)=>{this.promotion=data},
     error:(err)=>{this.errMessage=err}
   })
@@ -108,55 +109,23 @@ range = new FormGroup({
 
 
 
-
-@ViewChild('selectedProductsDiv') selectedProductsDiv!: ElementRef;
+@ViewChild('selectedProductsDiv', {static: false}) selectedProductsDiv!: ElementRef;
 selectedProducts: any[] = [];
 
 onCheckboxChange(event: any, product: any) {
+  if (!product) return; // guard clause
+
   if (event.target.checked) {
     this.selectedProducts.push(product._id);
   } else {
     const index = this.selectedProducts.indexOf(product);
     this.selectedProducts.splice(index, 1);
   }
-  console.log( this.selectedProducts);
 
   // this.showSelectedProducts();
 }
-// showSelectedProducts() {
-//   const selectedProductsHtml = this.selectedProducts.map(product => {
-//     return `
-//       <tr>
-//         <td style="font-size:1rem; padding-right: 20px">${product.MaSP}</td>
-//         <td style="width: 100px"><img style="max-height: 40%; max-width: 40%; text-align: center;" src="${product.Hinhanh[0]}" /></td>
-//         <td style="margi"> ${product.TenSP} </td>
-//       </tr>
-//     `;
-//   }).join('');
-
-//   const html = `
-//     <table class="product-table">
-//       <thead>
-//         <tr style="font-size:1rem">
-//           <th>Mã </th>
-//           <th>Hình ảnh</th>
-//           <th>Tên sản phẩm</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         ${selectedProductsHtml}
-//       </tbody>
-//     </table>
-//   `;
-
-//   this.selectedProductsDiv.nativeElement.innerHTML = html;
-// }
 
 
-
-ngAfterViewInit() {
-  // this.showSelectedProducts();
-}
 toMainPromotionPage(){
   this.router.navigate(['promotions'])
     }

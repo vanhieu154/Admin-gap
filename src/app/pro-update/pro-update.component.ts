@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
@@ -25,7 +25,7 @@ export class ProUpdateComponent {
   product=new Product();
   id: any;
   errMessage:string='';
-  types=["Giảm giá loại sản phẩm","Đồng giá"]
+  types=["Giảm Giá","Đồng Giá"]
   constructor(public _service: PromotionService,private _pservice: ProductApiService, private http: HttpClient,private router:Router, public dialog: MatDialog,private activateRoute:ActivatedRoute){
 
     activateRoute.paramMap.subscribe(
@@ -46,17 +46,14 @@ export class ProUpdateComponent {
     )
     }
 
-    selectedProducts: any[] = [];
+
 
     putPromotion()  {
-      let put=[]
       // this.fashion.Mota=this.fashion.Mota.replace(/<\/?p>/gi, '');
       // this.promotion.cDate= new Date(Date.now())
-      put.push(this.promotion)
-      put.push(this.selectedProducts)
-      console.log(put[0]);
 
-      this._service.putPromotion(put).subscribe({
+      this.promotion.SanphamApdung=this.selectedProducts
+      this._service.putPromotion( this.promotion).subscribe({
         next:(data)=>{this.promotion=data},
         error:(err)=>{this.errMessage=err}
       })
@@ -129,5 +126,59 @@ export class ProUpdateComponent {
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
+
+  @ViewChild('selectedProductsDiv', {static: false}) selectedProductsDiv!: ElementRef;
+  selectedProducts: any[] = [];
+
+  onCheckboxChange(event: any, product: any) {
+    if (!product) return; // guard clause
+
+    if (event.target.checked) {
+      this.selectedProducts.push(product._id);
+    } else {
+      const index = this.selectedProducts.indexOf(product);
+      this.selectedProducts.splice(index, 1);
+    }
+
+    // this.showSelectedProducts();
+  }
+
+  // showSelectedProducts() {
+  //   if (this.selectedProducts.length > 0) {
+  //     const selectedProductsHtml = this.selectedProducts.map(product => {
+  //       return `
+  //         <tr>
+  //           <td style="font-size:1rem; padding-right: 20px">${product.MaSP}</td>
+  //           <td style="width: 100px"><img style="max-height: 40%; max-width: 40%; text-align: center;" src="${product.Hinhanh[0]}" /></td>
+  //           <td style="margi"> ${product.TenSP} </td>
+  //         </tr>
+  //       `;
+  //     }).join('');
+
+  //     const html = `
+  //       <table class="product-table">
+  //         <thead>
+  //           <tr style="font-size:1rem">
+  //             <th>Mã </th>
+  //             <th>Hình ảnh</th>
+  //             <th>Tên sản phẩm</th>
+  //           </tr>
+  //         </thead>
+  //         <tbody>
+  //           ${selectedProductsHtml}
+  //         </tbody>
+  //       </table>
+  //     `;
+
+  //     this.selectedProductsDiv.nativeElement.innerHTML = html;
+  //   } else {
+  //     // If there are no selected products, clear the HTML
+  //     this.selectedProductsDiv.nativeElement.innerHTML = '';
+  //   }
+  // }
+
+  // ngAfterViewInit() {
+  //   this.showSelectedProducts();
+  // }
 
 }
