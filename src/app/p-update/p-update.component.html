@@ -95,7 +95,10 @@ Chỉnh sửa thông tin sản phẩm
             <tr>
               <td style="text-align: left; padding-left: 20px;font-weight: bold;">Size</td>
               <td style="border-top-right-radius: 10px; text-align: left; word-wrap: break-word; max-width: 280px;padding-left: 2%;">
-                <input type="text" class=" input_border" style=" width: 98%;"  #subject="ngModel"   [(ngModel)]="product.Size"  >
+                <input type="text" class=" input_border" style=" width: 98%;"  #subject="ngModel"   [(ngModel)]="product.Size"  list="Sizes" minlength="1">
+                <datalist id="Sizes">
+                  <option *ngFor="let Size of Sizes" [value]="Size"></option>
+                </datalist>
               </td>
               </tr>
     </tbody>
