@@ -21,7 +21,7 @@ import { Address } from './address';
         headers:headers,
         responseType:"text"
       }
-      return this._http.get<any>("http://localhost:4000/admin_order/",requestOptions).pipe(
+      return this._http.get<any>("http://localhost:4000/admin_order",requestOptions).pipe(
       map(res=>JSON.parse(res) as Array<Order>),
       retry(3),
       catchError(this.handleError))

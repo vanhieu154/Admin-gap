@@ -13,20 +13,20 @@
       <div class="row">
         <div class="col box">
           <div class="day">TODAY</div>
-          <div class="number">16</div>
-          <div class="detail">16 orders today</div>
+          <div class="number">{{orderInDay.length}} </div>
+          <div class="detail">{{orderInDay.length}}  orders today</div>
         </div>
 
         <div class="col box">
           <div class="day">THIS WEEK</div>
-          <div class="number">16</div>
-          <div class="detail">16 orders today</div>
+          <div class="number"> {{orderInWeek.length}} </div>
+          <div class="detail"> {{orderInWeek.length}}  orders this week</div>
         </div>
 
         <div class="col box">
           <div class="day">THIS MONTH</div>
-          <div class="number">16</div>
-          <div class="detail">16 orders today</div>
+          <div class="number"> {{orderInMonth.length}} </div>
+          <div class="detail"> {{orderInMonth.length}}  orders this month</div>
         </div>
       </div>
     </div>
@@ -36,18 +36,15 @@
       <div class="row">
         <div class="col box">
           <div class="day">TODAY</div>
-          <div class="number">$ 160000</div>
-          <div class="detail">16 orders today</div>
+          <div class="number">{{totalInDay.toLocaleString('vi-VN')}}đ</div>
         </div>
         <div class="col box">
           <div class="day">THIS WEEK</div>
-          <div class="number">$ 160000</div>
-          <div class="detail">16 orders today</div>
+          <div class="number">{{totalInWeek.toLocaleString('vi-VN')}}đ</div>
         </div>
         <div class="col box">
           <div class="day">THIS MONTH</div>
-          <div class="number">$ 160000</div>
-          <div class="detail">16 orders today</div>
+          <div class="number">{{totalInMonth.toLocaleString('vi-VN')}}đ</div>
         </div>
       </div>
     </div>
