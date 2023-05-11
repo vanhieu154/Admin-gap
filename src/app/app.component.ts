@@ -48,7 +48,14 @@ export class AppComponent {
   })
 
  }
-
+ toOverview(){
+  if(this.admin.Permission==0){
+    this.router.navigate(['/overview'])
+  }
+  else{
+    console.log("Bạn không có thẩm quyền");
+  }
+ }
  toAdminList(){
   if(this.admin.Permission==0){
     this.router.navigate(['/admin-list'])
