@@ -179,9 +179,20 @@ a:hover{
 }
 .mdc-text-field--filled:not(.mdc-text-field--disabled){
  margin-top: 10px;
- border-radius: 10px;
- border-color: #6B4932;
- height: fit-content;
+ border-radius: 20px;
+ border-color:none;
+ background-color: #ba8b8a;
+}
+.mdc-text-field--filled{
+  height: 45px;
+}
+.mat-mdc-select-value{
+  color: white;
+}
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) .mdc-menu-surface.mat-mdc-select-panel{
+  border-top-left-radius: 15px;
+    border-top-right-radius: 0;
+    transform-origin: top center;
 }
 .example-spacer {
   flex: 1 1 auto;

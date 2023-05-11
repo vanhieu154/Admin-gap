@@ -74,5 +74,7 @@ export class AdminOrderDetailComponent {
     const statusOption = this.statusOptions.find(option => option.value === status);
     return statusOption ? statusOption.label : '';
   }
-
+  toMainCouponPage(){
+    this.router.navigate(['admin-order'])
+      }
 }

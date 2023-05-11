@@ -27,11 +27,12 @@ statusOptions = [
   { value: 4, label: 'Cancelled' }
 ];
 admin_order=new Order();
-status:string='All'
+status:string='All';
+AdminOrderUser:any;
 admin_orders:any;
 errMessage:string='';
 selectedProduct:any;
-displayedColumns: string[] = ['_id', 'username','Total', 'Status', 'Order_Date','Image'];
+displayedColumns: string[] = ['position','_id', 'username','Total', 'Status', 'Order_Date','Image'];
 admin_closed_order:any;
 admin_open_order:any;
 show_orders:any;
@@ -47,6 +48,7 @@ error:(err)=>{this.errMessage=err}
 })
 
 }
+
   viewDetail(f:any)
     {
       this.router.navigate(['admin-order-detail',f._id])
@@ -84,17 +86,19 @@ error:(err)=>{this.errMessage=err}
 
   }
   public searchOrders:string=''
+
   filteredOrders: any[] | undefined;
   filteredDate: any[] | undefined;
 
   filterOrders() {
-    this.filteredOrders = this.admin_orders.filter((coupon:  {
+    console.log(this.searchOrders.toLowerCase());
+    this.filteredOrders = this.admin_orders.filter((admin_order:  {
       _id:string,
       userId:string
 
      }) =>
-   coupon._id.toString().includes(this.searchOrders.toLocaleLowerCase()) ||
-   coupon.userId.toString().includes(this.searchOrders))}
+     admin_order._id.toString().includes(this.searchOrders.toLocaleLowerCase()) ||
+     admin_order.userId.toString().includes(this.searchOrders))}
    onClear() {
     this.searchOrders = '';
     this.filterOrders();
@@ -108,5 +112,6 @@ error:(err)=>{this.errMessage=err}
     return cDate >= start && ShipByDate <= end;
   });
  }
+ panelOpenState = false;
 }
 

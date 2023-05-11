@@ -1,37 +1,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-*********" crossorigin="anonymous">
 
-<!-- <div id="header">
-  <div class="header-top">
-     <div class="btn-search" >
-      <div class="d-flex">
-        <button class="btn btn-outline-success button__search" onclick="re_search()"><i class="fa-solid fa-angles-left" style="color: #ffffff;" width="30px" height="30px"></i></button>
-        <input class="form-control me-2 search" id="search" placeholder="Search for admin" aria-label="Search">
-        <button class="btn btn-outline-success button__search" onclick="re_search()"><svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" color="white"><path fill="currentColor" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z"></path></svg></button> -->
-      <!-- </form> -->
-      <!-- </div>
-     </div>
-      <div class="right-header-top">
-          <div class="account">
-              <a href="#" >
-                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 32 32" color="#D2BEB4"><path fill="currentColor" d="M16 8a5 5 0 1 0 5 5a5 5 0 0 0-5-5Z"></path><path fill="currentColor" d="M16 2a14 14 0 1 0 14 14A14.016 14.016 0 0 0 16 2Zm7.992 22.926A5.002 5.002 0 0 0 19 20h-6a5.002 5.002 0 0 0-4.992 4.926a12 12 0 1 1 15.985 0Z"></path></svg>
-                 <span>English</span>
-              </a>
 
-          </div>
-          <div class="cart">
-              <a href="#">
-                <i style="font-size: 30px;color: #D2BEB4;" class="fa-solid fa-bell"></i>
-                  </a>
-          </div>
-          <div class="phone">
-              <a href="#">
-                <i style="font-size: 30px;color: #D2BEB4;" class="fa-solid fa-envelope-open-text"></i>
-              </a>
-          </div>
-      </div>
-  </div>
-
-</div> -->
 <div class="body container text-center">
   <div class="row body__1">
     <div class="col orders" >Orders Details</div>
@@ -73,14 +42,6 @@
   </mat-chip-listbox>
 </div>
 
-  </div>
-
-  <div class="col">
-    <button mat-icon-button class="example-icon bu_hover" aria-label="Example icon-button with share icon">
-      <span class="order_status">Total Due:{{(selectedProduct.total) | currency:'VND':'symbol-narrow'}}</span>
-    </button>
-
-  </div>
 </div> -->
 <hr>
 <div class="row">
@@ -150,13 +111,13 @@
 
       <tr *ngFor="let p of selectedOrderDetail;let i=index">
       <td>{{p._id}}</td>
-      <!-- <td><img src="{{p.Hinhanh[0]}}" alt=""></td> -->
+      <td><img src="{{p.Hinhanh[0]}}" alt="" style="width: 70px;height: 70px;border-radius: 5px;border-color: #965c77;"></td>
       <td></td>
       <td>{{p.TenSP}}</td>
       <td>{{p.Hang}}</td>
       <td>{{p.Size}}</td>
       <td>{{p.Price}}</td>
-      <td>{{selectedProduct.orderItems[i].qty}}</td>      <!-- hiển thị số lượng -->
+      <td>{{selectedProduct.orderItems[1].qty}}</td>      <!-- hiển thị số lượng -->
 
       <td>{{p.Discount}}</td>
 
@@ -165,5 +126,10 @@
       </table>
   </div>
 </div>
+
+
+  <button class="button--back" style="margin-bottom: 10px; margin-right: 40px;" (click)=" toMainCouponPage()"  > <span style="text-align: center;font-size:1.6rem;"> Back</span></button>
+
+
 </div>
 
