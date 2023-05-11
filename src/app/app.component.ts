@@ -137,7 +137,7 @@ export class AppComponent {
  }
  toAdminOrder(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/admin-order`'])
+    this.router.navigate(['/admin-order'])
   }
   else{
     console.log("Bạn không có thẩm quyền");
