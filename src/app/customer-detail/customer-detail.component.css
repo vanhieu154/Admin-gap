@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 .container{
-  width: 60%;
-  font-family: Quicksand;
-  font-weight: bold;
-  font-size: 15px;
+  width: 70%;
+  margin-top: 10px;
+  /* font-family: Quicksand; */
+  /* font-weight: bold; */
+  color: #686361;
+  font-size: 18px;
 }
 h1{
   text-align: center;
   color:  #D2BEB4;
-  font-weight: bolder;
+  font-weight: bold;
 
 }
 .frame{
@@ -16,6 +18,12 @@ h1{
   border-style:solid;
   border-radius: 20px;
 }
+
+.title{
+  color: #686361;
+  font-weight: bold;
+}
+
 .row{
   padding: 20px;
 }

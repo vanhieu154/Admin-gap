@@ -16,7 +16,7 @@ export class AdminDetailComponent {
     'Nhân viên',
     'Cửa hàng trưởng',]
 
-    user = new AdminFix()
+    admin = new Admin()
     selectedRole: any
 
     constructor(private service: AdminDetailService, private route: ActivatedRoute, private router: Router) {
@@ -26,14 +26,14 @@ export class AdminDetailComponent {
     getDetail() {
       this.service.getAAdmin(this.route.snapshot.paramMap.get('id')).subscribe({
         next: (data) => {
-          this.user = data
+          this.admin = data
         }
       })
     }
 
     update() {
 
-      this.service.putAAdmin(this.user).subscribe({
+      this.service.putAAdmin(this.admin).subscribe({
         next: (data) => {
           this.router.navigate(['admin-list'])
         },
@@ -42,7 +42,26 @@ export class AdminDetailComponent {
     }
 
     changeRole() {
-      this.user.Permission = this.selectedRole
+      this.admin.Permission = this.selectedRole
+    }
+
+    onFileSelected(event: any,admin:Admin) {
+      let files = event.target.files;
+      for(let i = 0; i < files.length; i++) {
+        let reader = new FileReader();
+        reader.readAsDataURL(files[i]);
+        reader.onload = function () {
+          admin.Image.push(reader.result!.toString());
+        };
+
+
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+      }
+    }
+     onDeleteImage(index: number) {
+      this.admin.Image.splice(index, 1);
     }
   }
 
