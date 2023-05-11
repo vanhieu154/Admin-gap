@@ -213,7 +213,7 @@ a:hover{
 .order_status{
   font-size: 1.6rem;
   color: white;
-  font-family: quicksand;
+  font-weight: bold;
   text-align: center;
 }
 .mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic .mdc-evolution-chip__action--primary{
@@ -232,12 +232,10 @@ hr {
 table th{
   color: #6B4932;
   font-size: 1.6rem;
-  font-family: quicksand;
 }
 table td{
   border: none;
   font-size: 1.3rem;
-  font-family: quicksand;
   font-weight: bold;
 }
 .body__3{
@@ -253,14 +251,12 @@ table td{
 .customer{
   text-align: left;
   margin-left: 10%;
-  font-family: quicksand;
+  font-weight: bold;
   margin-top:1% ;
 }
 table{
   color: #6B4932;
   background-color: #ffffff;
-  font-size: 20px;
-  font-family: quicksand;
   border: 2px solid #d2beb4;
   border-collapse: collapse;
   border-radius: 10px;
@@ -271,4 +267,16 @@ table{
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary {
   background-color: #d2beb4;
 }
+.button--back{
+  background-color: #cfa897;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 10px;
+  width: 100px;
+}
+.back_admin{
+  width:10%;
 
+}

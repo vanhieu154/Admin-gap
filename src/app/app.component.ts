@@ -132,7 +132,7 @@ export class AppComponent {
  }
  toNewCoupons(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['newcoupon'])
+    this.router.navigate(['/newcoupon'])
   }
   else{
     console.log("Bạn không có thẩm quyền");

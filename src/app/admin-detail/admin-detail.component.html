@@ -2,53 +2,64 @@
   <h1>THÔNG TIN QUẢN TRỊ VIÊN</h1>
   <div class="frame">
     <div class="row">
-      <img src="" alt="">
+      <div class="col-sm-5"></div>
+      <div class="col-sm-7">
+        <input type="file" class="file-input"  name="Hinhanh" id="Hinhanh" (change)="onFileSelected($event,admin)">
+        <span style="flex-basis: 50%;" *ngFor="let image of admin.Image; let i =index">
+          <img  style="width: 120px; height: 120px;" src="{{image}}" alt="">
+          <mat-icon  (click)="onDeleteImage(i)" class="icon"> cancel_presentation</mat-icon>
+        </span></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">ID:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">ID:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6">{{user ? user._id : ''}}</div>
+      <div class="col-sm-6">{{admin ? admin._id : ''}}</div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Họ tên:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Họ tên:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.adminname"></div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="admin.adminname"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Tên đăng nhập:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Tên đăng nhập:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.AccountName"></div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="admin.Account_Name"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Ngày sinh:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Ngày sinh:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.DOB"></div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="admin.Date_of_Birth"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Giới tính:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Giới tính:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Gender"></div>
+      <div class="col-sm-6">
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="admin.Gender">
+          <mat-radio-button value="Nam" checked>Nam</mat-radio-button>
+          <mat-radio-button value="Nữ">Nữ</mat-radio-button>
+          <mat-radio-button value="Khác">Khác</mat-radio-button>
+          </mat-radio-group></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Email:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Email:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Email"></div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="admin.Email"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Số điện thoại:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Số điện thoại:</div>
       <div class="col-sm-1"></div>
-      <div class="col-sm-6"><input type="text" [(ngModel)]="user.Phone"></div>
+      <div class="col-sm-6"><input type="text" [(ngModel)]="admin.Phone_Number"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-2">Quyền hạn:</div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-3 title">Quyền hạn:</div>
       <div class="col-sm-1"></div>
       <div class="col-sm-6">
         <!-- <form action="">
@@ -60,8 +71,8 @@
           </select>
         </form> -->
         <mat-form-field appearance="fill">
-          <mat-label>Quyền hạn</mat-label>
-          <mat-select [(ngModel)]="selectedRole" (ngModelChange)="changeRole()">
+          <mat-label >Quyền hạn</mat-label>
+          <mat-select [(ngModel)]="admin.Permission" (ngModelChange)="changeRole()">
             <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
           </mat-select>
         </mat-form-field>

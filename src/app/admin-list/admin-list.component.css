@@ -72,7 +72,7 @@ button{
   z-index: 99;
   box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
   /* height: 126px; */
-  font-family: Quicksand;
+  /* font-family: Quicksand; */
   position: sticky;
   transition: top .2s ease;
 
@@ -124,7 +124,7 @@ a:hover{
   right: 0;
   text-align: center;
   cursor: pointer;
-  font-weight: bold;
+  /* font-weight: bold; */
   border-radius: 50%;
   margin: 2px;
   border:  none;
@@ -186,7 +186,7 @@ a:hover{
   color: #D2BEB4;
   font-size: 45px;
   font-weight: bold;
-  font-family: Quicksand;
+  /* font-family: Quicksand; */
 
 }
 .mdc-text-field--filled:not(.mdc-text-field--disabled){
@@ -206,7 +206,7 @@ a:hover{
   font-size: 15px;
   margin: 5px;
   height:75%;
-  font-family: quicksand;
+  /* font-family: quicksand; */
   font-weight: bold;
   color: white;
 }
@@ -219,7 +219,7 @@ a:hover{
 }
 .mat-mdc-tab.mdc-tab{
   font-size: 24px;
-  font-family: quicksand;
+  /* font-family: quicksand; */
 
 }
 thead{
@@ -247,7 +247,7 @@ table{
   color: #6B4932;
   background-color: #ffffff;
   font-size: 18px;
-  font-family: quicksand;
+  /* font-family: quicksand; */
   border: 2px solid #d2beb4;
   border-collapse: collapse;
   border-radius: 10px;
@@ -270,7 +270,7 @@ tr{
 }
 
 mat-tab{
-  font-family: Quicksand;
+  font-size: 24px;
 }
 
 #quyenHan{

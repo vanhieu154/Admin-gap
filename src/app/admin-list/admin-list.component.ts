@@ -46,4 +46,17 @@ updateAdminStatus(element: any,b:boolean) {
   goTo(id:any) {
     this.router.navigate([`admin-detail/${id}`])
   }
+
+  filteredAdmins: any[] | undefined;
+
+
+  filterAdmins() {
+     this.filteredAdmins = this.admins.filter((admin:  { adminname: string; _id: string; name :string;Permission:string }) =>
+     admin.adminname.toString().includes(this.searchAdmin.toLowerCase()) ||
+     admin._id.toLowerCase().includes(this.searchAdmin.toLowerCase()) ||
+     admin.Permission.toLowerCase().includes(this.searchAdmin.toLowerCase()) ||
+     admin.name.toLowerCase().includes(this.searchAdmin.toLowerCase()) );
+  }
+  public searchAdmin:string=''
+
 }

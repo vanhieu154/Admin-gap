@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 .container{
-  width: 60%;
+  width: 70%;
+  margin-top: 10px;
   /* font-family: Quicksand; */
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 h1{
   text-align: center;

@@ -84,7 +84,7 @@ const routes: Routes = [
   {
     path:"newpromotion",component:ProNewComponent
   },
-  {
+  { 
     path:"updatepromotion/:id",component:ProUpdateComponent
   },
   {

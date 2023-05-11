@@ -50,7 +50,16 @@ toUserDetail(user:any){
         }
         })
     }
+    filteredUsers: any[] | undefined;
 
+
+    filterUsers() {
+       this.filteredUsers = this.users.filter((user:  { username: string; _id: string; name :string;}) =>
+       user.username.toString().includes(this.searchUser.toLowerCase()) ||
+       user._id.toLowerCase().includes(this.searchUser.toLowerCase()) ||
+       user.name.toLowerCase().includes(this.searchUser.toLowerCase()) );
+    }
+    public searchUser:string=''
 
 
 

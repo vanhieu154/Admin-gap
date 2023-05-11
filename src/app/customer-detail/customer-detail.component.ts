@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./customer-detail.component.css']
 })
 export class CustomerDetailComponent {
+        [x: string]: any;
   // user=new User();
   // errMessage:string=''
   // id:any
@@ -46,8 +47,16 @@ export class CustomerDetailComponent {
             }
           )
         }
+        viewDetail(f:any)
+              {
+                this['router'].navigate(['admin-order-detail',f._id])
+              }
+
 
       }
+
+
+
   // searchUser(userId:string)
   // {
   // this._service.getUser(userId).subscribe({

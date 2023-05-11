@@ -64,7 +64,7 @@ button{
   z-index: 99;
   box-shadow:  0 10px 10px rgba(0, 0, 0, 0.2);
   /* height: 126px; */
-  font-family: Quicksand;
+  /* font-family: Quicksand; */
   position: sticky;
   transition: top .2s ease;
 
@@ -182,7 +182,7 @@ thead{
   color: #D2BEB4;
   font-size: 40px;
   font-weight: bold;
-  font-family: Quicksand;
+  /* font-family: Quicksand; */
 
 }
 .mdc-text-field--filled:not(.mdc-text-field--disabled){
@@ -202,7 +202,7 @@ thead{
   font-size: 24px;
   margin: 5px;
   height:75%;
-  font-family: quicksand;
+  /* font-family: quicksand; */
   font-weight: bold;
   color: white;
 
@@ -216,7 +216,7 @@ thead{
 }
 .mat-mdc-tab.mdc-tab{
   font-size: 24px;
-  font-family: quicksand;
+  /* font-family: quicksand; */
 
 }
 .mat-mdc-tab .mdc-tab__text-label, .mat-mdc-tab-link .mdc-tab__text-label{
@@ -237,7 +237,7 @@ table{
   color: #6B4932;
   background-color: #ffffff;
   font-size: 18px;
-  font-family: quicksand;
+  /* font-family: quicksand; */
   border: 2px solid #d2beb4;
   border-collapse: collapse;
   border-radius: 10px;
