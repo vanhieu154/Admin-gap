@@ -43,4 +43,7 @@ updateAdminStatus(element: any,b:boolean) {
     }
     })
   }
+  goTo(id:any) {
+    this.router.navigate([`admin-detail/${id}`])
+  }
 }

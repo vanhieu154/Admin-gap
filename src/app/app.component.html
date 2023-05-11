@@ -13,6 +13,19 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
+                <a (click)="toOverview()" class="item font">Kết quả kinh doanh</a>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <div class="row-style">
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
                 <a (click)="toAdminList()" class="item font">Quản lý Admin</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -67,7 +80,7 @@
                                (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <a class="item font">Quản lý khuyến mãi</a>
+                <a class="item font" (click)="toPromotion()">Quản lý khuyến mãi</a>
               </mat-panel-title>
             </mat-expansion-panel-header>
               <div class="list">

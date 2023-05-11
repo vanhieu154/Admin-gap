@@ -38,6 +38,13 @@
       {
         "image-alt": "off"
       }
+    ],
+    "button-type": "off",
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
     ]
   }
 }

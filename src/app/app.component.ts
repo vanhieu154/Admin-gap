@@ -32,24 +32,37 @@ export class AppComponent {
   constructor(private router:Router, private breakpointObserver: BreakpointObserver, private logService:LogService) {
   this.logService.isLoggedIn.subscribe((isLoggedIn) => {
     this.isLoggedIn = isLoggedIn;
-
+    this.admin=JSON.parse(sessionStorage.getItem('Account') || '{}')
   });
   const account = JSON.parse(sessionStorage.getItem('Account') || '{}');
   if (sessionStorage.getItem('checkLogin') === '1') {
     this.isLoggedIn=true
+
   }
   console.log(account._id);
 
-  this.logService.getAdmin(account._id).subscribe({
-    next:(data)=>{this.admin=data,
-    console.log(this.admin);
-    },
-    error:(err)=>{this.errMessage=err}
-  })
+
+  if(account._id!=null){
+    this.logService.getAdmin(account._id).subscribe({
+      next:(data)=>{this.admin=data,
+      console.log(this.admin);
+      },
+      error:(err)=>{this.errMessage=err}
+    })
+  }
 
  }
-
+ toOverview(){
+  if(this.admin.Permission==0){
+    this.router.navigate(['/overview'])
+  }
+  else{
+    console.log("Bạn không có thẩm quyền");
+  }
+ }
  toAdminList(){
+  console.log(this.admin.Permission=0);
+
   if(this.admin.Permission==0){
     this.router.navigate(['/admin-list'])
   }
@@ -124,7 +137,7 @@ export class AppComponent {
  }
  toAdminOrder(){
   if(this.admin.Permission==0 || this.admin.Permission==1){
-    this.router.navigate(['/admin-order`'])
+    this.router.navigate(['/admin-order'])
   }
   else{
     console.log("Bạn không có thẩm quyền");
