@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { LogService } from '../log.service';
 import { Router } from '@angular/router';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-login',
@@ -18,7 +20,7 @@ export class AdminLoginComponent {
   message = '';
   admin:any;
   errMessage:string='';
-  constructor(private logService: LogService, private router:Router){
+  constructor(private logService: LogService, private router:Router, public dialog: MatDialog ){
 
   }
 
@@ -31,13 +33,21 @@ export class AdminLoginComponent {
         this.admin = data;
         if(this.admin.message==null){
           sessionStorage.setItem("Account", JSON.stringify(this.admin));
-
-        }else{
+          const dialogRef = this.dialog.open(SuccessDialogComponent, {
+            width: '417px',
+            height: '220px',
+          });
+          dialogRef.afterClosed().subscribe(() => {
+            this.router.navigate(['admin-list'])
+          });
+        }
+        else{
           alert('Tên đăng nhập hoặc mật khẩu không đúng!');
         }
       },
 
     });
+
   }
 
 
