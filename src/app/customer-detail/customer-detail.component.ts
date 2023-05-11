@@ -51,6 +51,8 @@ export class CustomerDetailComponent {
               {
                 this['router'].navigate(['admin-order-detail',f._id])
               }
+
+
       }
 
 
