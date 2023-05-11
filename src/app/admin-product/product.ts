@@ -6,7 +6,7 @@ export class Product {
   public TenSP: string="",
   public LoaiSP: string="",
   public Hang: string="",
-  public DiscountId: number=0,
+  public Discount: number=0,
   public ClickCounter: number=0,
   public Price: number=0,
   public Hinhanh: string[] =[],

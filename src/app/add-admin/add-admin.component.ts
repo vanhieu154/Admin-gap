@@ -4,6 +4,8 @@ import { Observable, catchError, map, retry } from 'rxjs';
 import { Admin } from '../admin';
 import { AdminListService } from '../admin-list.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-admin',
@@ -23,7 +25,7 @@ export class AddAdminComponent {
     selectedFiles: File[] = [];
     Image:any[]=[];
     router: any;
-    constructor(private _service: AdminListService){
+    constructor(private _service: AdminListService, public dialog: MatDialog){
     }
     public setAdmin(a:Admin)
     {
@@ -56,7 +58,14 @@ export class AddAdminComponent {
         next:(data)=>{this.admin=data},
         error:(err)=>{this.errMessage=err}
       })
-      this.router.navigate(['admin-list'])
+      const dialogRef = this.dialog.open(SuccessDialogComponent, {
+        width: '417px',
+        height: '220px',
+      });
+      dialogRef.afterClosed().subscribe(() => {
+        this.router.navigate(['admin-list'])
+      });
+
 
     }
 
