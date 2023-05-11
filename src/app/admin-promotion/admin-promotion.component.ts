@@ -73,12 +73,11 @@ export class AdminPromotionComponent {
   filteredDate: any[] | undefined;
 
   filterPromotions() {
-     this.filteredPromotions = this.promotions.filter((promotion:  { TenPromotion: string; LoaiPromotion: string; Gia: string;Mota :string; LoaiSP :string; }) =>
-     promotion.TenPromotion.toString().toLowerCase().includes(this.searchPromotion.toLowerCase()) ||
+     this.filteredPromotions = this.promotions.filter((promotion:  { TenPromotion: string; LoaiPromotion: string; Gia: string;Mota :string; }) =>
+     promotion.TenPromotion.toLowerCase().toString().toLowerCase().includes(this.searchPromotion.toLowerCase()) ||
      promotion.LoaiPromotion.toLowerCase().includes(this.searchPromotion.toLowerCase()) ||
-     promotion.Mota.toString().toLowerCase().includes(this.searchPromotion.toLowerCase()) ||
-     promotion.Gia.toString().toLowerCase().includes(this.searchPromotion.toLowerCase()) ||
-     promotion.LoaiSP.toString().toLowerCase().includes(this.searchPromotion.toLowerCase()));
+     promotion.Mota.toLowerCase().toString().includes(this.searchPromotion.toLowerCase()) ||
+     promotion.Gia.toString().toLowerCase().includes(this.searchPromotion.toLowerCase()));
   }
 
   filterDate() {

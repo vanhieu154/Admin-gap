@@ -71,10 +71,10 @@ deleteCoupon(id: string) {
       Noidung:string,
 
       }) =>
-    coupon.TenCoupon.toString().includes(this.searchCoupon.toLocaleLowerCase()) ||
+    coupon.TenCoupon.toLocaleLowerCase().toString().includes(this.searchCoupon.toLocaleLowerCase()) ||
     coupon.Soluong.toString().includes(this.searchCoupon)||
     coupon.Giatrigiam.toString().includes(this.searchCoupon)||
-    coupon.Noidung.toString().includes(this.searchCoupon));
+    coupon.Noidung.toLocaleLowerCase().toString().includes(this.searchCoupon));
   }
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
