@@ -11,11 +11,13 @@ import { AdminDetailService } from '../admin-detail.service';
   styleUrls: ['./admin-detail.component.css']
 })
 export class AdminDetailComponent {
-  qh: string[] = [
-    'Nhân viên trực chat',
-    'Nhân viên',
-    'Cửa hàng trưởng',]
+  qh = [
+    { value: 0, label: 'Quản trị viên' },
+    { value: 1, label: 'Cửa hàng trưởng' },
+    { value: 2, label: 'Nhân viên cửa hàng' },
+    // { value: 3, label: 'Nhân viên trực chat' },
 
+  ];
     admin = new Admin()
     selectedRole: any
 

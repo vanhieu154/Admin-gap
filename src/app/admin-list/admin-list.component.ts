@@ -14,6 +14,13 @@ range = new FormGroup({
   start: new FormControl<Date | null>(null),
   end: new FormControl<Date | null>(null),
 })
+qh = [
+  { value: 0, label: 'Quản trị viên' },
+  { value: 1, label: 'Cửa hàng trưởng' },
+  { value: 2, label: 'Nhân viên cửa hàng' },
+  // { value: 3, label: 'Nhân viên trực chat' },
+
+];
   inactiveAdmin:any
   activeAdmin:any
   admins:any
@@ -28,6 +35,10 @@ range = new FormGroup({
         error:(err)=>{this.errMessage=err}
         })
 
+}
+findLabel(value: number): string {
+  const permission = this.qh.find((item) => item.value === value);
+  return permission ? permission.label : '';
 }
 updateAdminStatus(element: any,b:boolean) {
   element.AdminStatus = b

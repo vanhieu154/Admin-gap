@@ -70,10 +70,16 @@
               <option value="">Nhân viên trực chat</option>
           </select>
         </form> -->
-        <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
           <mat-label >Quyền hạn</mat-label>
           <mat-select [(ngModel)]="admin.Permission" (ngModelChange)="changeRole()">
             <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan">{{quyenHan}}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        <mat-form-field appearance="fill">
+          <mat-label>Quyền hạn</mat-label>
+          <mat-select [(ngModel)]="admin.Permission">
+            <mat-option *ngFor="let quyenHan of qh" [value]="quyenHan.value">{{quyenHan.label}}</mat-option>
           </mat-select>
         </mat-form-field>
 
