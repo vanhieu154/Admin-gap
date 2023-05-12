@@ -80,7 +80,7 @@ export class AppComponent {
   }
  }
  toCustomerList(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/customer-list'])
   }
   else{
@@ -88,7 +88,7 @@ export class AppComponent {
   }
  }
  toBlogList(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/blog-list'])
   }
   else{
@@ -96,7 +96,7 @@ export class AppComponent {
   }
  }
  toAddBlog(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/add-blog'])
   }
   else{
@@ -107,7 +107,7 @@ export class AppComponent {
  toPromotion(){
   console.log(this.admin.Permission);
 
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['promotions'])
   }
   else{
@@ -115,7 +115,7 @@ export class AppComponent {
   }
  }
  toNewPromotion(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['newpromotion'])
   }
   else{
@@ -123,7 +123,7 @@ export class AppComponent {
   }
  }
  toCoupons(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['coupons'])
   }
   else{
@@ -131,7 +131,7 @@ export class AppComponent {
   }
  }
  toNewCoupons(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/newcoupon'])
   }
   else{
@@ -139,7 +139,7 @@ export class AppComponent {
   }
  }
  toAdminOrder(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/admin-order'])
   }
   else{
@@ -147,7 +147,7 @@ export class AppComponent {
   }
  }
  toAddProduct(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/adproducts'])
   }
   else{
@@ -155,7 +155,7 @@ export class AppComponent {
   }
  }
  toNewProduct(){
-  if(this.admin.Permission==0 || this.admin.Permission==1){
+  if(this.admin.Permission==0 || this.admin.Permission==1 || this.admin.Permission==2){
     this.router.navigate(['/newproduct'])
   }
   else{
