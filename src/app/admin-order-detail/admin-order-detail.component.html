@@ -47,8 +47,8 @@
   <table class="table table-hover table-danger table-striped">
     <thead>
     <tr>
-    <th>Invoice Number</th>
-    <!-- <th>PO Number</th>  -->
+    <!-- <th>Invoice Number</th> -->
+    <th>PO Number</th>
     <th>Order Date</th>
     <th>Ship by Date</th>
     <th>Due Date</th>
@@ -57,13 +57,13 @@
     </thead>
     <tbody>
     <tr>
-    <td>{{selectedProduct._id}}</td>
+    <td>{{selectedProduct.SalesOrder}}</td>
     <!-- <td>{{selectedProduct.Order_Number}}</td> -->
     <td>{{selectedProduct.cDate | date: 'dd/MM/yyyy'}}</td>
-    <td>--</td>
-    <!-- <td>{{selectedProduct.Ship_Date}}</td> -->
-    <td>--</td>
-    <!-- <td>{{selectedProduct.Due_Date}}</td> -->
+    <!-- <td>--</td> -->
+    <td>{{selectedProduct.ShipByDate| date: 'dd/MM/yyyy'}}</td>
+    <!-- <td>--</td> -->
+    <td>{{selectedProduct.DueDate| date: 'dd/MM/yyyy'}}</td>
     <td>{{selectedProduct.discountID}}</td>
     </tr>
     </tbody>

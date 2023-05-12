@@ -162,4 +162,12 @@ export class AppComponent {
     console.log("Bạn không có thẩm quyền");
   }
  }
+ onLogout(){
+  this.admin= new Admin ()
+  sessionStorage.removeItem('checkLogin');
+  sessionStorage.removeItem('Account');
+  this.isLoggedIn=false
+ }
+
+
 }
