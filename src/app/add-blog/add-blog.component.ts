@@ -70,4 +70,8 @@ export class AddBlogComponent {
   onDeleteImage(index: number) {
     this.blog.img.splice(index, 1);
   }
+
+  Back(){
+    this.router.navigate(['blog-list'])
+      }
 }
